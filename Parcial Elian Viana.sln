@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Biblioteca Clases", "Biblio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Login", "Login\Login.csproj", "{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prueba", "Prueba\Prueba.csproj", "{A75D246F-FD5F-44E5-A386-368988459AC9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A75D246F-FD5F-44E5-A386-368988459AC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A75D246F-FD5F-44E5-A386-368988459AC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A75D246F-FD5F-44E5-A386-368988459AC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A75D246F-FD5F-44E5-A386-368988459AC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
