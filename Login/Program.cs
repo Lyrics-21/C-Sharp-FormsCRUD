@@ -1,4 +1,4 @@
-namespace Login
+namespace Forms
 {
     internal static class Program
     {
@@ -11,7 +11,13 @@ namespace Login
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            FormLogin formLogin = new FormLogin();
+            formLogin.ShowDialog();
+            if (formLogin.DialogResult == DialogResult.OK)
+            {
+                Application.Run(new Formulario1());
+            }
         }
     }
 }

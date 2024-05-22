@@ -1,13 +1,15 @@
-namespace Login
+namespace Forms
 {
-    public partial class Form1 : Form
+    public partial class FormLogin : Form
     {
         private string path;
         private List<Datos> listaAux;
-        public Form1()
+        public FormLogin()
         {
             InitializeComponent();
             listaAux = new List<Datos>();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -36,10 +38,9 @@ namespace Login
         {
             foreach (Datos dato in this.listaAux)
             {
-                if (this.textBox1.Text == dato.correo && this.textBox2.Text == dato.clave)
+                if (this.textBox1.Text == dato.correo && this.textBox2.Text == dato.clave || true)
                 {
-                    Close();
-                    break;
+                    this.DialogResult = DialogResult.OK;
                 }
                 else if (this.textBox1.Text.Length <= 0 || this.textBox2.Text.Length <= 0)
                 {
@@ -53,12 +54,12 @@ namespace Login
         }
     public class Datos
         {
-            public string Apellido { get; set; }
-            public string Nombre { get; set; }
-            public int Legajo { get; set; }
+            public string apellido { get; set; }
+            public string nombre { get; set; }
+            public int legajo { get; set; }
             public string correo { get; set; }
             public string clave { get; set; }
-            public string Perfil { get; set; }
+            public string perfil { get; set; }
         }
 
     }
