@@ -13,7 +13,6 @@ namespace Forms
 {
     public partial class Formulario1 : Form
     {
-        private bool flag = true;
         public Formulario1()
         {
             InitializeComponent();
