@@ -4,6 +4,7 @@ namespace Forms
     {
         private string path;
         private List<Datos> listaAux;
+
         public FormLogin()
         {
             InitializeComponent();
@@ -41,6 +42,8 @@ namespace Forms
                 if (this.textBox1.Text == dato.correo && this.textBox2.Text == dato.clave || true)
                 {
                     this.DialogResult = DialogResult.OK;
+                    ObtenerDato.DatoNombre = dato.nombre;
+                    break;
                 }
                 else if (this.textBox1.Text.Length <= 0 || this.textBox2.Text.Length <= 0)
                 {
@@ -52,7 +55,7 @@ namespace Forms
                 }
             }
         }
-    public class Datos
+        public class Datos
         {
             public string apellido { get; set; }
             public string nombre { get; set; }
@@ -60,6 +63,11 @@ namespace Forms
             public string correo { get; set; }
             public string clave { get; set; }
             public string perfil { get; set; }
+        }
+
+        public static class ObtenerDato
+        {
+            public static string DatoNombre { get; set; }
         }
 
     }

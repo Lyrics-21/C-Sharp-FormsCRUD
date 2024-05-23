@@ -42,6 +42,5 @@ namespace Libreria_De_Clases
         {
             return mostrarInfo();
         }
-
     }
 }
