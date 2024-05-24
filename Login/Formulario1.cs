@@ -14,7 +14,8 @@ namespace Forms
 {
     public partial class Formulario1 : Form
     {
-        string datoNombre;
+        private string datoNombre;
+        private List<string> listJson = new List<string>();
         public Formulario1()
         {
             InitializeComponent();
@@ -27,6 +28,7 @@ namespace Forms
             datoNombre = ObtenerDato.DatoNombre;
             DateTime dateTime = DateTime.Now;
             this.toolStripStatusLabel1.Text = $"{datoNombre} - Logeado - {dateTime.Date.ToString("dd/MM/yyyy")}";
+            this.listBox1.Items.Add("asd");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,13 +40,39 @@ namespace Forms
         {
             this.devolverMensaje();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            foreach (string items in this.listBox1.Items)
+            {
+                listJson.Add(items.ToString());
+            }
+            string pathPersonajes = "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana";
+            string archivoJson = System.Text.Json.JsonSerializer.Serialize(listJson);
+            File.WriteAllText(pathPersonajes, archivoJson);
+        }
+
+        private void mAgoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("PEDAZOO", "N A Z I", MessageBoxButtons.OK);
+        }
+
+        private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void arqueraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
         public void devolverMensaje()
         {
-            if(this.listBox1.Items.Count <= 0)
+            if (this.listBox1.Items.Count <= 0)
             {
                 MessageBox.Show("Agrege un Personaje", "No se puede", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if(this.listBox1.SelectedIndex >= -1)
+            else if (this.listBox1.SelectedIndex >= -1)
             {
                 MessageBox.Show("Seleccione un personaje", "No se puede", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }

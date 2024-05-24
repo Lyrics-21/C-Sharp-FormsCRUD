@@ -39,6 +39,7 @@
             mAgoToolStripMenuItem = new ToolStripMenuItem();
             tanqueToolStripMenuItem = new ToolStripMenuItem();
             arqueraToolStripMenuItem = new ToolStripMenuItem();
+            button3 = new Button();
             statusStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -100,7 +101,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.BackColor = SystemColors.Control;
+            menuStrip1.BackColor = SystemColors.ControlDark;
             menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
@@ -110,7 +111,7 @@
             // 
             // agregarToolStripMenuItem
             // 
-            agregarToolStripMenuItem.BackColor = SystemColors.Control;
+            agregarToolStripMenuItem.BackColor = SystemColors.ControlDark;
             agregarToolStripMenuItem.BackgroundImageLayout = ImageLayout.None;
             agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mAgoToolStripMenuItem, tanqueToolStripMenuItem, arqueraToolStripMenuItem });
             agregarToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -121,26 +122,40 @@
             // mAgoToolStripMenuItem
             // 
             mAgoToolStripMenuItem.Name = "mAgoToolStripMenuItem";
-            mAgoToolStripMenuItem.Size = new Size(127, 24);
+            mAgoToolStripMenuItem.Size = new Size(180, 24);
             mAgoToolStripMenuItem.Text = "Mago";
+            mAgoToolStripMenuItem.Click += mAgoToolStripMenuItem_Click;
             // 
             // tanqueToolStripMenuItem
             // 
             tanqueToolStripMenuItem.Name = "tanqueToolStripMenuItem";
-            tanqueToolStripMenuItem.Size = new Size(127, 24);
+            tanqueToolStripMenuItem.Size = new Size(180, 24);
             tanqueToolStripMenuItem.Text = "Tanque";
+            tanqueToolStripMenuItem.Click += tanqueToolStripMenuItem_Click;
             // 
             // arqueraToolStripMenuItem
             // 
             arqueraToolStripMenuItem.Name = "arqueraToolStripMenuItem";
-            arqueraToolStripMenuItem.Size = new Size(127, 24);
+            arqueraToolStripMenuItem.Size = new Size(180, 24);
             arqueraToolStripMenuItem.Text = "Arquera";
+            arqueraToolStripMenuItem.Click += arqueraToolStripMenuItem_Click;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(161, 423);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 12;
+            button3.Text = "button3";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // Formulario1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(404, 488);
+            Controls.Add(button3);
             Controls.Add(listBox1);
             Controls.Add(button2);
             Controls.Add(statusStrip1);
@@ -172,5 +187,6 @@
         private ToolStripMenuItem mAgoToolStripMenuItem;
         private ToolStripMenuItem tanqueToolStripMenuItem;
         private ToolStripMenuItem arqueraToolStripMenuItem;
+        private Button button3;
     }
 }
