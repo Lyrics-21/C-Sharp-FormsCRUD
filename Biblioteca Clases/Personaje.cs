@@ -18,11 +18,11 @@ namespace Libreria_De_Clases
             this.estilo = estilo;
             this.daño = daño;
         }
-        public Personaje(int vida, string nombre, string estilo, int daño) : this(vida, nombre, 0, estilo, daño)
+        public Personaje(int vida, string nombre, string estilo, int daño) : this(vida, nombre, 1, estilo, daño)
         {
 
         }
-        public Personaje(string nombre, string estilo, int daño) : this(0, nombre, 0, estilo, daño)
+        public Personaje(string nombre, string estilo, int daño) : this(1000, nombre, 1, estilo, daño)
         {
 
         }

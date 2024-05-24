@@ -17,10 +17,10 @@ namespace Libreria_De_Clases
             this.tipoArco = tipoArco;
             this.cantidadFlechas = cantidadFlechas;
         }
-        public Arquero(int vida, string nombre, int nivel, string estilo, int daño, string tipoArco) : this(vida, nombre, nivel, estilo, daño, tipoArco, 0)
+        public Arquero(int vida, string nombre, int nivel, string estilo, int daño, string tipoArco) : this(vida, nombre, nivel, estilo, daño, tipoArco, 5)
         {
         }
-        public Arquero(int vida, string nombre, int nivel, string estilo, int daño) : this(vida, nombre, nivel, estilo, daño, "Madera Taxus baccata", 0)
+        public Arquero(int vida, string nombre, int nivel, string estilo, int daño) : this(vida, nombre, nivel, estilo, daño, "Madera Taxus baccata", 5)
         {
 
         }
