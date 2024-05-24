@@ -1,6 +1,6 @@
 ﻿namespace Forms
 {
-    partial class Personaje
+    partial class FormPersonaje
     {
         /// <summary>
         /// Required designer variable.
