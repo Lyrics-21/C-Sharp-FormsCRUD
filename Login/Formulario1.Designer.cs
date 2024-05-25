@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             label3 = new Label();
-            button1 = new Button();
-            button2 = new Button();
+            buttonEliminar = new Button();
+            buttonModificar = new Button();
             listBox1 = new ListBox();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
@@ -39,7 +39,7 @@
             mAgoToolStripMenuItem = new ToolStripMenuItem();
             tanqueToolStripMenuItem = new ToolStripMenuItem();
             arqueraToolStripMenuItem = new ToolStripMenuItem();
-            button3 = new Button();
+            guardarToolStripMenuItem = new ToolStripMenuItem();
             statusStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -54,25 +54,25 @@
             label3.TabIndex = 5;
             label3.Text = "Datos del Personaje :";
             // 
-            // button1
+            // buttonEliminar
             // 
-            button1.Location = new Point(284, 417);
-            button1.Name = "button1";
-            button1.Size = new Size(108, 34);
-            button1.TabIndex = 0;
-            button1.Text = "Eliminar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonEliminar.Location = new Point(284, 417);
+            buttonEliminar.Name = "buttonEliminar";
+            buttonEliminar.Size = new Size(108, 34);
+            buttonEliminar.TabIndex = 0;
+            buttonEliminar.Text = "Eliminar";
+            buttonEliminar.UseVisualStyleBackColor = true;
+            buttonEliminar.Click += buttonEliminar_Click;
             // 
-            // button2
+            // buttonModificar
             // 
-            button2.Location = new Point(12, 417);
-            button2.Name = "button2";
-            button2.Size = new Size(108, 34);
-            button2.TabIndex = 7;
-            button2.Text = "Modificar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            buttonModificar.Location = new Point(12, 417);
+            buttonModificar.Name = "buttonModificar";
+            buttonModificar.Size = new Size(108, 34);
+            buttonModificar.TabIndex = 7;
+            buttonModificar.Text = "Modificar";
+            buttonModificar.UseVisualStyleBackColor = true;
+            buttonModificar.Click += buttonModificar_Click;
             // 
             // listBox1
             // 
@@ -113,7 +113,7 @@
             // 
             agregarToolStripMenuItem.BackColor = SystemColors.ControlDark;
             agregarToolStripMenuItem.BackgroundImageLayout = ImageLayout.None;
-            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mAgoToolStripMenuItem, tanqueToolStripMenuItem, arqueraToolStripMenuItem });
+            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mAgoToolStripMenuItem, tanqueToolStripMenuItem, arqueraToolStripMenuItem, guardarToolStripMenuItem });
             agregarToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
             agregarToolStripMenuItem.Size = new Size(70, 23);
@@ -122,46 +122,42 @@
             // mAgoToolStripMenuItem
             // 
             mAgoToolStripMenuItem.Name = "mAgoToolStripMenuItem";
-            mAgoToolStripMenuItem.Size = new Size(180, 24);
+            mAgoToolStripMenuItem.Size = new Size(128, 24);
             mAgoToolStripMenuItem.Text = "Mago";
             mAgoToolStripMenuItem.Click += mAgoToolStripMenuItem_Click;
             // 
             // tanqueToolStripMenuItem
             // 
             tanqueToolStripMenuItem.Name = "tanqueToolStripMenuItem";
-            tanqueToolStripMenuItem.Size = new Size(180, 24);
+            tanqueToolStripMenuItem.Size = new Size(128, 24);
             tanqueToolStripMenuItem.Text = "Tanque";
             tanqueToolStripMenuItem.Click += tanqueToolStripMenuItem_Click;
             // 
             // arqueraToolStripMenuItem
             // 
             arqueraToolStripMenuItem.Name = "arqueraToolStripMenuItem";
-            arqueraToolStripMenuItem.Size = new Size(180, 24);
+            arqueraToolStripMenuItem.Size = new Size(128, 24);
             arqueraToolStripMenuItem.Text = "Arquera";
             arqueraToolStripMenuItem.Click += arqueraToolStripMenuItem_Click;
             // 
-            // button3
+            // guardarToolStripMenuItem
             // 
-            button3.Location = new Point(161, 423);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 12;
-            button3.Text = "button3";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
+            guardarToolStripMenuItem.Size = new Size(128, 24);
+            guardarToolStripMenuItem.Text = "Guardar";
+            guardarToolStripMenuItem.Click += guardarToolStripMenuItem_Click;
             // 
             // Formulario1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(404, 488);
-            Controls.Add(button3);
             Controls.Add(listBox1);
-            Controls.Add(button2);
+            Controls.Add(buttonModificar);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             Controls.Add(label3);
-            Controls.Add(button1);
+            Controls.Add(buttonEliminar);
             MainMenuStrip = menuStrip1;
             Name = "Formulario1";
             Text = "Formulario1";
@@ -177,8 +173,8 @@
         #endregion
 
         private Label label3;
-        private Button button1;
-        private Button button2;
+        private Button buttonEliminar;
+        private Button buttonModificar;
         private ListBox listBox1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private StatusStrip statusStrip1;
@@ -187,6 +183,6 @@
         private ToolStripMenuItem mAgoToolStripMenuItem;
         private ToolStripMenuItem tanqueToolStripMenuItem;
         private ToolStripMenuItem arqueraToolStripMenuItem;
-        private Button button3;
+        private ToolStripMenuItem guardarToolStripMenuItem;
     }
 }

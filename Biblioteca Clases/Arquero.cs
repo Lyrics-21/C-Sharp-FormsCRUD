@@ -9,18 +9,18 @@ namespace Libreria_De_Clases
 {
     internal class Arquero : Personaje
     {
-        private string tipoArco;
+        private TipoArco tipoArco;
         private int cantidadFlechas;
 
-        public Arquero(int vida, string nombre, int nivel, string estilo, int daño, string tipoArco, int cantidadFlechas) : base(vida, nombre, nivel, estilo, daño)
+        public Arquero(int vida, string nombre, int nivel, string estilo, int daño, TipoArco tipoArco, int cantidadFlechas) : base(vida, nombre, nivel, estilo, daño)
         {
             this.tipoArco = tipoArco;
             this.cantidadFlechas = cantidadFlechas;
         }
-        public Arquero(int vida, string nombre, int nivel, string estilo, int daño, string tipoArco) : this(vida, nombre, nivel, estilo, daño, tipoArco, 5)
+        public Arquero(int vida, string nombre, int nivel, string estilo, int daño, TipoArco tipoArco) : this(vida, nombre, nivel, estilo, daño, tipoArco, 5)
         {
         }
-        public Arquero(int vida, string nombre, int nivel, string estilo, int daño) : this(vida, nombre, nivel, estilo, daño, "Madera Taxus baccata", 5)
+        public Arquero(int vida, string nombre, int nivel, string estilo, int daño) : this(vida, nombre, nivel, estilo, daño, TipoArco.Madera, 5)
         {
 
         }
@@ -29,7 +29,7 @@ namespace Libreria_De_Clases
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine(base.ToString());
-            sb.AppendLine($"Arco: {this.tipoArco}");
+            sb.AppendLine($"Arco: {this.tipoArco.ToString()}");
             sb.AppendLine($"Cantidad de flechas: {this.cantidadFlechas}");
             return sb.ToString();
         }

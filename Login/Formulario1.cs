@@ -31,27 +31,6 @@ namespace Forms
             this.listBox1.Items.Add("Personaje");
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.devolverMensaje();
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            this.devolverMensaje();
-        }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            foreach (string items in this.listBox1.Items)
-            {
-                listJson.Add(items.ToString());
-            }
-            string pathPersonajes = "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana";
-            string archivoJson = System.Text.Json.JsonSerializer.Serialize(listJson);
-            File.WriteAllText(pathPersonajes, archivoJson);
-        }
-
         private void mAgoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             MessageBox.Show("PEDAZOO", "N A Z I", MessageBoxButtons.OK);
@@ -81,6 +60,27 @@ namespace Forms
             {
                 MessageBox.Show("Seleccione un personaje", "No se puede", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+        }
+
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            foreach (string items in this.listBox1.Items)
+            {
+                listJson.Add(items.ToString());
+            }
+            string pathPersonajes = "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana";
+            string archivoJson = System.Text.Json.JsonSerializer.Serialize(listJson);
+            File.WriteAllText(pathPersonajes, archivoJson);
+        }
+
+        private void buttonModificar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
