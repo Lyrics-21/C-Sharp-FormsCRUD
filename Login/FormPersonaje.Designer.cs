@@ -83,6 +83,7 @@
             button2.TabIndex = 6;
             button2.Text = "Cancelar";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
             // 
             // button3
             // 

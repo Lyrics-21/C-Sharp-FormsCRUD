@@ -28,7 +28,7 @@ namespace Forms
             datoNombre = ObtenerDato.DatoNombre;
             DateTime dateTime = DateTime.Now;
             this.toolStripStatusLabel1.Text = $"{datoNombre} - Logeado - {dateTime.Date.ToString("dd/MM/yyyy")}";
-            this.listBox1.Items.Add("asd");
+            this.listBox1.Items.Add("Personaje");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -64,7 +64,12 @@ namespace Forms
 
         private void arqueraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormDatos formDatos = new FormDatos();
+            formDatos.ShowDialog();
+            if (formDatos.DialogResult == DialogResult.Cancel)
+            {
+                formDatos.Close();
+            }
         }
         public void devolverMensaje()
         {
