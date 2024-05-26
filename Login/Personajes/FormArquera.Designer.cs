@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             label6 = new Label();
-            textBox5 = new TextBox();
+            textBoxFlechas = new TextBox();
             label7 = new Label();
             comboBox1 = new ComboBox();
             groupBox2 = new GroupBox();
@@ -46,16 +46,16 @@
             label6.TabIndex = 8;
             label6.Text = "Cantidad de flechas :";
             // 
-            // textBox5
+            // textBoxFlechas
             // 
-            textBox5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox5.ForeColor = SystemColors.ButtonShadow;
-            textBox5.Location = new Point(194, 33);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(168, 29);
-            textBox5.TabIndex = 9;
-            textBox5.Text = "     Valor por defecto";
-            textBox5.Click += textBox5_Click;
+            textBoxFlechas.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxFlechas.ForeColor = SystemColors.ButtonShadow;
+            textBoxFlechas.Location = new Point(194, 33);
+            textBoxFlechas.Name = "textBoxFlechas";
+            textBoxFlechas.Size = new Size(168, 29);
+            textBoxFlechas.TabIndex = 9;
+            textBoxFlechas.Text = "     Valor por defecto";
+            textBoxFlechas.Click += textBoxFlechas_Click;
             // 
             // label7
             // 
@@ -78,7 +78,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(textBox5);
+            groupBox2.Controls.Add(textBoxFlechas);
             groupBox2.Controls.Add(comboBox1);
             groupBox2.Controls.Add(label6);
             groupBox2.Controls.Add(label7);
@@ -107,7 +107,7 @@
         #endregion
 
         private Label label6;
-        private TextBox textBox5;
+        private TextBox textBoxFlechas;
         private Label label7;
         private ComboBox comboBox1;
         private GroupBox groupBox2;

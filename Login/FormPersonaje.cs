@@ -33,13 +33,8 @@ namespace Forms
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-            foreach (Control control in this.groupBox1.Controls)
-            {
-                if (control is TextBox)
-                {
-                    ((TextBox)control).Clear();
-                }
-            }
+            this.ClearText(this.groupBox1);
+            this.ClearGroupBox();
         }
 
         private void buttonCancelar_Click(object sender, EventArgs e)
@@ -49,28 +44,48 @@ namespace Forms
 
         private void textBoxVida_Click(object sender, EventArgs e)
         {
-            if (this.textBoxVida.ForeColor != Color.Black)
-            {
-                this.textBoxVida.Clear();
-                this.textBoxVida.ForeColor = Color.Black;
-            }
+            this.ResetTextBoxClick(this.textBoxVida);
         }
 
         private void textBoxNivel_Click(object sender, EventArgs e)
         {
-            if (this.textBoxNivel.ForeColor != Color.Black)
-            {
-                this.textBoxNivel.Clear();
-                this.textBoxNivel.ForeColor = Color.Black;
-            }
+            this.ResetTextBoxClick(this.textBoxNivel);
         }
 
         private void textBoxDaño_Click(object sender, EventArgs e)
         {
-            if (this.textBoxDaño.ForeColor != Color.Black)
+            this.ResetTextBoxClick(this.textBoxDaño);
+        }
+
+        public void ClearText(Control parent)
+        {
+            foreach (Control control in parent.Controls)
             {
-                this.textBoxDaño.Clear();
-                this.textBoxDaño.ForeColor = Color.Black;
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Clear();
+                }
+            }
+        }
+
+        protected virtual void ClearGroupBox()
+        {
+        }
+
+        protected void ResetTextBoxClick(TextBox textBox)
+        {
+            if (textBox.ForeColor != Color.Black)
+            {
+                textBox.Clear();
+                textBox.ForeColor = Color.Black;
+            }
+        }
+
+        protected void enumCombobox(Type tipoEnum, ComboBox comboBox)
+        {
+            foreach (Enum item in Enum.GetValues(tipoEnum))
+            {
+                comboBox.Items.Add(item);
             }
         }
     }

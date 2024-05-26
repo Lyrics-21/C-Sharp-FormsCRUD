@@ -20,20 +20,18 @@ namespace Forms
 
         private void FormArquera_Load(object sender, EventArgs e)
         {
-            foreach (TipoArco tipoArco in Enum.GetValues(typeof(TipoArco)))
-            {
-                this.comboBox1.Items.Add(tipoArco);
-            }
+            this.enumCombobox(typeof(TipoArco), this.comboBox1);
             this.comboBox1.SelectedItem = TipoArco.Madera;
         }
 
-        private void textBox5_Click(object sender, EventArgs e)
+        protected override void ClearGroupBox()
         {
-            if (this.textBox5.ForeColor != Color.Black)
-            {
-                this.textBox5.Clear();
-                this.textBox5.ForeColor = Color.Black;
-            }
+            this.ClearText(this.groupBox2);
+        }
+
+        private void textBoxFlechas_Click(object sender, EventArgs e)
+        {
+            this.ResetTextBoxClick(this.textBoxFlechas);
         }
     }
 }

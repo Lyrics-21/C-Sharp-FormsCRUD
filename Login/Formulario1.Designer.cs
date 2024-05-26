@@ -101,8 +101,8 @@
             agregarToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             agregarToolStripMenuItem.MergeIndex = 1;
             agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            agregarToolStripMenuItem.Size = new Size(70, 23);
-            agregarToolStripMenuItem.Text = "Agregar";
+            agregarToolStripMenuItem.Size = new Size(125, 23);
+            agregarToolStripMenuItem.Text = "Agregar/Guardar";
             // 
             // agregarPersonajeToolStripMenuItem
             // 
