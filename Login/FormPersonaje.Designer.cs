@@ -43,6 +43,7 @@
             textBoxDaño = new TextBox();
             groupBox1 = new GroupBox();
             panel2 = new Panel();
+            label6 = new Label();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             panel2.SuspendLayout();
@@ -69,7 +70,7 @@
             // 
             // buttonConfirmar
             // 
-            buttonConfirmar.Location = new Point(29, 8);
+            buttonConfirmar.Location = new Point(39, 10);
             buttonConfirmar.Name = "buttonConfirmar";
             buttonConfirmar.Size = new Size(98, 32);
             buttonConfirmar.TabIndex = 5;
@@ -79,7 +80,7 @@
             // 
             // buttonCancelar
             // 
-            buttonCancelar.Location = new Point(287, 8);
+            buttonCancelar.Location = new Point(297, 10);
             buttonCancelar.Name = "buttonCancelar";
             buttonCancelar.Size = new Size(98, 32);
             buttonCancelar.TabIndex = 6;
@@ -89,7 +90,7 @@
             // 
             // buttonLimpiar
             // 
-            buttonLimpiar.Location = new Point(159, 8);
+            buttonLimpiar.Location = new Point(169, 10);
             buttonLimpiar.Name = "buttonLimpiar";
             buttonLimpiar.Size = new Size(98, 32);
             buttonLimpiar.TabIndex = 7;
@@ -101,7 +102,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(46, 39);
+            label2.Location = new Point(46, 31);
             label2.Name = "label2";
             label2.Size = new Size(75, 21);
             label2.TabIndex = 0;
@@ -110,7 +111,7 @@
             // textBoxNombre
             // 
             textBoxNombre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNombre.Location = new Point(127, 36);
+            textBoxNombre.Location = new Point(127, 28);
             textBoxNombre.Name = "textBoxNombre";
             textBoxNombre.Size = new Size(168, 29);
             textBoxNombre.TabIndex = 1;
@@ -119,7 +120,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(73, 91);
+            label3.Location = new Point(73, 88);
             label3.Name = "label3";
             label3.Size = new Size(48, 21);
             label3.TabIndex = 2;
@@ -128,16 +129,19 @@
             // textBoxVida
             // 
             textBoxVida.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxVida.Location = new Point(127, 88);
+            textBoxVida.ForeColor = SystemColors.ButtonShadow;
+            textBoxVida.Location = new Point(127, 85);
             textBoxVida.Name = "textBoxVida";
             textBoxVida.Size = new Size(168, 29);
             textBoxVida.TabIndex = 3;
+            textBoxVida.Text = "     Valor por defecto";
+            textBoxVida.Click += textBoxVida_Click;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(68, 141);
+            label4.Location = new Point(68, 143);
             label4.Name = "label4";
             label4.Size = new Size(53, 21);
             label4.TabIndex = 4;
@@ -146,16 +150,19 @@
             // textBoxNivel
             // 
             textBoxNivel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxNivel.Location = new Point(127, 138);
+            textBoxNivel.ForeColor = SystemColors.ButtonShadow;
+            textBoxNivel.Location = new Point(127, 140);
             textBoxNivel.Name = "textBoxNivel";
             textBoxNivel.Size = new Size(168, 29);
             textBoxNivel.TabIndex = 5;
+            textBoxNivel.Text = "     Valor por defecto";
+            textBoxNivel.Click += textBoxNivel_Click;
             // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(68, 190);
+            label5.Location = new Point(67, 199);
             label5.Name = "label5";
             label5.Size = new Size(54, 21);
             label5.TabIndex = 6;
@@ -164,13 +171,17 @@
             // textBoxDaño
             // 
             textBoxDaño.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBoxDaño.Location = new Point(127, 187);
+            textBoxDaño.ForeColor = SystemColors.ButtonShadow;
+            textBoxDaño.Location = new Point(127, 196);
             textBoxDaño.Name = "textBoxDaño";
             textBoxDaño.Size = new Size(168, 29);
             textBoxDaño.TabIndex = 7;
+            textBoxDaño.Text = "     Valor por defecto";
+            textBoxDaño.Click += textBoxDaño_Click;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(textBoxNombre);
             groupBox1.Controls.Add(textBoxDaño);
             groupBox1.Controls.Add(label2);
@@ -181,7 +192,7 @@
             groupBox1.Controls.Add(textBoxNivel);
             groupBox1.Location = new Point(10, 54);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(407, 247);
+            groupBox1.Size = new Size(402, 247);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
@@ -197,11 +208,21 @@
             panel2.Size = new Size(438, 52);
             panel2.TabIndex = 2;
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(127, 60);
+            label6.Name = "label6";
+            label6.Size = new Size(107, 15);
+            label6.TabIndex = 8;
+            label6.Text = "Ingrese un nombre";
+            label6.Visible = false;
+            // 
             // FormPersonaje
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(397, 514);
+            ClientSize = new Size(418, 522);
             ControlBox = false;
             Controls.Add(panel2);
             Controls.Add(groupBox1);
@@ -239,5 +260,6 @@
         private TextBox textBoxDaño;
         private GroupBox groupBox1;
         private Panel panel2;
+        private Label label6;
     }
 }

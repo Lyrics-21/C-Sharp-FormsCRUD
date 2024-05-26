@@ -72,6 +72,10 @@ namespace Forms
             {
                 formDatos.Close();
             }
+            else if (formDatos.DialogResult == DialogResult.OK)
+            {
+                formDatos.Close();
+            }
         }
 
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)

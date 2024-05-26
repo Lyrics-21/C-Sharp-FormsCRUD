@@ -21,9 +21,13 @@ namespace Forms
 
         private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            if (this.textBoxNombre.Text.Length >= 0)
+            if (this.textBoxNombre.Text.Length > 0)
             {
                 this.DialogResult = DialogResult.OK;
+            }
+            else
+            {
+                this.label6.Visible = true;
             }
         }
 
@@ -41,6 +45,33 @@ namespace Forms
         private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void textBoxVida_Click(object sender, EventArgs e)
+        {
+            if (this.textBoxVida.ForeColor != Color.Black)
+            {
+                this.textBoxVida.Clear();
+                this.textBoxVida.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBoxNivel_Click(object sender, EventArgs e)
+        {
+            if (this.textBoxNivel.ForeColor != Color.Black)
+            {
+                this.textBoxNivel.Clear();
+                this.textBoxNivel.ForeColor = Color.Black;
+            }
+        }
+
+        private void textBoxDaño_Click(object sender, EventArgs e)
+        {
+            if (this.textBoxDaño.ForeColor != Color.Black)
+            {
+                this.textBoxDaño.Clear();
+                this.textBoxDaño.ForeColor = Color.Black;
+            }
         }
     }
 }

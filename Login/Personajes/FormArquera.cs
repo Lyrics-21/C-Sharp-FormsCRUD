@@ -15,6 +15,16 @@ namespace Forms
         public FormArquera()
         {
             InitializeComponent();
+            this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+        }
+
+        private void FormArquera_Load(object sender, EventArgs e)
+        {
+            foreach (TipoArco tipoArco in Enum.GetValues(typeof(TipoArco)))
+            {
+                this.comboBox1.Items.Add(tipoArco);
+            }
+            this.comboBox1.SelectedItem = TipoArco.Madera;
         }
     }
 }

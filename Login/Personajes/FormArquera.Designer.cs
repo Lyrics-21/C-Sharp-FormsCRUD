@@ -81,7 +81,7 @@
             groupBox2.Controls.Add(label7);
             groupBox2.Location = new Point(10, 310);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(407, 142);
+            groupBox2.Size = new Size(402, 142);
             groupBox2.TabIndex = 12;
             groupBox2.TabStop = false;
             groupBox2.Text = "groupBox2";
@@ -90,11 +90,11 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(428, 520);
+            ClientSize = new Size(422, 520);
             Controls.Add(groupBox2);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "FormArquera";
             Text = "FormArquero";
+            Load += FormArquera_Load;
             Controls.SetChildIndex(groupBox2, 0);
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
