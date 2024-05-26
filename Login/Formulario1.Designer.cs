@@ -108,7 +108,7 @@
             // 
             agregarPersonajeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { magoToolStripMenuItem, arqueroToolStripMenuItem, tanqueToolStripMenuItem });
             agregarPersonajeToolStripMenuItem.Name = "agregarPersonajeToolStripMenuItem";
-            agregarPersonajeToolStripMenuItem.Size = new Size(196, 24);
+            agregarPersonajeToolStripMenuItem.Size = new Size(189, 24);
             agregarPersonajeToolStripMenuItem.Text = "Agregar Personaje";
             // 
             // magoToolStripMenuItem
@@ -135,8 +135,8 @@
             // guardarPersonajesToolStripMenuItem
             // 
             guardarPersonajesToolStripMenuItem.Name = "guardarPersonajesToolStripMenuItem";
-            guardarPersonajesToolStripMenuItem.Size = new Size(196, 24);
-            guardarPersonajesToolStripMenuItem.Text = "Guardar Personajes";
+            guardarPersonajesToolStripMenuItem.Size = new Size(189, 24);
+            guardarPersonajesToolStripMenuItem.Text = "Guardar Datos";
             guardarPersonajesToolStripMenuItem.Click += guardarPersonajesToolStripMenuItem_Click;
             // 
             // toolStripStatusLabel1

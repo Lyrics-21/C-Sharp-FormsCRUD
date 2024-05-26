@@ -26,5 +26,14 @@ namespace Forms
             }
             this.comboBox1.SelectedItem = TipoArco.Madera;
         }
+
+        private void textBox5_Click(object sender, EventArgs e)
+        {
+            if (this.textBox5.ForeColor != Color.Black)
+            {
+                this.textBox5.Clear();
+                this.textBox5.ForeColor = Color.Black;
+            }
+        }
     }
 }

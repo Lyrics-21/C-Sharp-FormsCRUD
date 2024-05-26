@@ -49,10 +49,13 @@
             // textBox5
             // 
             textBox5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBox5.ForeColor = SystemColors.ButtonShadow;
             textBox5.Location = new Point(194, 33);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(168, 29);
             textBox5.TabIndex = 9;
+            textBox5.Text = "     Valor por defecto";
+            textBox5.Click += textBox5_Click;
             // 
             // label7
             // 
