@@ -1,6 +1,6 @@
 ﻿namespace Forms
 {
-    partial class FormDatos
+    partial class FormArquera
     {
         /// <summary>
         /// Required designer variable.

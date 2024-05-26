@@ -31,7 +31,7 @@
             label3 = new Label();
             buttonEliminar = new Button();
             buttonModificar = new Button();
-            listBox1 = new ListBox();
+            listaPersonajes = new ListBox();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
             menuStrip1 = new MenuStrip();
@@ -56,9 +56,9 @@
             // 
             // buttonEliminar
             // 
-            buttonEliminar.Location = new Point(284, 417);
+            buttonEliminar.Location = new Point(238, 417);
             buttonEliminar.Name = "buttonEliminar";
-            buttonEliminar.Size = new Size(108, 34);
+            buttonEliminar.Size = new Size(154, 34);
             buttonEliminar.TabIndex = 0;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = true;
@@ -68,20 +68,20 @@
             // 
             buttonModificar.Location = new Point(12, 417);
             buttonModificar.Name = "buttonModificar";
-            buttonModificar.Size = new Size(108, 34);
+            buttonModificar.Size = new Size(154, 34);
             buttonModificar.TabIndex = 7;
             buttonModificar.Text = "Modificar";
             buttonModificar.UseVisualStyleBackColor = true;
             buttonModificar.Click += buttonModificar_Click;
             // 
-            // listBox1
+            // listaPersonajes
             // 
-            listBox1.FormattingEnabled = true;
-            listBox1.ItemHeight = 15;
-            listBox1.Location = new Point(12, 56);
-            listBox1.Name = "listBox1";
-            listBox1.Size = new Size(380, 349);
-            listBox1.TabIndex = 8;
+            listaPersonajes.FormattingEnabled = true;
+            listaPersonajes.ItemHeight = 15;
+            listaPersonajes.Location = new Point(12, 56);
+            listaPersonajes.Name = "listaPersonajes";
+            listaPersonajes.Size = new Size(380, 349);
+            listaPersonajes.TabIndex = 8;
             // 
             // toolStripStatusLabel1
             // 
@@ -152,7 +152,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(404, 488);
-            Controls.Add(listBox1);
+            Controls.Add(listaPersonajes);
             Controls.Add(buttonModificar);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
@@ -175,7 +175,7 @@
         private Label label3;
         private Button buttonEliminar;
         private Button buttonModificar;
-        private ListBox listBox1;
+        private ListBox listaPersonajes;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private StatusStrip statusStrip1;
         private MenuStrip menuStrip1;

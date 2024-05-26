@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,8 @@ namespace Forms
     {
         private string datoNombre;
         private List<string> listJson = new List<string>();
+        private string pathPersonajes;
+        private List<string> personajesDsrlz = new List<string>();
         public Formulario1()
         {
             InitializeComponent();
@@ -28,59 +31,91 @@ namespace Forms
             datoNombre = ObtenerDato.DatoNombre;
             DateTime dateTime = DateTime.Now;
             this.toolStripStatusLabel1.Text = $"{datoNombre} - Logeado - {dateTime.Date.ToString("dd/MM/yyyy")}";
-            this.listBox1.Items.Add("Personaje");
+
+            try
+            {
+                this.pathPersonajes = Path.Combine(Directory.GetCurrentDirectory(), "personajes.json");
+                if (File.Exists(this.pathPersonajes))
+                {
+                    using (StreamReader sr = new StreamReader(this.pathPersonajes))
+                    {
+                        string archivoJson = sr.ReadToEnd();
+                        this.personajesDsrlz = System.Text.Json.JsonSerializer.Deserialize<List<string>>(archivoJson);
+                    }
+                }
+
+                foreach(string personaje in this.personajesDsrlz)
+                {
+                    this.listaPersonajes.Items.Add(personaje);
+                }
+            }
+            catch (System.Text.Json.JsonException ex)
+            {
+                MessageBox.Show($"Ocurrio un error al deserializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void mAgoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void buttonModificar_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("PEDAZOO", "N A Z I", MessageBoxButtons.OK);
+            devolverMensaje();
         }
-
-        private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
+        private void buttonEliminar_Click(object sender, EventArgs e)
         {
-
+            devolverMensaje();
         }
 
         private void arqueraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormDatos formDatos = new FormDatos();
+            FormArquera formDatos = new FormArquera();
             formDatos.ShowDialog();
             if (formDatos.DialogResult == DialogResult.Cancel)
             {
                 formDatos.Close();
             }
         }
+        private void mAgoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("PEDAZOO", "N A Z I", MessageBoxButtons.OK);
+        }
+        private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                foreach (string items in this.listaPersonajes.Items)
+                {
+                    this.listJson.Add(items.ToString());
+                }
+                string archivoJson = System.Text.Json.JsonSerializer.Serialize(this.listJson);
+                File.WriteAllText(this.pathPersonajes, archivoJson); 
+            }
+            catch(System.Text.Json.JsonException ex)
+            {
+                MessageBox.Show($"Ocurrio un error al serializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public void devolverMensaje()
         {
-            if (this.listBox1.Items.Count <= 0)
+            if (this.listaPersonajes.Items.Count <= 0)
             {
                 MessageBox.Show("Agrege un Personaje", "No se puede", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            else if (this.listBox1.SelectedIndex >= -1)
+            else if (this.listaPersonajes.SelectedIndex >= -1)
             {
                 MessageBox.Show("Seleccione un personaje", "No se puede", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-        }
-
-        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            foreach (string items in this.listBox1.Items)
-            {
-                listJson.Add(items.ToString());
-            }
-            string pathPersonajes = "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana";
-            string archivoJson = System.Text.Json.JsonSerializer.Serialize(listJson);
-            File.WriteAllText(pathPersonajes, archivoJson);
-        }
-
-        private void buttonModificar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void buttonEliminar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

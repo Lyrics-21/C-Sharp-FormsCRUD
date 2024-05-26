@@ -15,11 +15,11 @@ namespace Forms
         private void Form1_Load(object sender, EventArgs e)
         {
             path = @".\MOCK_DATA.json";
-            string fullPath = Path.Combine(Directory.GetCurrentDirectory(), path);
+            string pathLogin = Path.Combine(Directory.GetCurrentDirectory(), path);
 
-            if (File.Exists(fullPath))
+            if (File.Exists(pathLogin))
             {
-                using (StreamReader sr = new StreamReader(fullPath))
+                using (StreamReader sr = new StreamReader(pathLogin))
                 {
                     string json_str = sr.ReadToEnd();
                     listaAux = System.Text.Json.JsonSerializer.Deserialize<List<Datos>>(json_str);
