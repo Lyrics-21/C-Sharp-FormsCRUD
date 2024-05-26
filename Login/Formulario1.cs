@@ -44,7 +44,7 @@ namespace Forms
                     }
                 }
 
-                foreach(string personaje in this.personajesDsrlz)
+                foreach (string personaje in this.personajesDsrlz)
                 {
                     this.listaPersonajes.Items.Add(personaje);
                 }
@@ -59,16 +59,12 @@ namespace Forms
             }
         }
 
-        private void buttonModificar_Click(object sender, EventArgs e)
+        private void magoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            devolverMensaje();
-        }
-        private void buttonEliminar_Click(object sender, EventArgs e)
-        {
-            devolverMensaje();
+
         }
 
-        private void arqueraToolStripMenuItem_Click(object sender, EventArgs e)
+        private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormArquera formDatos = new FormArquera();
             formDatos.ShowDialog();
@@ -77,15 +73,21 @@ namespace Forms
                 formDatos.Close();
             }
         }
-        private void mAgoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("PEDAZOO", "N A Z I", MessageBoxButtons.OK);
-        }
+
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+             
         }
-        private void guardarToolStripMenuItem_Click(object sender, EventArgs e)
+
+        private void buttonModificar_Click(object sender, EventArgs e)
+        {
+            devolverMensaje();
+        }
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            devolverMensaje();
+        }
+        private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -94,9 +96,9 @@ namespace Forms
                     this.listJson.Add(items.ToString());
                 }
                 string archivoJson = System.Text.Json.JsonSerializer.Serialize(this.listJson);
-                File.WriteAllText(this.pathPersonajes, archivoJson); 
+                File.WriteAllText(this.pathPersonajes, archivoJson);
             }
-            catch(System.Text.Json.JsonException ex)
+            catch (System.Text.Json.JsonException ex)
             {
                 MessageBox.Show($"Ocurrio un error al serializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -105,7 +107,6 @@ namespace Forms
                 MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         public void devolverMensaje()
         {
             if (this.listaPersonajes.Items.Count <= 0)

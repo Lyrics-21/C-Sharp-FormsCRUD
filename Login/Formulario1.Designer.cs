@@ -32,16 +32,17 @@
             buttonEliminar = new Button();
             buttonModificar = new Button();
             listaPersonajes = new ListBox();
-            toolStripStatusLabel1 = new ToolStripStatusLabel();
-            statusStrip1 = new StatusStrip();
             menuStrip1 = new MenuStrip();
             agregarToolStripMenuItem = new ToolStripMenuItem();
-            mAgoToolStripMenuItem = new ToolStripMenuItem();
+            agregarPersonajeToolStripMenuItem = new ToolStripMenuItem();
+            magoToolStripMenuItem = new ToolStripMenuItem();
+            arqueroToolStripMenuItem = new ToolStripMenuItem();
             tanqueToolStripMenuItem = new ToolStripMenuItem();
-            arqueraToolStripMenuItem = new ToolStripMenuItem();
-            guardarToolStripMenuItem = new ToolStripMenuItem();
-            statusStrip1.SuspendLayout();
+            guardarPersonajesToolStripMenuItem = new ToolStripMenuItem();
+            toolStripStatusLabel1 = new ToolStripStatusLabel();
+            statusStrip1 = new StatusStrip();
             menuStrip1.SuspendLayout();
+            statusStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label3
@@ -56,9 +57,9 @@
             // 
             // buttonEliminar
             // 
-            buttonEliminar.Location = new Point(238, 417);
+            buttonEliminar.Location = new Point(268, 539);
             buttonEliminar.Name = "buttonEliminar";
-            buttonEliminar.Size = new Size(154, 34);
+            buttonEliminar.Size = new Size(189, 34);
             buttonEliminar.TabIndex = 0;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = true;
@@ -66,9 +67,9 @@
             // 
             // buttonModificar
             // 
-            buttonModificar.Location = new Point(12, 417);
+            buttonModificar.Location = new Point(12, 539);
             buttonModificar.Name = "buttonModificar";
-            buttonModificar.Size = new Size(154, 34);
+            buttonModificar.Size = new Size(187, 34);
             buttonModificar.TabIndex = 7;
             buttonModificar.Text = "Modificar";
             buttonModificar.UseVisualStyleBackColor = true;
@@ -80,8 +81,63 @@
             listaPersonajes.ItemHeight = 15;
             listaPersonajes.Location = new Point(12, 56);
             listaPersonajes.Name = "listaPersonajes";
-            listaPersonajes.Size = new Size(380, 349);
+            listaPersonajes.Size = new Size(445, 469);
             listaPersonajes.TabIndex = 8;
+            // 
+            // menuStrip1
+            // 
+            menuStrip1.BackColor = SystemColors.ControlDark;
+            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(469, 27);
+            menuStrip1.TabIndex = 11;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // agregarToolStripMenuItem
+            // 
+            agregarToolStripMenuItem.BackColor = SystemColors.ControlDark;
+            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarPersonajeToolStripMenuItem, guardarPersonajesToolStripMenuItem });
+            agregarToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            agregarToolStripMenuItem.MergeIndex = 1;
+            agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
+            agregarToolStripMenuItem.Size = new Size(70, 23);
+            agregarToolStripMenuItem.Text = "Agregar";
+            // 
+            // agregarPersonajeToolStripMenuItem
+            // 
+            agregarPersonajeToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { magoToolStripMenuItem, arqueroToolStripMenuItem, tanqueToolStripMenuItem });
+            agregarPersonajeToolStripMenuItem.Name = "agregarPersonajeToolStripMenuItem";
+            agregarPersonajeToolStripMenuItem.Size = new Size(196, 24);
+            agregarPersonajeToolStripMenuItem.Text = "Agregar Personaje";
+            // 
+            // magoToolStripMenuItem
+            // 
+            magoToolStripMenuItem.Name = "magoToolStripMenuItem";
+            magoToolStripMenuItem.Size = new Size(128, 24);
+            magoToolStripMenuItem.Text = "Mago";
+            magoToolStripMenuItem.Click += magoToolStripMenuItem_Click;
+            // 
+            // arqueroToolStripMenuItem
+            // 
+            arqueroToolStripMenuItem.Name = "arqueroToolStripMenuItem";
+            arqueroToolStripMenuItem.Size = new Size(128, 24);
+            arqueroToolStripMenuItem.Text = "Arquero";
+            arqueroToolStripMenuItem.Click += arqueroToolStripMenuItem_Click;
+            // 
+            // tanqueToolStripMenuItem
+            // 
+            tanqueToolStripMenuItem.Name = "tanqueToolStripMenuItem";
+            tanqueToolStripMenuItem.Size = new Size(128, 24);
+            tanqueToolStripMenuItem.Text = "Tanque";
+            tanqueToolStripMenuItem.Click += tanqueToolStripMenuItem_Click;
+            // 
+            // guardarPersonajesToolStripMenuItem
+            // 
+            guardarPersonajesToolStripMenuItem.Name = "guardarPersonajesToolStripMenuItem";
+            guardarPersonajesToolStripMenuItem.Size = new Size(196, 24);
+            guardarPersonajesToolStripMenuItem.Text = "Guardar Personajes";
+            guardarPersonajesToolStripMenuItem.Click += guardarPersonajesToolStripMenuItem_Click;
             // 
             // toolStripStatusLabel1
             // 
@@ -93,79 +149,32 @@
             // 
             statusStrip1.BackColor = SystemColors.ButtonShadow;
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
-            statusStrip1.Location = new Point(0, 466);
+            statusStrip1.Location = new Point(0, 586);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(404, 22);
-            statusStrip1.TabIndex = 6;
-            statusStrip1.Text = "statusStrip1";
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.BackColor = SystemColors.ControlDark;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(404, 27);
-            menuStrip1.TabIndex = 11;
-            menuStrip1.Text = "menuStrip1";
-            // 
-            // agregarToolStripMenuItem
-            // 
-            agregarToolStripMenuItem.BackColor = SystemColors.ControlDark;
-            agregarToolStripMenuItem.BackgroundImageLayout = ImageLayout.None;
-            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { mAgoToolStripMenuItem, tanqueToolStripMenuItem, arqueraToolStripMenuItem, guardarToolStripMenuItem });
-            agregarToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
-            agregarToolStripMenuItem.Size = new Size(70, 23);
-            agregarToolStripMenuItem.Text = "Agregar";
-            // 
-            // mAgoToolStripMenuItem
-            // 
-            mAgoToolStripMenuItem.Name = "mAgoToolStripMenuItem";
-            mAgoToolStripMenuItem.Size = new Size(128, 24);
-            mAgoToolStripMenuItem.Text = "Mago";
-            mAgoToolStripMenuItem.Click += mAgoToolStripMenuItem_Click;
-            // 
-            // tanqueToolStripMenuItem
-            // 
-            tanqueToolStripMenuItem.Name = "tanqueToolStripMenuItem";
-            tanqueToolStripMenuItem.Size = new Size(128, 24);
-            tanqueToolStripMenuItem.Text = "Tanque";
-            tanqueToolStripMenuItem.Click += tanqueToolStripMenuItem_Click;
-            // 
-            // arqueraToolStripMenuItem
-            // 
-            arqueraToolStripMenuItem.Name = "arqueraToolStripMenuItem";
-            arqueraToolStripMenuItem.Size = new Size(128, 24);
-            arqueraToolStripMenuItem.Text = "Arquera";
-            arqueraToolStripMenuItem.Click += arqueraToolStripMenuItem_Click;
-            // 
-            // guardarToolStripMenuItem
-            // 
-            guardarToolStripMenuItem.Name = "guardarToolStripMenuItem";
-            guardarToolStripMenuItem.Size = new Size(128, 24);
-            guardarToolStripMenuItem.Text = "Guardar";
-            guardarToolStripMenuItem.Click += guardarToolStripMenuItem_Click;
+            statusStrip1.Size = new Size(469, 22);
+            statusStrip1.TabIndex = 5;
+            statusStrip1.Text = "statusLog";
             // 
             // Formulario1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(404, 488);
+            ClientSize = new Size(469, 608);
             Controls.Add(listaPersonajes);
             Controls.Add(buttonModificar);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
             Controls.Add(label3);
             Controls.Add(buttonEliminar);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             Name = "Formulario1";
             Text = "Formulario1";
             Load += Formulario1_Load;
-            statusStrip1.ResumeLayout(false);
-            statusStrip1.PerformLayout();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            statusStrip1.ResumeLayout(false);
+            statusStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -176,13 +185,14 @@
         private Button buttonEliminar;
         private Button buttonModificar;
         private ListBox listaPersonajes;
+        private MenuStrip menuStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private StatusStrip statusStrip1;
-        private MenuStrip menuStrip1;
         private ToolStripMenuItem agregarToolStripMenuItem;
-        private ToolStripMenuItem mAgoToolStripMenuItem;
+        private ToolStripMenuItem agregarPersonajeToolStripMenuItem;
+        private ToolStripMenuItem magoToolStripMenuItem;
+        private ToolStripMenuItem arqueroToolStripMenuItem;
         private ToolStripMenuItem tanqueToolStripMenuItem;
-        private ToolStripMenuItem arqueraToolStripMenuItem;
-        private ToolStripMenuItem guardarToolStripMenuItem;
+        private ToolStripMenuItem guardarPersonajesToolStripMenuItem;
     }
 }

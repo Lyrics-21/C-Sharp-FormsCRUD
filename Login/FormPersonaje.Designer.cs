@@ -30,20 +30,22 @@
         {
             label1 = new Label();
             panel1 = new Panel();
-            button1 = new Button();
-            button2 = new Button();
-            button3 = new Button();
+            buttonConfirmar = new Button();
+            buttonCancelar = new Button();
+            buttonLimpiar = new Button();
             label2 = new Label();
-            textBox1 = new TextBox();
+            textBoxNombre = new TextBox();
             label3 = new Label();
-            textBox2 = new TextBox();
+            textBoxVida = new TextBox();
             label4 = new Label();
-            textBox3 = new TextBox();
+            textBoxNivel = new TextBox();
             label5 = new Label();
-            textBox4 = new TextBox();
+            textBoxDaño = new TextBox();
             groupBox1 = new GroupBox();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
+            panel2.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -65,34 +67,35 @@
             panel1.Size = new Size(438, 52);
             panel1.TabIndex = 1;
             // 
-            // button1
+            // buttonConfirmar
             // 
-            button1.Location = new Point(37, 476);
-            button1.Name = "button1";
-            button1.Size = new Size(98, 32);
-            button1.TabIndex = 5;
-            button1.Text = "Confirmar";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            buttonConfirmar.Location = new Point(29, 8);
+            buttonConfirmar.Name = "buttonConfirmar";
+            buttonConfirmar.Size = new Size(98, 32);
+            buttonConfirmar.TabIndex = 5;
+            buttonConfirmar.Text = "Confirmar";
+            buttonConfirmar.UseVisualStyleBackColor = true;
+            buttonConfirmar.Click += buttonConfirmar_Click;
             // 
-            // button2
+            // buttonCancelar
             // 
-            button2.Location = new Point(295, 476);
-            button2.Name = "button2";
-            button2.Size = new Size(98, 32);
-            button2.TabIndex = 6;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click_1;
+            buttonCancelar.Location = new Point(287, 8);
+            buttonCancelar.Name = "buttonCancelar";
+            buttonCancelar.Size = new Size(98, 32);
+            buttonCancelar.TabIndex = 6;
+            buttonCancelar.Text = "Cancelar";
+            buttonCancelar.UseVisualStyleBackColor = true;
+            buttonCancelar.Click += buttonCancelar_Click;
             // 
-            // button3
+            // buttonLimpiar
             // 
-            button3.Location = new Point(167, 476);
-            button3.Name = "button3";
-            button3.Size = new Size(98, 32);
-            button3.TabIndex = 7;
-            button3.Text = "Limpiar";
-            button3.UseVisualStyleBackColor = true;
+            buttonLimpiar.Location = new Point(159, 8);
+            buttonLimpiar.Name = "buttonLimpiar";
+            buttonLimpiar.Size = new Size(98, 32);
+            buttonLimpiar.TabIndex = 7;
+            buttonLimpiar.Text = "Limpiar";
+            buttonLimpiar.UseVisualStyleBackColor = true;
+            buttonLimpiar.Click += buttonLimpiar_Click;
             // 
             // label2
             // 
@@ -104,13 +107,13 @@
             label2.TabIndex = 0;
             label2.Text = "Nombre :";
             // 
-            // textBox1
+            // textBoxNombre
             // 
-            textBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox1.Location = new Point(127, 36);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(168, 29);
-            textBox1.TabIndex = 1;
+            textBoxNombre.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNombre.Location = new Point(127, 36);
+            textBoxNombre.Name = "textBoxNombre";
+            textBoxNombre.Size = new Size(168, 29);
+            textBoxNombre.TabIndex = 1;
             // 
             // label3
             // 
@@ -122,13 +125,13 @@
             label3.TabIndex = 2;
             label3.Text = "Vida :";
             // 
-            // textBox2
+            // textBoxVida
             // 
-            textBox2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox2.Location = new Point(127, 88);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(168, 29);
-            textBox2.TabIndex = 3;
+            textBoxVida.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxVida.Location = new Point(127, 88);
+            textBoxVida.Name = "textBoxVida";
+            textBoxVida.Size = new Size(168, 29);
+            textBoxVida.TabIndex = 3;
             // 
             // label4
             // 
@@ -140,13 +143,13 @@
             label4.TabIndex = 4;
             label4.Text = "Nivel :";
             // 
-            // textBox3
+            // textBoxNivel
             // 
-            textBox3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox3.Location = new Point(127, 138);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(168, 29);
-            textBox3.TabIndex = 5;
+            textBoxNivel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxNivel.Location = new Point(127, 138);
+            textBoxNivel.Name = "textBoxNivel";
+            textBoxNivel.Size = new Size(168, 29);
+            textBoxNivel.TabIndex = 5;
             // 
             // label5
             // 
@@ -158,24 +161,24 @@
             label5.TabIndex = 6;
             label5.Text = "Daño :";
             // 
-            // textBox4
+            // textBoxDaño
             // 
-            textBox4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            textBox4.Location = new Point(127, 187);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(168, 29);
-            textBox4.TabIndex = 7;
+            textBoxDaño.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            textBoxDaño.Location = new Point(127, 187);
+            textBoxDaño.Name = "textBoxDaño";
+            textBoxDaño.Size = new Size(168, 29);
+            textBoxDaño.TabIndex = 7;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(textBox1);
-            groupBox1.Controls.Add(textBox4);
+            groupBox1.Controls.Add(textBoxNombre);
+            groupBox1.Controls.Add(textBoxDaño);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(textBoxVida);
             groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(textBoxNivel);
             groupBox1.Location = new Point(10, 54);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(407, 247);
@@ -183,17 +186,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
+            // panel2
+            // 
+            panel2.BackColor = SystemColors.ControlDark;
+            panel2.Controls.Add(buttonCancelar);
+            panel2.Controls.Add(buttonConfirmar);
+            panel2.Controls.Add(buttonLimpiar);
+            panel2.Location = new Point(-4, 472);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(438, 52);
+            panel2.TabIndex = 2;
+            // 
             // FormPersonaje
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(429, 520);
+            ClientSize = new Size(397, 514);
             ControlBox = false;
+            Controls.Add(panel2);
             Controls.Add(groupBox1);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(button1);
             Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
             MdiChildrenMinimizedAnchorBottom = false;
             MinimizeBox = false;
@@ -205,6 +218,7 @@
             panel1.PerformLayout();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -212,17 +226,18 @@
 
         private Label label1;
         private Panel panel1;
-        private Button button1;
-        private Button button2;
-        private Button button3;
+        private Button buttonConfirmar;
+        private Button buttonCancelar;
+        private Button buttonLimpiar;
         private Label label2;
-        private TextBox textBox1;
+        private TextBox textBoxNombre;
         private Label label3;
-        private TextBox textBox2;
+        private TextBox textBoxVida;
         private Label label4;
-        private TextBox textBox3;
+        private TextBox textBoxNivel;
         private Label label5;
-        private TextBox textBox4;
+        private TextBox textBoxDaño;
         private GroupBox groupBox1;
+        private Panel panel2;
     }
 }

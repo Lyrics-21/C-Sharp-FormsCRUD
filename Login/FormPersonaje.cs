@@ -8,6 +8,7 @@ using System.Net.PeerToPeer.Collaboration;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Forms.FormLogin;
 
 namespace Forms
 {
@@ -18,17 +19,26 @@ namespace Forms
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonConfirmar_Click(object sender, EventArgs e)
         {
-
+            if (this.textBoxNombre.Text.Length >= 0)
+            {
+                this.DialogResult = DialogResult.OK;
+            }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            foreach (Control control in this.groupBox1.Controls)
+            {
+                if (control is TextBox)
+                {
+                    ((TextBox)control).Clear();
+                }
+            }
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
+        private void buttonCancelar_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
         }
