@@ -42,6 +42,7 @@
             statusStrip1 = new StatusStrip();
             listaPersonajes = new ListBox();
             buttonMostrarDatos = new Button();
+            guardarComoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -89,7 +90,7 @@
             // agregarToolStripMenuItem
             // 
             agregarToolStripMenuItem.BackColor = SystemColors.ControlDark;
-            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarPersonajeToolStripMenuItem, guardarPersonajesToolStripMenuItem });
+            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarPersonajeToolStripMenuItem, guardarPersonajesToolStripMenuItem, guardarComoToolStripMenuItem });
             agregarToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             agregarToolStripMenuItem.MergeIndex = 1;
             agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
@@ -128,7 +129,7 @@
             // 
             guardarPersonajesToolStripMenuItem.Name = "guardarPersonajesToolStripMenuItem";
             guardarPersonajesToolStripMenuItem.Size = new Size(189, 24);
-            guardarPersonajesToolStripMenuItem.Text = "Guardar Datos";
+            guardarPersonajesToolStripMenuItem.Text = "Guardar";
             guardarPersonajesToolStripMenuItem.Click += guardarPersonajesToolStripMenuItem_Click;
             // 
             // toolStripStatusLabel1
@@ -163,9 +164,15 @@
             buttonMostrarDatos.Name = "buttonMostrarDatos";
             buttonMostrarDatos.Size = new Size(162, 34);
             buttonMostrarDatos.TabIndex = 12;
-            buttonMostrarDatos.Text = "Mostrar Datos";
+            buttonMostrarDatos.Text = "Mostrar Informacion";
             buttonMostrarDatos.UseVisualStyleBackColor = true;
             buttonMostrarDatos.Click += buttonMostrarDatos_Click;
+            // 
+            // guardarComoToolStripMenuItem
+            // 
+            guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
+            guardarComoToolStripMenuItem.Size = new Size(189, 24);
+            guardarComoToolStripMenuItem.Text = "Guardar Como";
             // 
             // Formulario1
             // 
@@ -208,5 +215,6 @@
         private ToolStripMenuItem guardarPersonajesToolStripMenuItem;
         private ListBox listaPersonajes;
         private Button buttonMostrarDatos;
+        private ToolStripMenuItem guardarComoToolStripMenuItem;
     }
 }

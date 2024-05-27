@@ -26,10 +26,22 @@ namespace Forms
             this.comboBox1.SelectedItem = TipoArco.Madera;
         }
 
-
         protected override void buttonConfirmar_Click(object sender, EventArgs e)
         {
             base.buttonConfirmar_Click (sender, e);
+
+            TipoArco tipoArco = (TipoArco)Enum.Parse(typeof(TipoArco), this.comboBox1.SelectedItem.ToString());
+            try
+            {
+                Arquero arquero = new Arquero(int.Parse(this.textBoxVida.Text), this.textBoxNombre.Text, int.Parse(this.textBoxNivel.Text), "Arquero", int.Parse(this.textBoxDaño.Text),
+                    tipoArco, int.Parse(this.textBoxFlechas.Text));
+
+                this.PersonajeList.Add(arquero);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Ingrese datos validos", "Error", MessageBoxButtons.OK);
+            }
 
         }
         protected override void ClearGroupBox()
@@ -40,14 +52,6 @@ namespace Forms
         private void textBoxFlechas_Click(object sender, EventArgs e)
         {
             this.ResetTextBoxClick(this.textBoxFlechas);
-        }
-
-        public List<Personaje> GetLista
-        {
-            get
-            {
-                return this.PersonajeList;
-            }
         }
     }
 }

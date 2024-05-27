@@ -74,6 +74,10 @@ namespace Forms
             }
             else if (formArquera.DialogResult == DialogResult.OK)
             {
+                foreach (Arquero arquero in formArquera.PersonajeList)
+                {
+                    this.listaPersonajes.Items.Add(arquero.GetDatosPersonaje);
+                }
                 formArquera.Close();
             }
         }
@@ -94,14 +98,15 @@ namespace Forms
         {
             if (devolverMensaje())
             {
-
+                MostrarDatos mostrarDatos = new MostrarDatos();
+                mostrarDatos.Show();
             }
         }
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             if (devolverMensaje())
             {
-                MessageBox.Show("GORDITO");
+                this.listaPersonajes.Items.RemoveAt(this.listaPersonajes.SelectedIndex);
             }
         }
         private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
