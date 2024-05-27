@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Libreria_De_Clases;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,6 +15,7 @@ namespace Forms
 {
     public partial class FormPersonaje : Form
     {
+        public List<Personaje> PersonajeList = new List<Personaje>();
         public FormPersonaje()
         {
             InitializeComponent();
@@ -23,6 +25,7 @@ namespace Forms
         {
             if (this.textBoxNombre.Text.Length > 0)
             {
+
                 this.DialogResult = DialogResult.OK;
             }
             else

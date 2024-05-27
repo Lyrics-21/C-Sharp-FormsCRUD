@@ -2,7 +2,7 @@
 
 namespace Libreria_De_Clases
 {
-     abstract class Personaje
+     public abstract class Personaje
     {
         private int vida;
         private string nombre;

@@ -74,6 +74,8 @@ namespace Forms
             }
             else if (formDatos.DialogResult == DialogResult.OK)
             {
+                foreach (Arquero arquero in formDatos.GetLista)
+                this.listaPersonajes.Items.Add(arquero.ToString());
                 formDatos.Close();
             }
         }

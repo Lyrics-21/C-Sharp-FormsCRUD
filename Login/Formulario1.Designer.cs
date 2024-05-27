@@ -31,7 +31,6 @@
             label3 = new Label();
             buttonEliminar = new Button();
             buttonModificar = new Button();
-            listaPersonajes = new ListBox();
             menuStrip1 = new MenuStrip();
             agregarToolStripMenuItem = new ToolStripMenuItem();
             agregarPersonajeToolStripMenuItem = new ToolStripMenuItem();
@@ -41,6 +40,7 @@
             guardarPersonajesToolStripMenuItem = new ToolStripMenuItem();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
+            listaPersonajes = new ListBox();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -74,15 +74,6 @@
             buttonModificar.Text = "Modificar";
             buttonModificar.UseVisualStyleBackColor = true;
             buttonModificar.Click += buttonModificar_Click;
-            // 
-            // listaPersonajes
-            // 
-            listaPersonajes.FormattingEnabled = true;
-            listaPersonajes.ItemHeight = 15;
-            listaPersonajes.Location = new Point(12, 56);
-            listaPersonajes.Name = "listaPersonajes";
-            listaPersonajes.Size = new Size(445, 469);
-            listaPersonajes.TabIndex = 8;
             // 
             // menuStrip1
             // 
@@ -155,6 +146,15 @@
             statusStrip1.TabIndex = 5;
             statusStrip1.Text = "statusLog";
             // 
+            // listaPersonajes
+            // 
+            listaPersonajes.FormattingEnabled = true;
+            listaPersonajes.ItemHeight = 15;
+            listaPersonajes.Location = new Point(12, 56);
+            listaPersonajes.Name = "listaPersonajes";
+            listaPersonajes.Size = new Size(445, 469);
+            listaPersonajes.TabIndex = 8;
+            // 
             // Formulario1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -184,7 +184,6 @@
         private Label label3;
         private Button buttonEliminar;
         private Button buttonModificar;
-        private ListBox listaPersonajes;
         private MenuStrip menuStrip1;
         private ToolStripStatusLabel toolStripStatusLabel1;
         private StatusStrip statusStrip1;
@@ -194,5 +193,6 @@
         private ToolStripMenuItem arqueroToolStripMenuItem;
         private ToolStripMenuItem tanqueToolStripMenuItem;
         private ToolStripMenuItem guardarPersonajesToolStripMenuItem;
+        private ListBox listaPersonajes;
     }
 }

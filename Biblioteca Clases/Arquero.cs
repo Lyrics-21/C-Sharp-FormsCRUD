@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Libreria_De_Clases
 {
-    internal class Arquero : Personaje
+    public class Arquero : Personaje
     {
         private TipoArco tipoArco;
         private int cantidadFlechas;
