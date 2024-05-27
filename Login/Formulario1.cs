@@ -66,32 +66,43 @@ namespace Forms
 
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormArquera formDatos = new FormArquera();
-            formDatos.ShowDialog();
-            if (formDatos.DialogResult == DialogResult.Cancel)
+            FormArquera formArquera = new FormArquera();
+            formArquera.ShowDialog();
+            if (formArquera.DialogResult == DialogResult.Cancel)
             {
-                formDatos.Close();
+                formArquera.Close();
             }
-            else if (formDatos.DialogResult == DialogResult.OK)
+            else if (formArquera.DialogResult == DialogResult.OK)
             {
-                foreach (Arquero arquero in formDatos.GetLista)
-                this.listaPersonajes.Items.Add(arquero.ToString());
-                formDatos.Close();
+                formArquera.Close();
             }
         }
 
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-             
+
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-            devolverMensaje();
+            if (devolverMensaje())
+            {
+                MessageBox.Show("GORDITO");
+            }
+        }
+        private void buttonMostrarDatos_Click(object sender, EventArgs e)
+        {
+            if (devolverMensaje())
+            {
+
+            }
         }
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            devolverMensaje();
+            if (devolverMensaje())
+            {
+                MessageBox.Show("GORDITO");
+            }
         }
         private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -113,16 +124,25 @@ namespace Forms
                 MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public void devolverMensaje()
+        public bool devolverMensaje()
         {
+            bool estado = false;
             if (this.listaPersonajes.Items.Count <= 0)
             {
                 MessageBox.Show("Agrege un Personaje", "No se puede", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                estado = false;
             }
-            else if (this.listaPersonajes.SelectedIndex >= -1)
+            else if (this.listaPersonajes.SelectedIndex <= -1)
             {
                 MessageBox.Show("Seleccione un personaje", "No se puede", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                estado = false;
             }
+            else
+            {
+                estado = true;
+            }
+            return estado;
         }
+
     }
 }

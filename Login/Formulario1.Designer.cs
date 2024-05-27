@@ -41,6 +41,7 @@
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
             listaPersonajes = new ListBox();
+            buttonMostrarDatos = new Button();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -57,9 +58,9 @@
             // 
             // buttonEliminar
             // 
-            buttonEliminar.Location = new Point(268, 539);
+            buttonEliminar.Location = new Point(425, 537);
             buttonEliminar.Name = "buttonEliminar";
-            buttonEliminar.Size = new Size(189, 34);
+            buttonEliminar.Size = new Size(162, 34);
             buttonEliminar.TabIndex = 0;
             buttonEliminar.Text = "Eliminar";
             buttonEliminar.UseVisualStyleBackColor = true;
@@ -67,9 +68,9 @@
             // 
             // buttonModificar
             // 
-            buttonModificar.Location = new Point(12, 539);
+            buttonModificar.Location = new Point(12, 537);
             buttonModificar.Name = "buttonModificar";
-            buttonModificar.Size = new Size(187, 34);
+            buttonModificar.Size = new Size(160, 34);
             buttonModificar.TabIndex = 7;
             buttonModificar.Text = "Modificar";
             buttonModificar.UseVisualStyleBackColor = true;
@@ -81,7 +82,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(469, 27);
+            menuStrip1.Size = new Size(599, 27);
             menuStrip1.TabIndex = 11;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -142,24 +143,36 @@
             statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel1 });
             statusStrip1.Location = new Point(0, 586);
             statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(469, 22);
+            statusStrip1.Size = new Size(599, 22);
             statusStrip1.TabIndex = 5;
             statusStrip1.Text = "statusLog";
             // 
             // listaPersonajes
             // 
+            listaPersonajes.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             listaPersonajes.FormattingEnabled = true;
-            listaPersonajes.ItemHeight = 15;
+            listaPersonajes.ItemHeight = 17;
             listaPersonajes.Location = new Point(12, 56);
             listaPersonajes.Name = "listaPersonajes";
-            listaPersonajes.Size = new Size(445, 469);
+            listaPersonajes.Size = new Size(575, 463);
             listaPersonajes.TabIndex = 8;
+            // 
+            // buttonMostrarDatos
+            // 
+            buttonMostrarDatos.Location = new Point(219, 537);
+            buttonMostrarDatos.Name = "buttonMostrarDatos";
+            buttonMostrarDatos.Size = new Size(162, 34);
+            buttonMostrarDatos.TabIndex = 12;
+            buttonMostrarDatos.Text = "Mostrar Datos";
+            buttonMostrarDatos.UseVisualStyleBackColor = true;
+            buttonMostrarDatos.Click += buttonMostrarDatos_Click;
             // 
             // Formulario1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(469, 608);
+            ClientSize = new Size(599, 608);
+            Controls.Add(buttonMostrarDatos);
             Controls.Add(listaPersonajes);
             Controls.Add(buttonModificar);
             Controls.Add(statusStrip1);
@@ -194,5 +207,6 @@
         private ToolStripMenuItem tanqueToolStripMenuItem;
         private ToolStripMenuItem guardarPersonajesToolStripMenuItem;
         private ListBox listaPersonajes;
+        private Button buttonMostrarDatos;
     }
 }

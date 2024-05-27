@@ -24,7 +24,7 @@ namespace Libreria_De_Clases
         {
 
         }
-
+        
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

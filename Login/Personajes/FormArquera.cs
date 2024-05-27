@@ -18,8 +18,6 @@ namespace Forms
         {
             InitializeComponent();
             this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            Arquero arquero = new Arquero(1000, "Darwin", 21, "Arquero", 100, TipoArco.Magico, 20);
-            this.PersonajeList.Add(arquero);
         }
 
         private void FormArquera_Load(object sender, EventArgs e)
@@ -28,6 +26,12 @@ namespace Forms
             this.comboBox1.SelectedItem = TipoArco.Madera;
         }
 
+
+        protected override void buttonConfirmar_Click(object sender, EventArgs e)
+        {
+            base.buttonConfirmar_Click (sender, e);
+
+        }
         protected override void ClearGroupBox()
         {
             this.ClearText(this.groupBox2);
@@ -40,9 +44,9 @@ namespace Forms
 
         public List<Personaje> GetLista
         {
-            get 
-            { 
-                return this.PersonajeList; 
+            get
+            {
+                return this.PersonajeList;
             }
         }
     }

@@ -251,13 +251,13 @@
         private Button buttonCancelar;
         private Button buttonLimpiar;
         private Label label2;
-        private TextBox textBoxNombre;
+        protected TextBox textBoxNombre;
         private Label label3;
-        private TextBox textBoxVida;
+        protected TextBox textBoxVida;
         private Label label4;
-        private TextBox textBoxNivel;
+        protected TextBox textBoxNivel;
         private Label label5;
-        private TextBox textBoxDaño;
+        protected TextBox textBoxDaño;
         private GroupBox groupBox1;
         private Panel panel2;
         private Label label6;

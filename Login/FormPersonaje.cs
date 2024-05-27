@@ -21,11 +21,10 @@ namespace Forms
             InitializeComponent();
         }
 
-        private void buttonConfirmar_Click(object sender, EventArgs e)
+        protected virtual void buttonConfirmar_Click(object sender, EventArgs e)
         {
             if (this.textBoxNombre.Text.Length > 0)
             {
-
                 this.DialogResult = DialogResult.OK;
             }
             else

@@ -27,6 +27,13 @@ namespace Libreria_De_Clases
 
         }
 
+        public string GetDatosPersonaje
+        {
+            get
+            {
+                return $"{this.nombre} - {this.estilo}";
+            }
+        }
         public string mostrarInfo()
         {
             StringBuilder sb = new StringBuilder();
