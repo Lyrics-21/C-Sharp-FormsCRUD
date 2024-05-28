@@ -43,7 +43,6 @@ namespace Forms
                 {
                     this.DialogResult = DialogResult.OK;
                     ObtenerDato.DatoNombre = dato.nombre;
-                    break;
                 }
                 else if (this.textBox1.Text.Length <= 0 || this.textBox2.Text.Length <= 0)
                 {

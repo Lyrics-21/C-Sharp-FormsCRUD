@@ -39,6 +39,7 @@
             richTextBox1.BackColor = SystemColors.Info;
             richTextBox1.Location = new Point(12, 50);
             richTextBox1.Name = "richTextBox1";
+            richTextBox1.ReadOnly = true;
             richTextBox1.Size = new Size(287, 309);
             richTextBox1.TabIndex = 0;
             richTextBox1.Text = "";
@@ -75,6 +76,7 @@
             Name = "MostrarDatos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Informacion";
+            Load += MostrarDatos_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);

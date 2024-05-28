@@ -15,12 +15,11 @@ namespace Forms
 {
     public partial class FormPersonaje : Form
     {
-        public List<Personaje> PersonajeList = new List<Personaje>();
+        protected Personaje personaje;
         public FormPersonaje()
         {
             InitializeComponent();
         }
-
         protected virtual void buttonConfirmar_Click(object sender, EventArgs e)
         {
             if (this.textBoxNombre.Text.Length > 0)
@@ -89,6 +88,11 @@ namespace Forms
             {
                 comboBox.Items.Add(item);
             }
+        }
+
+        public Personaje GetPersonaje
+        {
+            get { return this.personaje; }
         }
     }
 }

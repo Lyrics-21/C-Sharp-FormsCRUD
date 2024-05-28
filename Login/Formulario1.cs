@@ -19,12 +19,15 @@ namespace Forms
         private List<string> listJson = new List<string>();
         private string pathPersonajes;
         private List<string> personajesDsrlz = new List<string>();
+
+        private List<Personaje> listPersonaje;
         public Formulario1()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.CenterToScreen();
             this.MaximizeBox = false;
+            this.listPersonaje = new List<Personaje>();
         }
         private void Formulario1_Load(object sender, EventArgs e)
         {
@@ -46,7 +49,7 @@ namespace Forms
 
                 foreach (string personaje in this.personajesDsrlz)
                 {
-                    this.listaPersonajes.Items.Add(personaje);
+                    this.listBoxPersonajes.Items.Add(personaje);
                 }
             }
             catch (System.Text.Json.JsonException ex)
@@ -66,6 +69,7 @@ namespace Forms
 
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             FormArquera formArquera = new FormArquera();
             formArquera.ShowDialog();
             if (formArquera.DialogResult == DialogResult.Cancel)
@@ -74,9 +78,10 @@ namespace Forms
             }
             else if (formArquera.DialogResult == DialogResult.OK)
             {
-                foreach (Arquero arquero in formArquera.PersonajeList)
+                this.listPersonaje.Add(formArquera.GetPersonaje);
+                foreach(Personaje personajes in this.listPersonaje)
                 {
-                    this.listaPersonajes.Items.Add(arquero.GetDatosPersonaje);
+                    this.listBoxPersonajes.Items.Add(personajes.GetDatosPersonaje);
                 }
                 formArquera.Close();
             }
@@ -98,7 +103,7 @@ namespace Forms
         {
             if (devolverMensaje())
             {
-                MostrarDatos mostrarDatos = new MostrarDatos();
+                MostrarDatos mostrarDatos = new MostrarDatos(this.listPersonaje);
                 mostrarDatos.Show();
             }
         }
@@ -106,14 +111,14 @@ namespace Forms
         {
             if (devolverMensaje())
             {
-                this.listaPersonajes.Items.RemoveAt(this.listaPersonajes.SelectedIndex);
+                this.listBoxPersonajes.Items.RemoveAt(this.listBoxPersonajes.SelectedIndex);
             }
         }
         private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                foreach (string items in this.listaPersonajes.Items)
+                foreach (string items in this.listBoxPersonajes.Items)
                 {
                     this.listJson.Add(items.ToString());
                 }
@@ -132,12 +137,12 @@ namespace Forms
         public bool devolverMensaje()
         {
             bool estado = false;
-            if (this.listaPersonajes.Items.Count <= 0)
+            if (this.listBoxPersonajes.Items.Count <= 0)
             {
                 MessageBox.Show("Agrege un Personaje", "No se puede", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 estado = false;
             }
-            else if (this.listaPersonajes.SelectedIndex <= -1)
+            else if (this.listBoxPersonajes.SelectedIndex <= -1)
             {
                 MessageBox.Show("Seleccione un personaje", "No se puede", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 estado = false;

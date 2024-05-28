@@ -16,6 +16,7 @@ namespace Forms
             formLogin.ShowDialog();
             if (formLogin.DialogResult == DialogResult.OK)
             {
+                formLogin.Close();
                 Application.Run(new Formulario1());
             }
         }

@@ -38,11 +38,11 @@
             arqueroToolStripMenuItem = new ToolStripMenuItem();
             tanqueToolStripMenuItem = new ToolStripMenuItem();
             guardarPersonajesToolStripMenuItem = new ToolStripMenuItem();
+            guardarComoToolStripMenuItem = new ToolStripMenuItem();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
-            listaPersonajes = new ListBox();
+            listBoxPersonajes = new ListBox();
             buttonMostrarDatos = new Button();
-            guardarComoToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -132,6 +132,12 @@
             guardarPersonajesToolStripMenuItem.Text = "Guardar";
             guardarPersonajesToolStripMenuItem.Click += guardarPersonajesToolStripMenuItem_Click;
             // 
+            // guardarComoToolStripMenuItem
+            // 
+            guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
+            guardarComoToolStripMenuItem.Size = new Size(189, 24);
+            guardarComoToolStripMenuItem.Text = "Guardar Como";
+            // 
             // toolStripStatusLabel1
             // 
             toolStripStatusLabel1.Name = "toolStripStatusLabel1";
@@ -150,13 +156,13 @@
             // 
             // listaPersonajes
             // 
-            listaPersonajes.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            listaPersonajes.FormattingEnabled = true;
-            listaPersonajes.ItemHeight = 17;
-            listaPersonajes.Location = new Point(12, 56);
-            listaPersonajes.Name = "listaPersonajes";
-            listaPersonajes.Size = new Size(575, 463);
-            listaPersonajes.TabIndex = 8;
+            listBoxPersonajes.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            listBoxPersonajes.FormattingEnabled = true;
+            listBoxPersonajes.ItemHeight = 17;
+            listBoxPersonajes.Location = new Point(12, 56);
+            listBoxPersonajes.Name = "listaPersonajes";
+            listBoxPersonajes.Size = new Size(575, 463);
+            listBoxPersonajes.TabIndex = 8;
             // 
             // buttonMostrarDatos
             // 
@@ -168,19 +174,13 @@
             buttonMostrarDatos.UseVisualStyleBackColor = true;
             buttonMostrarDatos.Click += buttonMostrarDatos_Click;
             // 
-            // guardarComoToolStripMenuItem
-            // 
-            guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
-            guardarComoToolStripMenuItem.Size = new Size(189, 24);
-            guardarComoToolStripMenuItem.Text = "Guardar Como";
-            // 
             // Formulario1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(599, 608);
             Controls.Add(buttonMostrarDatos);
-            Controls.Add(listaPersonajes);
+            Controls.Add(listBoxPersonajes);
             Controls.Add(buttonModificar);
             Controls.Add(statusStrip1);
             Controls.Add(menuStrip1);
@@ -213,7 +213,7 @@
         private ToolStripMenuItem arqueroToolStripMenuItem;
         private ToolStripMenuItem tanqueToolStripMenuItem;
         private ToolStripMenuItem guardarPersonajesToolStripMenuItem;
-        private ListBox listaPersonajes;
+        private ListBox listBoxPersonajes;
         private Button buttonMostrarDatos;
         private ToolStripMenuItem guardarComoToolStripMenuItem;
     }
