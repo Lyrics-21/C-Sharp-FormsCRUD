@@ -17,9 +17,9 @@ namespace Forms
     {
         private string datoNombre;
         private string pathPersonajes;
-        private List<Personaje> personajesDsrlz = new List<Personaje>();
+        private List<Arquero> personajesDsrlz = new List<Arquero>();
 
-        private List<Personaje> listPersonaje;
+        private List<Arquero> listPersonaje;
 
         private int itemSeleccionado;
         public Formulario1()
@@ -28,7 +28,7 @@ namespace Forms
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.CenterToScreen();
             this.MaximizeBox = false;
-            this.listPersonaje = new List<Personaje>();
+            this.listPersonaje = new List<Arquero>();
         }
         private void Formulario1_Load(object sender, EventArgs e)
         {
@@ -44,8 +44,16 @@ namespace Forms
                     using (StreamReader sr = new StreamReader(this.pathPersonajes))
                     {
                         string archivoJson = sr.ReadToEnd();
-                        this.personajesDsrlz = System.Text.Json.JsonSerializer.Deserialize<List<Personaje>>(archivoJson);
+                        this.personajesDsrlz = System.Text.Json.JsonSerializer.Deserialize<List<Arquero>>(archivoJson);
                     }
+                }
+                foreach(Arquero arquero in this.personajesDsrlz)
+                {
+                    this.listPersonaje.Add(arquero);
+                }
+                foreach(Arquero arquero1 in this.listPersonaje)
+                {
+                    this.listBoxPersonajes.Items.Add(arquero1);
                 }
             }
             catch (System.Text.Json.JsonException ex)
@@ -112,12 +120,7 @@ namespace Forms
         {
             try
             {
-                List<Personaje> list = new List<Personaje>();
-                foreach (Personaje item in this.listPersonaje)
-                {
-                    list.Add(item);
-                }
-                string archivoJson = System.Text.Json.JsonSerializer.Serialize(list);
+                string archivoJson = System.Text.Json.JsonSerializer.Serialize(this.listPersonaje);
                 File.WriteAllText(this.pathPersonajes, archivoJson);
             }
             catch (System.Text.Json.JsonException ex)

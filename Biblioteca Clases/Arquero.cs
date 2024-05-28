@@ -12,6 +12,7 @@ namespace Libreria_De_Clases
         public TipoArco TipoArco { get; set; }
         public int CantidadFlechas { get; set; }
 
+        public Arquero() { }
         public Arquero(int vida, string nombre, int nivel, string estilo, int daño, TipoArco tipoArco, int cantidadFlechas) : base(vida, nombre, nivel, estilo, daño)
         {
             this.TipoArco = tipoArco;

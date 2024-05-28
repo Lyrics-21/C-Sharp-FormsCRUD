@@ -15,7 +15,7 @@ namespace Forms
 {
     public partial class FormPersonaje : Form
     {
-        protected Personaje personaje;
+        protected Arquero personaje;
         public FormPersonaje()
         {
             InitializeComponent();
@@ -90,7 +90,7 @@ namespace Forms
             }
         }
 
-        public Personaje GetPersonaje
+        public Arquero GetPersonaje
         {
             get { return this.personaje; }
         }
