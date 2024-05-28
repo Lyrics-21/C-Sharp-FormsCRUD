@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Libreria_De_Clases
 {
-    internal class Tanque : Personaje
+    public class Tanque : Personaje
     {
         private TipoArmadura tipoArmadura;
         private int fuerza;

@@ -36,13 +36,12 @@ namespace Forms
                 Arquero arquero = new Arquero(int.Parse(this.textBoxVida.Text), this.textBoxNombre.Text, int.Parse(this.textBoxNivel.Text), "Arquero", int.Parse(this.textBoxDaño.Text),
                     tipoArco, int.Parse(this.textBoxFlechas.Text));
 
-                this.personaje = arquero;
+                this.arquero = arquero;
             }
             catch (Exception)
             {
                 MessageBox.Show("Ingrese datos validos", "Error", MessageBoxButtons.OK);
             }
-
         }
         protected override void ClearGroupBox()
         {

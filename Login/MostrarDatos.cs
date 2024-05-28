@@ -13,9 +13,9 @@ namespace Forms
 {
     public partial class MostrarDatos : Form
     {
-        private List<Arquero> listaPersonaje;
+        private List<Personaje> listaPersonaje;
         private int itemSeleccionado;
-        public MostrarDatos(List<Arquero> listaPersonaje, int itemSeleccionado)
+        public MostrarDatos(List<Personaje> listaPersonaje, int itemSeleccionado)
         {
             InitializeComponent();
             this.listaPersonaje = listaPersonaje;

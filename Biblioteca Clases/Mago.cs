@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Libreria_De_Clases
 {
-    internal class Mago : Personaje
+    public class Mago : Personaje
     {
         private TipoMagia tipoMagia;
         private int mana;

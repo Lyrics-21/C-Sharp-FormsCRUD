@@ -1,4 +1,5 @@
-﻿using Libreria_De_Clases;
+﻿using Biblioteca_Clases;
+using Libreria_De_Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,9 +8,11 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Forms.FormLogin;
+using static System.Windows.Forms.Design.AxImporter;
 
 namespace Forms
 {
@@ -17,10 +20,9 @@ namespace Forms
     {
         private string datoNombre;
         private string pathPersonajes;
-        private List<Arquero> personajesDsrlz = new List<Arquero>();
+        private List<Personaje> personajesSrlz = new List<Personaje>();
 
-        private List<Arquero> listPersonaje;
-
+        private Coleccion coleccion;
         private int itemSeleccionado;
         public Formulario1()
         {
@@ -28,7 +30,8 @@ namespace Forms
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.CenterToScreen();
             this.MaximizeBox = false;
-            this.listPersonaje = new List<Arquero>();
+
+            this.coleccion = new Coleccion();
         }
         private void Formulario1_Load(object sender, EventArgs e)
         {
@@ -44,16 +47,34 @@ namespace Forms
                     using (StreamReader sr = new StreamReader(this.pathPersonajes))
                     {
                         string archivoJson = sr.ReadToEnd();
-                        this.personajesDsrlz = System.Text.Json.JsonSerializer.Deserialize<List<Arquero>>(archivoJson);
+                        JsonDocument doc = JsonDocument.Parse(archivoJson);
+
+                        foreach (JsonElement element in doc.RootElement.EnumerateArray())
+                        {
+                            string tipo = element.GetProperty("Estilo").GetString();
+                            switch (tipo)
+                            {
+                                case "Arquero":
+                                    Arquero arquero = System.Text.Json.JsonSerializer.Deserialize<Arquero>(element.GetRawText());
+                                    this.coleccion += arquero;
+                                    break;
+
+                                case "Mago":
+                                    Mago mago = System.Text.Json.JsonSerializer.Deserialize<Mago>(element.GetRawText());
+                                    this.coleccion += mago;
+                                    break;
+
+                                case "Tanque":
+                                    Tanque tanque = System.Text.Json.JsonSerializer.Deserialize<Tanque>(element.GetRawText());
+                                    this.coleccion += tanque;
+                                    break;
+                            }
+                        }
+                        foreach (Personaje personaje in this.coleccion.listPersonajes)
+                        {
+                            this.listBoxPersonajes.Items.Add($"{personaje.Nombre} - {personaje.Estilo}");
+                        }
                     }
-                }
-                foreach(Arquero arquero in this.personajesDsrlz)
-                {
-                    this.listPersonaje.Add(arquero);
-                }
-                foreach(Arquero arquero1 in this.listPersonaje)
-                {
-                    this.listBoxPersonajes.Items.Add(arquero1);
                 }
             }
             catch (System.Text.Json.JsonException ex)
@@ -82,8 +103,8 @@ namespace Forms
             }
             else if (formArquera.DialogResult == DialogResult.OK)
             {
-                this.listPersonaje.Add(formArquera.GetPersonaje);
-                this.listBoxPersonajes.Items.Add(formArquera.GetPersonaje);
+                this.coleccion += formArquera.Arqueros;
+                this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo}");
                 formArquera.Close();
             }
         }
@@ -105,7 +126,7 @@ namespace Forms
             if (devolverMensaje())
             {
                 itemSeleccionado = this.listBoxPersonajes.SelectedIndex;
-                MostrarDatos mostrarDatos = new MostrarDatos(this.listPersonaje, itemSeleccionado);
+                MostrarDatos mostrarDatos = new MostrarDatos(this.coleccion.listPersonajes, itemSeleccionado);
                 mostrarDatos.Show();
             }
         }
@@ -113,14 +134,16 @@ namespace Forms
         {
             if (devolverMensaje())
             {
-                this.listBoxPersonajes.Items.RemoveAt(this.listBoxPersonajes.SelectedIndex);
+                int posicion = this.listBoxPersonajes.SelectedIndex;
+                this.listBoxPersonajes.Items.RemoveAt(posicion);
+                this.coleccion.listPersonajes.RemoveAt(posicion);
             }
         }
         private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                string archivoJson = System.Text.Json.JsonSerializer.Serialize(this.listPersonaje);
+                string archivoJson = System.Text.Json.JsonSerializer.Serialize(this.coleccion.listPersonajes);
                 File.WriteAllText(this.pathPersonajes, archivoJson);
             }
             catch (System.Text.Json.JsonException ex)
