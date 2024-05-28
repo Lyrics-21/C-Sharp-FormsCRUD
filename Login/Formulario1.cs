@@ -16,11 +16,12 @@ namespace Forms
     public partial class Formulario1 : Form
     {
         private string datoNombre;
-        private List<string> listJson = new List<string>();
         private string pathPersonajes;
-        private List<string> personajesDsrlz = new List<string>();
+        private List<Personaje> personajesDsrlz = new List<Personaje>();
 
         private List<Personaje> listPersonaje;
+
+        private int itemSeleccionado;
         public Formulario1()
         {
             InitializeComponent();
@@ -43,13 +44,8 @@ namespace Forms
                     using (StreamReader sr = new StreamReader(this.pathPersonajes))
                     {
                         string archivoJson = sr.ReadToEnd();
-                        this.personajesDsrlz = System.Text.Json.JsonSerializer.Deserialize<List<string>>(archivoJson);
+                        this.personajesDsrlz = System.Text.Json.JsonSerializer.Deserialize<List<Personaje>>(archivoJson);
                     }
-                }
-
-                foreach (string personaje in this.personajesDsrlz)
-                {
-                    this.listBoxPersonajes.Items.Add(personaje);
                 }
             }
             catch (System.Text.Json.JsonException ex)
@@ -79,10 +75,7 @@ namespace Forms
             else if (formArquera.DialogResult == DialogResult.OK)
             {
                 this.listPersonaje.Add(formArquera.GetPersonaje);
-                foreach(Personaje personajes in this.listPersonaje)
-                {
-                    this.listBoxPersonajes.Items.Add(personajes.GetDatosPersonaje);
-                }
+                this.listBoxPersonajes.Items.Add(formArquera.GetPersonaje);
                 formArquera.Close();
             }
         }
@@ -103,7 +96,8 @@ namespace Forms
         {
             if (devolverMensaje())
             {
-                MostrarDatos mostrarDatos = new MostrarDatos(this.listPersonaje);
+                itemSeleccionado = this.listBoxPersonajes.SelectedIndex;
+                MostrarDatos mostrarDatos = new MostrarDatos(this.listPersonaje, itemSeleccionado);
                 mostrarDatos.Show();
             }
         }
@@ -118,11 +112,12 @@ namespace Forms
         {
             try
             {
-                foreach (string items in this.listBoxPersonajes.Items)
+                List<Personaje> list = new List<Personaje>();
+                foreach (Personaje item in this.listPersonaje)
                 {
-                    this.listJson.Add(items.ToString());
+                    list.Add(item);
                 }
-                string archivoJson = System.Text.Json.JsonSerializer.Serialize(this.listJson);
+                string archivoJson = System.Text.Json.JsonSerializer.Serialize(list);
                 File.WriteAllText(this.pathPersonajes, archivoJson);
             }
             catch (System.Text.Json.JsonException ex)

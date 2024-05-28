@@ -37,6 +37,7 @@
             // richTextBox1
             // 
             richTextBox1.BackColor = SystemColors.Info;
+            richTextBox1.Font = new Font("Segoe UI", 11F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBox1.Location = new Point(12, 50);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.ReadOnly = true;
@@ -68,7 +69,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.SaddleBrown;
-            ClientSize = new Size(311, 370);
+            ClientSize = new Size(311, 374);
             Controls.Add(panel1);
             Controls.Add(richTextBox1);
             FormBorderStyle = FormBorderStyle.FixedSingle;

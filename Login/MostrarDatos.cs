@@ -14,25 +14,18 @@ namespace Forms
     public partial class MostrarDatos : Form
     {
         private List<Personaje> listaPersonaje;
-        public MostrarDatos(List<Personaje> listaPersonaje)
+        private int itemSeleccionado;
+        public MostrarDatos(List<Personaje> listaPersonaje, int itemSeleccionado)
         {
             InitializeComponent();
             this.listaPersonaje = listaPersonaje;
+            this.itemSeleccionado = itemSeleccionado;
         }
 
         private void MostrarDatos_Load(object sender, EventArgs e)
         {
-            if (this.listaPersonaje.Count > 0)
-            {
-                foreach (Personaje personaje in this.listaPersonaje)
-                {
-                    this.richTextBox1.AppendText(personaje.ToString());
-                }
-            }
-            else
-            {
-                MessageBox.Show("NO");
-            }
+            Personaje personaje = this.listaPersonaje[itemSeleccionado];
+            this.richTextBox1.Text = personaje.ToString();
         }
     }
 }
