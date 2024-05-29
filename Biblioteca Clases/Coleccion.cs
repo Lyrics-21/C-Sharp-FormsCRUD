@@ -34,7 +34,7 @@ namespace Biblioteca_Clases
                 co.listPersonajes.Add(personaje);
             }
             return co;
-        }  
+        }
         public static Coleccion operator -(Coleccion co, Personaje personaje)
         {
             int index = co.listPersonajes.FindIndex(c => c == personaje);
