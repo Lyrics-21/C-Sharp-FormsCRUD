@@ -24,11 +24,7 @@ namespace Forms
         }
         protected virtual void buttonConfirmar_Click(object sender, EventArgs e)
         {
-            if (this.textBoxNombre.Text.Length > 0)
-            {
-                this.DialogResult = DialogResult.OK;
-            }
-            else
+            if (this.textBoxNombre.Text.Length <= 0)
             {
                 this.label6.Visible = true;
             }
@@ -108,12 +104,15 @@ namespace Forms
         public bool validarDatos(TextBox textBox, out int resultado)
         {
             bool retorno = false;
-            if(textBox.ForeColor != Color.Black)
+            if (textBox.ForeColor != Color.Black && this.textBoxNombre.Text.Length > 0)
             {
+                this.DialogResult = DialogResult.OK;
                 resultado = 0;
+                retorno = true;
             }
-            if (int.TryParse(textBox.Text, out resultado) && resultado >= 0&& textBox.Text.Length <= 6)
+            if (int.TryParse(textBox.Text, out resultado) && resultado >= 0&& textBox.Text.Length <= 6 && this.textBoxNombre.Text.Length > 0)
             {
+                this.DialogResult = DialogResult.OK;
                 retorno = true;
             }
             else if (textBox.ForeColor == Color.Black)
