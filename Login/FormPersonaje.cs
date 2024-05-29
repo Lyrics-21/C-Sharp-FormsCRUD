@@ -104,5 +104,21 @@ namespace Forms
         {
             get { return this.mago; }
         }
+
+        public bool validarDatos(TextBox textBox, out int resultado)
+        {
+            bool retorno = false;
+            resultado = 0;
+            if (int.TryParse(textBox.Text, out resultado) && resultado >= 0 && textBox.ForeColor == Color.Black)
+            {
+                retorno = true;
+            }
+            else
+            {
+                MessageBox.Show("Ingrese datos válidos", "Error", MessageBoxButtons.OK);
+                retorno = false;
+            }
+            return retorno;
+        }
     }
 }

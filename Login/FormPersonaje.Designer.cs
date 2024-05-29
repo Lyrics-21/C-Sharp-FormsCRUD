@@ -42,8 +42,8 @@
             label5 = new Label();
             textBoxDaño = new TextBox();
             groupBox1 = new GroupBox();
-            panel2 = new Panel();
             label6 = new Label();
+            panel2 = new Panel();
             panel1.SuspendLayout();
             groupBox1.SuspendLayout();
             panel2.SuspendLayout();
@@ -195,7 +195,16 @@
             groupBox1.Size = new Size(402, 247);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
-            groupBox1.Text = "groupBox1";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(127, 60);
+            label6.Name = "label6";
+            label6.Size = new Size(107, 15);
+            label6.TabIndex = 8;
+            label6.Text = "Ingrese un nombre";
+            label6.Visible = false;
             // 
             // panel2
             // 
@@ -208,21 +217,11 @@
             panel2.Size = new Size(438, 52);
             panel2.TabIndex = 2;
             // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(127, 60);
-            label6.Name = "label6";
-            label6.Size = new Size(107, 15);
-            label6.TabIndex = 8;
-            label6.Text = "Ingrese un nombre";
-            label6.Visible = false;
-            // 
             // FormPersonaje
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(418, 522);
+            ClientSize = new Size(414, 518);
             ControlBox = false;
             Controls.Add(panel2);
             Controls.Add(groupBox1);

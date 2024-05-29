@@ -31,16 +31,13 @@ namespace Forms
             base.buttonConfirmar_Click (sender, e);
 
             TipoArco tipoArco = (TipoArco)Enum.Parse(typeof(TipoArco), this.comboBox1.SelectedItem.ToString());
-            try
-            {
-                Arquero arquero = new Arquero(int.Parse(this.textBoxVida.Text), this.textBoxNombre.Text, int.Parse(this.textBoxNivel.Text), "Arquero", int.Parse(this.textBoxDaño.Text),
-                    tipoArco, int.Parse(this.textBoxFlechas.Text));
 
-                this.arquero = arquero;
-            }
-            catch (Exception)
+            int vida, daño, nivel, cantidadFlechas;
+
+            if (validarDatos(this.textBoxVida, out vida) && validarDatos(this.textBoxDaño, out daño) &&
+                validarDatos(this.textBoxNivel, out nivel) && validarDatos(this.textBoxFlechas, out cantidadFlechas))
             {
-                MessageBox.Show("Ingrese datos validos", "Error", MessageBoxButtons.OK);
+                Arquero arquero = new Arquero(vida, this.textBoxNombre.Text, nivel, "Arquero/a", daño, tipoArco, cantidadFlechas);
             }
         }
         protected override void ClearGroupBox()

@@ -136,7 +136,8 @@ namespace Forms
             {
                 int posicion = this.listBoxPersonajes.SelectedIndex;
                 this.listBoxPersonajes.Items.RemoveAt(posicion);
-                this.coleccion.listPersonajes.RemoveAt(posicion);
+                Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion];
+                this.coleccion = this.coleccion - personajeAEliminar;
             }
         }
         private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)

@@ -35,5 +35,14 @@ namespace Biblioteca_Clases
             }
             return co;
         }  
+        public static Coleccion operator -(Coleccion co, Personaje personaje)
+        {
+            int index = co.listPersonajes.FindIndex(c => c == personaje);
+            if (index >= 0)
+            {
+                co.listPersonajes.RemoveAt(index);
+            }
+            return co;
+        }
     }
 }

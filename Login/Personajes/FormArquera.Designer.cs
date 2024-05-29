@@ -87,7 +87,6 @@
             groupBox2.Size = new Size(402, 142);
             groupBox2.TabIndex = 12;
             groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
             // 
             // FormArquera
             // 
