@@ -15,4 +15,5 @@ Esta Aplicacion me permite interactuar con varios formularios, agregar un person
 - **Mostrar datos**: Muestra todos los datos del personaje seleccionado.
 
 ## Diagrama de clases
-![Diagrama de Clases](ruta/a/tu/diagrama_de_clases.png)
+![Diagrama de Clases](.\ClassDiagram1.png)
+![Diagrama de Clases2](.\ClassDiagram2.png)
