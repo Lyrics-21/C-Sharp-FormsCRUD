@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace Forms
 {
@@ -34,10 +35,11 @@ namespace Forms
 
             int vida, daño, nivel, cantidadFlechas;
 
-            if (validarDatos(this.textBoxVida, out vida) && validarDatos(this.textBoxDaño, out daño) &&
+            if(validarDatos(this.textBoxVida, out vida) && validarDatos(this.textBoxDaño, out daño) &&
                 validarDatos(this.textBoxNivel, out nivel) && validarDatos(this.textBoxFlechas, out cantidadFlechas))
             {
                 Arquero arquero = new Arquero(vida, this.textBoxNombre.Text, nivel, "Arquero/a", daño, tipoArco, cantidadFlechas);
+                this.arqueros = arquero;
             }
         }
         protected override void ClearGroupBox()

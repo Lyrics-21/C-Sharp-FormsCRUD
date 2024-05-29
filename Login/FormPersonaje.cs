@@ -15,9 +15,9 @@ namespace Forms
 {
     public partial class FormPersonaje : Form
     {
-        protected Arquero arquero;
-        protected Mago mago;
-        protected Tanque tanque;
+        protected Arquero arqueros;
+        protected Mago magos;
+        protected Tanque tanques;
         public FormPersonaje()
         {
             InitializeComponent();
@@ -94,26 +94,29 @@ namespace Forms
 
         public Arquero Arqueros
         {
-            get { return this.arquero; }
+            get { return this.arqueros; }
         }  
         public Tanque Tanque
         {
-            get { return this.tanque; }
+            get { return this.tanques; }
         }    
         public Mago Mago
         {
-            get { return this.mago; }
+            get { return this.magos; }
         }
 
         public bool validarDatos(TextBox textBox, out int resultado)
         {
             bool retorno = false;
-            resultado = 0;
-            if (int.TryParse(textBox.Text, out resultado) && resultado >= 0 && textBox.ForeColor == Color.Black)
+            if(textBox.ForeColor != Color.Black)
+            {
+                resultado = 0;
+            }
+            if (int.TryParse(textBox.Text, out resultado) && resultado >= 0&& textBox.Text.Length <= 6)
             {
                 retorno = true;
             }
-            else
+            else if (textBox.ForeColor == Color.Black)
             {
                 MessageBox.Show("Ingrese datos válidos", "Error", MessageBoxButtons.OK);
                 retorno = false;
