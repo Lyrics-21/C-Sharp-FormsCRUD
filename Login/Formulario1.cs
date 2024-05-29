@@ -116,7 +116,7 @@ namespace Forms
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTanque formTanque = new FormTanque();
-            this.PersonajeResultCancel(formTanque); 
+            this.PersonajeResultCancel(formTanque);
             if (formTanque.DialogResult == DialogResult.OK)
             {
                 this.coleccion += formTanque.Tanques;
@@ -236,6 +236,15 @@ namespace Forms
                 estado = true;
             }
             return estado;
+        }
+
+        private void Formulario1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult result = MessageBox.Show("¿Desea salir de la Aplicacion?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.No)
+            {
+                e.Cancel = true;
+            }
         }
     }
 }

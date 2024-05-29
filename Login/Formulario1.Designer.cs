@@ -154,13 +154,13 @@
             statusStrip1.TabIndex = 5;
             statusStrip1.Text = "statusLog";
             // 
-            // listaPersonajes
+            // listBoxPersonajes
             // 
             listBoxPersonajes.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             listBoxPersonajes.FormattingEnabled = true;
             listBoxPersonajes.ItemHeight = 17;
             listBoxPersonajes.Location = new Point(12, 56);
-            listBoxPersonajes.Name = "listaPersonajes";
+            listBoxPersonajes.Name = "listBoxPersonajes";
             listBoxPersonajes.Size = new Size(575, 463);
             listBoxPersonajes.TabIndex = 8;
             // 
@@ -189,7 +189,8 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MainMenuStrip = menuStrip1;
             Name = "Formulario1";
-            Text = "Formulario1";
+            Text = "Personaje";
+            FormClosing += Formulario1_FormClosing;
             Load += Formulario1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
