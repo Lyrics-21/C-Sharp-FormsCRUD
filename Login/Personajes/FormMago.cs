@@ -16,26 +16,26 @@ namespace Forms
         public FormMago()
         {
             InitializeComponent();
-            this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBoxMago.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void FormMago_Load(object sender, EventArgs e)
         {
-            this.enumCombobox(typeof(TipoMagia), this.comboBox1);
-            this.comboBox1.SelectedItem = TipoMagia.Elemental;
+            this.enumCombobox(typeof(TipoMagia), this.comboBoxMago);
+            this.comboBoxMago.SelectedItem = TipoMagia.Elemental;
         }
         protected override void buttonConfirmar_Click(object sender, EventArgs e)
         {
             base.buttonConfirmar_Click(sender, e);
 
-            TipoMagia tipoMagia = (TipoMagia)Enum.Parse(typeof(TipoMagia), this.comboBox1.SelectedItem.ToString());
+            TipoMagia tipoMagia = (TipoMagia)Enum.Parse(typeof(TipoMagia), this.comboBoxMago.SelectedItem.ToString());
 
             int vida, daño, nivel, mana;
 
             if (validarDatos(this.textBoxVida, out vida) && validarDatos(this.textBoxDaño, out daño) &&
                 validarDatos(this.textBoxNivel, out nivel) && validarDatos(this.textBoxMana, out mana))
             {
-                Mago mago = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago/a", daño, tipoMagia, mana);
+                Libreria_De_Clases.Mago mago = new Libreria_De_Clases.Mago(vida, this.textBoxNombre.Text, nivel, "Mago/a", daño, tipoMagia, mana);
                 this.magos = mago;
             }
         }

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             groupBoxMago = new GroupBox();
-            comboBox1 = new ComboBox();
+            comboBoxMago = new ComboBox();
             label8 = new Label();
             textBoxMana = new TextBox();
             label7 = new Label();
@@ -38,24 +38,24 @@
             // 
             // groupBoxMago
             // 
-            groupBoxMago.Controls.Add(comboBox1);
+            groupBoxMago.Controls.Add(comboBoxMago);
             groupBoxMago.Controls.Add(label8);
             groupBoxMago.Controls.Add(textBoxMana);
             groupBoxMago.Controls.Add(label7);
-            groupBoxMago.Location = new Point(10, 314);
+            groupBoxMago.Location = new Point(10, 313);
             groupBoxMago.Name = "groupBoxMago";
             groupBoxMago.Size = new Size(402, 140);
             groupBoxMago.TabIndex = 9;
             groupBoxMago.TabStop = false;
             // 
-            // comboBox1
+            // comboBoxMago
             // 
-            comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(199, 86);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(162, 29);
-            comboBox1.TabIndex = 3;
+            comboBoxMago.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxMago.FormattingEnabled = true;
+            comboBoxMago.Location = new Point(199, 86);
+            comboBoxMago.Name = "comboBoxMago";
+            comboBoxMago.Size = new Size(162, 29);
+            comboBoxMago.TabIndex = 3;
             // 
             // label8
             // 
@@ -95,7 +95,7 @@
             ClientSize = new Size(422, 522);
             Controls.Add(groupBoxMago);
             Name = "FormMago";
-            Text = "FormMago";
+            Text = "Mago";
             Load += FormMago_Load;
             Controls.SetChildIndex(groupBoxMago, 0);
             groupBoxMago.ResumeLayout(false);
@@ -109,6 +109,6 @@
         private TextBox textBoxMana;
         private Label label7;
         private Label label8;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxMago;
     }
 }

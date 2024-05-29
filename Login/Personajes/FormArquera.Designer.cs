@@ -31,7 +31,7 @@
             label6 = new Label();
             textBoxFlechas = new TextBox();
             label7 = new Label();
-            comboBox1 = new ComboBox();
+            comboBoxArquero = new ComboBox();
             groupBoxArquero = new GroupBox();
             groupBoxArquero.SuspendLayout();
             SuspendLayout();
@@ -67,19 +67,19 @@
             label7.TabIndex = 10;
             label7.Text = "Tipo de arco :";
             // 
-            // comboBox1
+            // comboBoxArquero
             // 
-            comboBox1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(194, 86);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(168, 29);
-            comboBox1.TabIndex = 11;
+            comboBoxArquero.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            comboBoxArquero.FormattingEnabled = true;
+            comboBoxArquero.Location = new Point(194, 86);
+            comboBoxArquero.Name = "comboBoxArquero";
+            comboBoxArquero.Size = new Size(168, 29);
+            comboBoxArquero.TabIndex = 11;
             // 
             // groupBoxArquero
             // 
             groupBoxArquero.Controls.Add(textBoxFlechas);
-            groupBoxArquero.Controls.Add(comboBox1);
+            groupBoxArquero.Controls.Add(comboBoxArquero);
             groupBoxArquero.Controls.Add(label6);
             groupBoxArquero.Controls.Add(label7);
             groupBoxArquero.Location = new Point(10, 310);
@@ -95,7 +95,7 @@
             ClientSize = new Size(422, 520);
             Controls.Add(groupBoxArquero);
             Name = "FormArquera";
-            Text = "FormArquero";
+            Text = "Arquero";
             Load += FormArquera_Load;
             Controls.SetChildIndex(groupBoxArquero, 0);
             groupBoxArquero.ResumeLayout(false);
@@ -108,7 +108,7 @@
         private Label label6;
         private TextBox textBoxFlechas;
         private Label label7;
-        private ComboBox comboBox1;
+        private ComboBox comboBoxArquero;
         private GroupBox groupBoxArquero;
     }
 }

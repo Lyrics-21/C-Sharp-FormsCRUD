@@ -16,8 +16,8 @@ namespace Forms
     public partial class FormPersonaje : Form
     {
         protected Arquero arqueros;
-        protected Mago magos;
-        protected Tanque tanques;
+        protected Libreria_De_Clases.Mago magos;
+        protected Libreria_De_Clases.Tanque tanques;
         public FormPersonaje()
         {
             InitializeComponent();

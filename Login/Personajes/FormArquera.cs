@@ -18,20 +18,20 @@ namespace Forms
         public FormArquera()
         {
             InitializeComponent();
-            this.comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.comboBoxArquero.DropDownStyle = ComboBoxStyle.DropDownList;
         }
 
         private void FormArquera_Load(object sender, EventArgs e)
         {
-            this.enumCombobox(typeof(TipoArco), this.comboBox1);
-            this.comboBox1.SelectedItem = TipoArco.Madera;
+            this.enumCombobox(typeof(TipoArco), this.comboBoxArquero);
+            this.comboBoxArquero.SelectedItem = TipoArco.Madera;
         }
 
         protected override void buttonConfirmar_Click(object sender, EventArgs e)
         {
             base.buttonConfirmar_Click (sender, e);
 
-            TipoArco tipoArco = (TipoArco)Enum.Parse(typeof(TipoArco), this.comboBox1.SelectedItem.ToString());
+            TipoArco tipoArco = (TipoArco)Enum.Parse(typeof(TipoArco), this.comboBoxArquero.SelectedItem.ToString());
 
             int vida, daño, nivel, cantidadFlechas;
 

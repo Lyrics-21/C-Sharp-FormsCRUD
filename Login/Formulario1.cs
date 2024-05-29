@@ -60,12 +60,12 @@ namespace Forms
                                     break;
 
                                 case "Mago":
-                                    Mago mago = System.Text.Json.JsonSerializer.Deserialize<Mago>(element.GetRawText());
+                                    Libreria_De_Clases.Mago mago = System.Text.Json.JsonSerializer.Deserialize<Libreria_De_Clases.Mago>(element.GetRawText());
                                     this.coleccion += mago;
                                     break;
 
                                 case "Tanque":
-                                    Tanque tanque = System.Text.Json.JsonSerializer.Deserialize<Tanque>(element.GetRawText());
+                                    Libreria_De_Clases.Tanque tanque = System.Text.Json.JsonSerializer.Deserialize<Libreria_De_Clases.Tanque>(element.GetRawText());
                                     this.coleccion += tanque;
                                     break;
                             }
@@ -87,54 +87,69 @@ namespace Forms
             }
         }
 
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void magoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormMago formMago = new FormMago();
-            formMago.ShowDialog();
-            if (formMago.DialogResult == DialogResult.Cancel)
-            {
-                formMago.Close();
-            }
-            else if (formMago.DialogResult == DialogResult.OK)
+            this.PersonajeResultCancel(formMago);
+            if (formMago.DialogResult == DialogResult.OK)
             {
                 this.coleccion += formMago.Magos;
                 this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo}");
                 formMago.Close();
             }
         }
-
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             FormArquera formArquera = new FormArquera();
-            formArquera.ShowDialog();
-            if (formArquera.DialogResult == DialogResult.Cancel)
-            {
-                formArquera.Close();
-            }
-            else if (formArquera.DialogResult == DialogResult.OK)
+            this.PersonajeResultCancel(formArquera);
+            if (formArquera.DialogResult == DialogResult.OK)
             {
                 this.coleccion += formArquera.Arqueros;
                 this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo}");
                 formArquera.Close();
             }
         }
-
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTanque formTanque = new FormTanque();
-            formTanque.ShowDialog();
-            if (formTanque.DialogResult == DialogResult.Cancel)
-            {
-                formTanque.Close();
-            }
-            else if (formTanque.DialogResult == DialogResult.OK)
+            this.PersonajeResultCancel(formTanque); 
+            if (formTanque.DialogResult == DialogResult.OK)
             {
                 this.coleccion += formTanque.Tanques;
                 this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo}");
                 formTanque.Close();
             }
         }
+        private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string archivoJson = System.Text.Json.JsonSerializer.Serialize(this.coleccion.listPersonajes);
+                File.WriteAllText(this.pathPersonajes, archivoJson);
+            }
+            catch (System.Text.Json.JsonException ex)
+            {
+                MessageBox.Show($"Ocurrio un error al serializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void PersonajeResultCancel(Form formulario)
+        {
+            formulario.ShowDialog();
+            if (formulario.DialogResult == DialogResult.Cancel)
+            {
+                formulario.Close();
+            }
+        }
+
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void buttonModificar_Click(object sender, EventArgs e)
         {
@@ -160,22 +175,6 @@ namespace Forms
                 this.listBoxPersonajes.Items.RemoveAt(posicion);
                 Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion];
                 this.coleccion = this.coleccion - personajeAEliminar;
-            }
-        }
-        private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string archivoJson = System.Text.Json.JsonSerializer.Serialize(this.coleccion.listPersonajes);
-                File.WriteAllText(this.pathPersonajes, archivoJson);
-            }
-            catch (System.Text.Json.JsonException ex)
-            {
-                MessageBox.Show($"Ocurrio un error al serializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
         public bool devolverMensaje()
