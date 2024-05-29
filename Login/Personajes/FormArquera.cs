@@ -44,7 +44,7 @@ namespace Forms
         }
         protected override void ClearGroupBox()
         {
-            this.ClearText(this.groupBox2);
+            this.ClearText(this.groupBoxArquero);
         }
 
         private void textBoxFlechas_Click(object sender, EventArgs e)

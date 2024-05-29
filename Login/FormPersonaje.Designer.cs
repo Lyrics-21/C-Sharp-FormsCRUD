@@ -41,11 +41,11 @@
             textBoxNivel = new TextBox();
             label5 = new Label();
             textBoxDaño = new TextBox();
-            groupBox1 = new GroupBox();
+            groupBoxPersonaje = new GroupBox();
             label6 = new Label();
             panel2 = new Panel();
             panel1.SuspendLayout();
-            groupBox1.SuspendLayout();
+            groupBoxPersonaje.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
             // 
@@ -179,22 +179,22 @@
             textBoxDaño.Text = "     Valor por defecto";
             textBoxDaño.Click += textBoxDaño_Click;
             // 
-            // groupBox1
+            // groupBoxPersonaje
             // 
-            groupBox1.Controls.Add(label6);
-            groupBox1.Controls.Add(textBoxNombre);
-            groupBox1.Controls.Add(textBoxDaño);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(label5);
-            groupBox1.Controls.Add(textBoxVida);
-            groupBox1.Controls.Add(label4);
-            groupBox1.Controls.Add(textBoxNivel);
-            groupBox1.Location = new Point(10, 54);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(402, 247);
-            groupBox1.TabIndex = 8;
-            groupBox1.TabStop = false;
+            groupBoxPersonaje.Controls.Add(label6);
+            groupBoxPersonaje.Controls.Add(textBoxNombre);
+            groupBoxPersonaje.Controls.Add(textBoxDaño);
+            groupBoxPersonaje.Controls.Add(label2);
+            groupBoxPersonaje.Controls.Add(label3);
+            groupBoxPersonaje.Controls.Add(label5);
+            groupBoxPersonaje.Controls.Add(textBoxVida);
+            groupBoxPersonaje.Controls.Add(label4);
+            groupBoxPersonaje.Controls.Add(textBoxNivel);
+            groupBoxPersonaje.Location = new Point(10, 54);
+            groupBoxPersonaje.Name = "groupBoxPersonaje";
+            groupBoxPersonaje.Size = new Size(402, 247);
+            groupBoxPersonaje.TabIndex = 8;
+            groupBoxPersonaje.TabStop = false;
             // 
             // label6
             // 
@@ -221,10 +221,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(414, 518);
+            ClientSize = new Size(410, 514);
             ControlBox = false;
             Controls.Add(panel2);
-            Controls.Add(groupBox1);
+            Controls.Add(groupBoxPersonaje);
             Controls.Add(panel1);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
@@ -236,8 +236,8 @@
             Text = "Personaje";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            groupBoxPersonaje.ResumeLayout(false);
+            groupBoxPersonaje.PerformLayout();
             panel2.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -257,7 +257,7 @@
         protected TextBox textBoxNivel;
         private Label label5;
         protected TextBox textBoxDaño;
-        private GroupBox groupBox1;
+        private GroupBox groupBoxPersonaje;
         private Panel panel2;
         private Label label6;
     }

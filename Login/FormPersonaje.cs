@@ -32,7 +32,7 @@ namespace Forms
 
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-            this.ClearText(this.groupBox1);
+            this.ClearText(this.groupBoxPersonaje);
             this.ClearGroupBox();
         }
 
@@ -92,11 +92,11 @@ namespace Forms
         {
             get { return this.arqueros; }
         }  
-        public Tanque Tanque
+        public Tanque Tanques
         {
             get { return this.tanques; }
         }    
-        public Mago Mago
+        public Mago Magos
         {
             get { return this.magos; }
         }

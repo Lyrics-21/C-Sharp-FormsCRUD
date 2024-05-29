@@ -20,7 +20,7 @@ namespace Forms
     {
         private string datoNombre;
         private string pathPersonajes;
-        private List<Personaje> personajesSrlz = new List<Personaje>();
+        private List<Personaje> personajesSrlz = new List<Personaje>(); //no se usa por ahora
 
         private Coleccion coleccion;
         private int itemSeleccionado;
@@ -89,7 +89,18 @@ namespace Forms
 
         private void magoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormMago formMago = new FormMago();
+            formMago.ShowDialog();
+            if (formMago.DialogResult == DialogResult.Cancel)
+            {
+                formMago.Close();
+            }
+            else if (formMago.DialogResult == DialogResult.OK)
+            {
+                this.coleccion += formMago.Magos;
+                this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo}");
+                formMago.Close();
+            }
         }
 
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
@@ -111,7 +122,18 @@ namespace Forms
 
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            FormTanque formTanque = new FormTanque();
+            formTanque.ShowDialog();
+            if (formTanque.DialogResult == DialogResult.Cancel)
+            {
+                formTanque.Close();
+            }
+            else if (formTanque.DialogResult == DialogResult.OK)
+            {
+                this.coleccion += formTanque.Tanques;
+                this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo}");
+                formTanque.Close();
+            }
         }
 
         private void buttonModificar_Click(object sender, EventArgs e)
@@ -175,6 +197,5 @@ namespace Forms
             }
             return estado;
         }
-
     }
 }

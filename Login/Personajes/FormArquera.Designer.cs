@@ -32,8 +32,8 @@
             textBoxFlechas = new TextBox();
             label7 = new Label();
             comboBox1 = new ComboBox();
-            groupBox2 = new GroupBox();
-            groupBox2.SuspendLayout();
+            groupBoxArquero = new GroupBox();
+            groupBoxArquero.SuspendLayout();
             SuspendLayout();
             // 
             // label6
@@ -76,30 +76,30 @@
             comboBox1.Size = new Size(168, 29);
             comboBox1.TabIndex = 11;
             // 
-            // groupBox2
+            // groupBoxArquero
             // 
-            groupBox2.Controls.Add(textBoxFlechas);
-            groupBox2.Controls.Add(comboBox1);
-            groupBox2.Controls.Add(label6);
-            groupBox2.Controls.Add(label7);
-            groupBox2.Location = new Point(10, 310);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(402, 142);
-            groupBox2.TabIndex = 12;
-            groupBox2.TabStop = false;
+            groupBoxArquero.Controls.Add(textBoxFlechas);
+            groupBoxArquero.Controls.Add(comboBox1);
+            groupBoxArquero.Controls.Add(label6);
+            groupBoxArquero.Controls.Add(label7);
+            groupBoxArquero.Location = new Point(10, 310);
+            groupBoxArquero.Name = "groupBoxArquero";
+            groupBoxArquero.Size = new Size(402, 142);
+            groupBoxArquero.TabIndex = 12;
+            groupBoxArquero.TabStop = false;
             // 
             // FormArquera
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(422, 520);
-            Controls.Add(groupBox2);
+            Controls.Add(groupBoxArquero);
             Name = "FormArquera";
             Text = "FormArquero";
             Load += FormArquera_Load;
-            Controls.SetChildIndex(groupBox2, 0);
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            Controls.SetChildIndex(groupBoxArquero, 0);
+            groupBoxArquero.ResumeLayout(false);
+            groupBoxArquero.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -109,6 +109,6 @@
         private TextBox textBoxFlechas;
         private Label label7;
         private ComboBox comboBox1;
-        private GroupBox groupBox2;
+        private GroupBox groupBoxArquero;
     }
 }

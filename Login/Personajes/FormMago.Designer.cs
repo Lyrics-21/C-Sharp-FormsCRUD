@@ -28,26 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            groupBox2 = new GroupBox();
+            groupBoxMago = new GroupBox();
             comboBox1 = new ComboBox();
             label8 = new Label();
             textBoxMana = new TextBox();
             label7 = new Label();
-            groupBox2.SuspendLayout();
+            groupBoxMago.SuspendLayout();
             SuspendLayout();
             // 
-            // groupBox2
+            // groupBoxMago
             // 
-            groupBox2.Controls.Add(comboBox1);
-            groupBox2.Controls.Add(label8);
-            groupBox2.Controls.Add(textBoxMana);
-            groupBox2.Controls.Add(label7);
-            groupBox2.Location = new Point(10, 314);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(402, 140);
-            groupBox2.TabIndex = 9;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
+            groupBoxMago.Controls.Add(comboBox1);
+            groupBoxMago.Controls.Add(label8);
+            groupBoxMago.Controls.Add(textBoxMana);
+            groupBoxMago.Controls.Add(label7);
+            groupBoxMago.Location = new Point(10, 314);
+            groupBoxMago.Name = "groupBoxMago";
+            groupBoxMago.Size = new Size(402, 140);
+            groupBoxMago.TabIndex = 9;
+            groupBoxMago.TabStop = false;
             // 
             // comboBox1
             // 
@@ -94,19 +93,19 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(422, 522);
-            Controls.Add(groupBox2);
+            Controls.Add(groupBoxMago);
             Name = "FormMago";
             Text = "FormMago";
             Load += FormMago_Load;
-            Controls.SetChildIndex(groupBox2, 0);
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            Controls.SetChildIndex(groupBoxMago, 0);
+            groupBoxMago.ResumeLayout(false);
+            groupBoxMago.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private GroupBox groupBox2;
+        private GroupBox groupBoxMago;
         private TextBox textBoxMana;
         private Label label7;
         private Label label8;
