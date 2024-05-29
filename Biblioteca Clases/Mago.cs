@@ -29,7 +29,7 @@ namespace Libreria_De_Clases
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine(base.ToString());
+            sb.Append(base.ToString());
             sb.AppendLine($"Tipo de magia {this.tipoMagia.ToString()}");
             sb.AppendLine($"Mana: {this.mana}");
             return sb.ToString();

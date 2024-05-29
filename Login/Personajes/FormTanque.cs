@@ -44,7 +44,8 @@ namespace Forms
         {
             this.ClearText(this.groupBoxTanque);
         }
-        private void textBoxMana_Click(object sender, EventArgs e)
+
+        private void textBoxFuerza_Click(object sender, EventArgs e)
         {
             this.ResetTextBoxClick(this.textBoxFuerza);
         }

@@ -86,6 +86,7 @@
             textBoxFuerza.Size = new Size(164, 29);
             textBoxFuerza.TabIndex = 11;
             textBoxFuerza.Text = "     Valor por defecto";
+            textBoxFuerza.Click += textBoxFuerza_Click;
             // 
             // FormTanque
             // 

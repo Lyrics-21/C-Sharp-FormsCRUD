@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Forms.FormLogin;
@@ -155,7 +156,47 @@ namespace Forms
         {
             if (devolverMensaje())
             {
-                MessageBox.Show("GORDITO");
+                int index = this.listBoxPersonajes.SelectedIndex;
+                Personaje personajeAModificar = this.coleccion.listPersonajes[index];
+
+                switch (personajeAModificar)
+                {
+                    case Arquero:
+                        FormArquera formArquera = new FormArquera();
+                        this.PersonajeResultCancel(formArquera);
+                        if (formArquera.DialogResult == DialogResult.OK)
+                        {
+                            this.buttonEliminar.PerformClick();
+                            this.coleccion += formArquera.Arqueros;
+                            this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo}");
+                            formArquera.Close();
+                        }
+                        break;
+
+                    case Mago:
+                        FormMago formMago = new FormMago();
+                        this.PersonajeResultCancel(formMago);
+                        if (formMago.DialogResult == DialogResult.OK)
+                        {
+                            this.buttonEliminar.PerformClick();
+                            this.coleccion += formMago.Magos;
+                            this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo}");
+                            formMago.Close();
+                        }
+                        break;
+
+                    case Tanque:
+                        FormTanque formTanque = new FormTanque();
+                        this.PersonajeResultCancel(formTanque);
+                        if (formTanque.DialogResult == DialogResult.OK)
+                        {
+                            this.buttonEliminar.PerformClick();
+                            this.coleccion += formTanque.Tanques;
+                            this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo}");
+                            formTanque.Close();
+                        }
+                        break;
+                }
             }
         }
         private void buttonMostrarDatos_Click(object sender, EventArgs e)
