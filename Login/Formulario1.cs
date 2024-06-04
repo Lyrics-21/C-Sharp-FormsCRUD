@@ -1,5 +1,4 @@
-﻿using Biblioteca_Clases;
-using Libreria_De_Clases;
+﻿using Libreria_De_Clases;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -55,12 +54,12 @@ namespace Forms
                             string tipo = element.GetProperty("Estilo").GetString();
                             switch (tipo)
                             {
-                                case "Arquero":
+                                case "Arquero/a":
                                     Arquero arquero = System.Text.Json.JsonSerializer.Deserialize<Arquero>(element.GetRawText());
                                     this.coleccion += arquero;
                                     break;
 
-                                case "Mago":
+                                case "Mago/a":
                                     Libreria_De_Clases.Mago mago = System.Text.Json.JsonSerializer.Deserialize<Libreria_De_Clases.Mago>(element.GetRawText());
                                     this.coleccion += mago;
                                     break;

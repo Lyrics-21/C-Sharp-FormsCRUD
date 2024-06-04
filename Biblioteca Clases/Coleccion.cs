@@ -1,5 +1,4 @@
-﻿using Libreria_De_Clases;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -8,7 +7,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Xml.Serialization;
 
-namespace Biblioteca_Clases
+namespace Libreria_De_Clases
 {
     public class Coleccion
     {
