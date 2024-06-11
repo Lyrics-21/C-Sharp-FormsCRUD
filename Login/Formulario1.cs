@@ -1,4 +1,5 @@
 ﻿using Libreria_De_Clases;
+using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,6 +17,12 @@ using static System.Windows.Forms.Design.AxImporter;
 
 namespace Forms
 {
+    //    Faltan más comentarios XML
+    //    No posee sobrecarga de operador == en clases derivadas.
+    //    Quitar de los títulos de los formularios: Form1, FrmLogin, etc.
+    //    Mostrar centrados los formularios.
+    //    La clave se debería mostrar en modo 'password'.
+    //NO ingresa a la aplicación. (NO se encuentra el archivo?)
     public partial class Formulario1 : Form
     {
         private string datoNombre;
