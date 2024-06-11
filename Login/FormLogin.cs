@@ -2,7 +2,6 @@ namespace Forms
 {
     public partial class FormLogin : Form
     {
-        //wtf
         private string path;
         private List<Datos> listaAux;
 
