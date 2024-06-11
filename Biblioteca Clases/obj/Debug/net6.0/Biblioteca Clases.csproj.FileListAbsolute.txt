@@ -1,0 +1,24 @@
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\bin\Debug\net6.0\Biblioteca Clases.deps.json
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\bin\Debug\net6.0\Biblioteca Clases.dll
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\bin\Debug\net6.0\Biblioteca Clases.pdb
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.AssemblyInfoInputs.cache
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.AssemblyInfo.cs
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.csproj.CoreCompileInputs.cache
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.sourcelink.json
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.dll
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\refint\Biblioteca Clases.dll
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.pdb
+C:\Users\Lyrics\Desktop\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\ref\Biblioteca Clases.dll
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\bin\Debug\net6.0\Biblioteca Clases.deps.json
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\bin\Debug\net6.0\Biblioteca Clases.dll
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\bin\Debug\net6.0\Biblioteca Clases.pdb
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.AssemblyInfoInputs.cache
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.AssemblyInfo.cs
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.csproj.CoreCompileInputs.cache
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.sourcelink.json
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.dll
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\refint\Biblioteca Clases.dll
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\Biblioteca Clases.pdb
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Biblioteca Clases\obj\Debug\net6.0\ref\Biblioteca Clases.dll
