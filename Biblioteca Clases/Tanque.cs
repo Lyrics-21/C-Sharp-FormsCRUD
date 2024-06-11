@@ -11,6 +11,7 @@ namespace Libreria_De_Clases
         private TipoArmadura tipoArmadura;
         private int fuerza;
 
+        public Tanque() { }
         public Tanque(int vida, string nombre, int nivel, string estilo, int daño, TipoArmadura armadura, int fuerza) : base(vida, nombre, nivel, estilo, daño)
         {
             this.tipoArmadura = armadura;

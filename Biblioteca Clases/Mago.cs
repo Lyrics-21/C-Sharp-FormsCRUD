@@ -11,6 +11,7 @@ namespace Libreria_De_Clases
         private TipoMagia tipoMagia;
         private int mana;
 
+        public Mago() { }
         public Mago(int vida, string nombre, int nivel, string estilo, int daño, TipoMagia tipoMagia, int mana) : base(vida, nombre, nivel, estilo, daño)
         {
             this.tipoMagia = tipoMagia;

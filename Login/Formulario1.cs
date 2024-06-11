@@ -21,7 +21,6 @@ namespace Forms
     {
         private string datoNombre;
         private string pathPersonajes;
-        private List<Personaje> personajesSrlz = new List<Personaje>(); //no se usa por ahora
 
         private Coleccion coleccion;
         private int itemSeleccionado;
