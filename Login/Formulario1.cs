@@ -55,17 +55,17 @@ namespace Forms
                             switch (tipo)
                             {
                                 case "Arquero/a":
-                                    Arquero arquero = System.Text.Json.JsonSerializer.Deserialize<Arquero>(element.GetRawText());
+                                    Arquero arquero = JsonSerializer.Deserialize<Arquero>(element.GetRawText());
                                     this.coleccion += arquero;
                                     break;
 
                                 case "Mago":
-                                    Mago mago = System.Text.Json.JsonSerializer.Deserialize<Mago>(element.GetRawText());
+                                    Mago mago = JsonSerializer.Deserialize<Mago>(element.GetRawText());
                                     this.coleccion += mago;
                                     break;
 
                                 case "Tanque":
-                                    Tanque tanque = System.Text.Json.JsonSerializer.Deserialize<Tanque>(element.GetRawText());
+                                    Tanque tanque = JsonSerializer.Deserialize<Tanque>(element.GetRawText());
                                     this.coleccion += tanque;
                                     break;
                             }
@@ -77,7 +77,7 @@ namespace Forms
                     }
                 }
             }
-            catch (System.Text.Json.JsonException ex)
+            catch (JsonException ex)
             {
                 MessageBox.Show($"Ocurrio un error al deserializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -127,10 +127,10 @@ namespace Forms
         {
             try
             {
-                string archivoJson = System.Text.Json.JsonSerializer.Serialize(this.coleccion.listPersonajes);
+                string archivoJson = JsonSerializer.Serialize(this.coleccion.listPersonajes);
                 File.WriteAllText(this.pathPersonajes, archivoJson);
             }
-            catch (System.Text.Json.JsonException ex)
+            catch (JsonException ex)
             {
                 MessageBox.Show($"Ocurrio un error al serializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
