@@ -60,13 +60,13 @@ namespace Forms
                                     this.coleccion += arquero;
                                     break;
 
-                                case "Mago/a":
-                                    Libreria_De_Clases.Mago mago = System.Text.Json.JsonSerializer.Deserialize<Libreria_De_Clases.Mago>(element.GetRawText());
+                                case "Mago":
+                                    Mago mago = System.Text.Json.JsonSerializer.Deserialize<Mago>(element.GetRawText());
                                     this.coleccion += mago;
                                     break;
 
                                 case "Tanque":
-                                    Libreria_De_Clases.Tanque tanque = System.Text.Json.JsonSerializer.Deserialize<Libreria_De_Clases.Tanque>(element.GetRawText());
+                                    Tanque tanque = System.Text.Json.JsonSerializer.Deserialize<Tanque>(element.GetRawText());
                                     this.coleccion += tanque;
                                     break;
                             }

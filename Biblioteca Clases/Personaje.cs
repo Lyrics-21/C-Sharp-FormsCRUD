@@ -42,5 +42,24 @@ namespace Libreria_De_Clases
         {
             return mostrarInfo();
         }
+        public static bool operator ==(Personaje personaje1, Personaje personaje2)
+        {
+            return personaje1.Nombre == personaje2.Nombre;
+        }   
+        public static bool operator !=(Personaje personaje1, Personaje personaje2)
+        {
+            return !(personaje1 == personaje2);
+        }
+        public override bool Equals(object? obj)
+        {
+            if (obj is Personaje)
+            {
+                return ((Personaje)obj) == this;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

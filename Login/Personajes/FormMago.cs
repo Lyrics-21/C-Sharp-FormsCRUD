@@ -35,7 +35,7 @@ namespace Forms
             if (validarDatos(this.textBoxVida, out vida) && validarDatos(this.textBoxDaño, out daño) &&
                 validarDatos(this.textBoxNivel, out nivel) && validarDatos(this.textBoxMana, out mana))
             {
-                Libreria_De_Clases.Mago mago = new Libreria_De_Clases.Mago(vida, this.textBoxNombre.Text, nivel, "Mago/a", daño, tipoMagia, mana);
+                Mago mago = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago", daño, tipoMagia, mana);
                 this.magos = mago;
             }
         }

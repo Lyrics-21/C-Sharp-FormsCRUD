@@ -1,3 +1,5 @@
+using System;
+
 namespace Forms
 {
     internal static class Program
@@ -5,6 +7,12 @@ namespace Forms
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
+        /// 
+
+        //Faltan más comentarios XML
+        //Faltan sobrecargas de operadores ==, Equals, ToString, implicit/explicit en clases derivadas
+        //La clave se debería mostrar en modo 'password'.
+
         [STAThread]
         static void Main()
         {

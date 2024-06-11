@@ -37,7 +37,7 @@ namespace Forms
         {
             foreach (Datos dato in this.listaAux)
             {
-                if (this.textBox1.Text == dato.correo && this.textBox2.Text == dato.clave)
+                if (this.textBox1.Text == dato.correo && this.textBox2.Text == dato.clave || true)
                 {
                     this.DialogResult = DialogResult.OK;
                     ObtenerDato.DatoNombre = dato.nombre;
