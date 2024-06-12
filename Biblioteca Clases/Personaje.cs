@@ -9,7 +9,7 @@ namespace Libreria_De_Clases
         public int Nivel { get; set; }
         public string Estilo { get; set; }
         public int Daño { get; set; }
-
+        
         public Personaje() { }
         public Personaje(int vida, string nombre, int nivel, string estilo, int daño)
         {

@@ -34,14 +34,5 @@ namespace Libreria_De_Clases
             sb.AppendLine($"Cantidad de flechas : {this.CantidadFlechas}");
             return sb.ToString();
         }
-
-        public static Coleccion operator +(Coleccion co, Personaje personaje)
-        {
-            if (!co.listPersonajes.Any(c => c == personaje))
-            {
-                co.listPersonajes.Add(personaje);
-            }
-            return co;
-        }
     }
 }

@@ -1,24 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial elian viana\\biblioteca clases\\coleccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|solutionrelative:biblioteca clases\\coleccion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial elian viana\\biblioteca clases\\arquero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|solutionrelative:biblioteca clases\\arquero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\login\\formulario1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|solutionrelative:login\\formulario1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial elian viana\\login\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|solutionrelative:login\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -26,7 +9,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -35,58 +18,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Coleccion.cs",
-              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Coleccion.cs",
-              "RelativeDocumentMoniker": "Biblioteca Clases\\Coleccion.cs",
-              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Coleccion.cs",
-              "RelativeToolTip": "Biblioteca Clases\\Coleccion.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAACsAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T23:02:25.118Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Arquero.cs",
-              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Arquero.cs",
-              "RelativeDocumentMoniker": "Biblioteca Clases\\Arquero.cs",
-              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Arquero.cs",
-              "RelativeToolTip": "Biblioteca Clases\\Arquero.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAQwAkAAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T23:02:20.783Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FormLogin.cs",
-              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\FormLogin.cs",
-              "RelativeDocumentMoniker": "Login\\FormLogin.cs",
-              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\FormLogin.cs",
-              "RelativeToolTip": "Login\\FormLogin.cs",
-              "ViewState": "AQIAAAIAAAAAAAAAAAAxwAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T22:54:45.941Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Formulario1.cs",
-              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Formulario1.cs",
-              "RelativeDocumentMoniker": "Login\\Formulario1.cs",
-              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Formulario1.cs",
-              "RelativeToolTip": "Login\\Formulario1.cs",
-              "ViewState": "AQIAACQAAAAAAAAAAAAowDoAAAA+AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-11T22:47:57.232Z",
-              "EditorCaption": ""
             }
           ]
         }

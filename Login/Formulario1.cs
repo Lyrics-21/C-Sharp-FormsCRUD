@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -24,6 +25,8 @@ namespace Forms
 
         private Coleccion coleccion;
         private int itemSeleccionado;
+
+        List<object> listaPersonajesSrlz = new List<object>();
         public Formulario1()
         {
             InitializeComponent();
@@ -127,7 +130,26 @@ namespace Forms
         {
             try
             {
-                string archivoJson = JsonSerializer.Serialize(this.coleccion.listPersonajes);
+                JsonSerializerOptions options = new JsonSerializerOptions()
+                {
+                    WriteIndented = true,
+                };
+                foreach (Personaje personajes in this.coleccion.listPersonajes)
+                {
+                    if (personajes is Arquero)
+                    {
+                        listaPersonajesSrlz.Add((Arquero)personajes);
+                    }
+                    else if (personajes is Tanque)
+                    {
+                        listaPersonajesSrlz.Add((Tanque)personajes);
+                    }
+                    else if (personajes is Mago)
+                    {
+                        listaPersonajesSrlz.Add((Mago)personajes);
+                    }
+                }
+                string archivoJson = JsonSerializer.Serialize(listaPersonajesSrlz, options);
                 File.WriteAllText(this.pathPersonajes, archivoJson);
             }
             catch (JsonException ex)

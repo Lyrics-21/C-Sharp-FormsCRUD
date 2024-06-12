@@ -8,14 +8,13 @@ namespace Libreria_De_Clases
 {
     public class Tanque : Personaje
     {
-        private TipoArmadura tipoArmadura;
-        private int fuerza;
-
+        public TipoArmadura TipoArmadura { get; set; }
+        public int Fuerza { get; set; }
         public Tanque() { }
         public Tanque(int vida, string nombre, int nivel, string estilo, int daño, TipoArmadura armadura, int fuerza) : base(vida, nombre, nivel, estilo, daño)
         {
-            this.tipoArmadura = armadura;
-            this.fuerza = fuerza;
+            this.TipoArmadura = armadura;
+            this.Fuerza = fuerza;
         }
         public Tanque(int vida, string nombre, int nivel, string estilo, int daño, TipoArmadura armadura) : this(vida, nombre, nivel, estilo, daño, armadura, 500)
         {
@@ -30,8 +29,8 @@ namespace Libreria_De_Clases
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.ToString());
-            sb.AppendLine($"Tipo de armadura: {this.tipoArmadura.ToString()}");
-            sb.AppendLine($"Fuerza: {this.fuerza}");
+            sb.AppendLine($"Tipo de armadura: {this.TipoArmadura.ToString()}");
+            sb.AppendLine($"Fuerza: {this.Fuerza}");
             return sb.ToString();
         }
     }
