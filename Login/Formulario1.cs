@@ -75,7 +75,7 @@ namespace Forms
                         }
                         foreach (Personaje personaje in this.coleccion.listPersonajes)
                         {
-                            this.listBoxPersonajes.Items.Add($"{personaje.Nombre} - {personaje.Estilo}");
+                            this.listBoxPersonajes.Items.Add($"{personaje.Nombre} - {personaje.Estilo} - Nivel: {personaje.Nivel}");
                         }
                     }
                 }
@@ -99,19 +99,18 @@ namespace Forms
             if (formMago.DialogResult == DialogResult.OK)
             {
                 this.coleccion += formMago.Magos;
-                this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo}");
+                this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
                 formMago.Close();
             }
         }
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             FormArquera formArquera = new FormArquera();
             this.PersonajeResultCancel(formArquera);
             if (formArquera.DialogResult == DialogResult.OK)
             {
                 this.coleccion += formArquera.Arqueros;
-                this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo}");
+                this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}");
                 formArquera.Close();
             }
         }
@@ -122,7 +121,7 @@ namespace Forms
             if (formTanque.DialogResult == DialogResult.OK)
             {
                 this.coleccion += formTanque.Tanques;
-                this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo}");
+                this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
                 formTanque.Close();
             }
         }

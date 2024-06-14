@@ -1,7 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial elian viana\\login\\personajes\\formtanque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|solutionrelative:login\\personajes\\formtanque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial elian viana\\login\\personajes\\formarquera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|solutionrelative:login\\personajes\\formarquera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -18,6 +27,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FormArquera.cs",
+              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Personajes\\FormArquera.cs",
+              "RelativeDocumentMoniker": "Login\\Personajes\\FormArquera.cs",
+              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Personajes\\FormArquera.cs",
+              "RelativeToolTip": "Login\\Personajes\\FormArquera.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAwwC0AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T01:15:33.518Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FormTanque.cs",
+              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Personajes\\FormTanque.cs",
+              "RelativeDocumentMoniker": "Login\\Personajes\\FormTanque.cs",
+              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Personajes\\FormTanque.cs",
+              "RelativeToolTip": "Login\\Personajes\\FormTanque.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAADwvyUAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T01:10:13.556Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -35,8 +35,43 @@ namespace Forms
             if (validarDatos(this.textBoxVida, out vida) && validarDatos(this.textBoxDaño, out daño) &&
                 validarDatos(this.textBoxNivel, out nivel) && validarDatos(this.textBoxMana, out mana))
             {
-                Mago mago = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago", daño, tipoMagia, mana);
-                this.magos = mago;
+                //Instanciar al Personaje sin los atributos de cada if con todas las combinaciones posibles
+                if (vida == 0 && daño == 0 && mana == 0)
+                {
+                    Mago mago1 = new Mago(this.textBoxNombre.Text, nivel, "Mago", tipoMagia);
+                    this.magos = mago1;
+                }
+                else if (vida == 0 && daño == 0 && mana != 0)
+                {
+                    Mago mago2 = new Mago(this.textBoxNombre.Text, nivel, "Mago", tipoMagia, mana);
+                    this.magos = mago2;
+                }
+                else if (vida == 0 && daño != 0 && mana == 0)
+                {
+                    Mago mago3 = new Mago(this.textBoxNombre.Text, nivel, "Mago", daño, tipoMagia);
+                    this.magos = mago3;
+                }
+                else if (vida == 0 && daño != 0 && mana != 0)
+                {
+                    Mago mago4 = new Mago(this.textBoxNombre.Text, nivel, "Mago", daño, tipoMagia, mana);
+                    this.magos = mago4;
+                }
+                else if (vida != 0 && daño == 0 && mana == 0)
+                {
+                    Mago mago5 = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago", tipoMagia);
+                    this.magos = mago5;
+                }
+                else if (vida != 0 && daño == 0 && mana != 0)
+                {
+                    Mago mago6 = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago", tipoMagia, mana);
+                    this.magos = mago6;
+                }
+                else if (vida != 0 && daño != 0 && mana != 0)
+                {
+                    Mago mago7 = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago", daño, tipoMagia, mana);
+                    this.magos = mago7;
+                }
+                this.DialogResult = DialogResult.OK;
             }
         }
         protected override void ClearGroupBox()

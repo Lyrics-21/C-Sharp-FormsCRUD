@@ -11,20 +11,44 @@ namespace Libreria_De_Clases
         public TipoArmadura TipoArmadura { get; set; }
         public int Fuerza { get; set; }
         public Tanque() { }
+
         public Tanque(int vida, string nombre, int nivel, string estilo, int daño, TipoArmadura armadura, int fuerza) : base(vida, nombre, nivel, estilo, daño)
         {
             this.TipoArmadura = armadura;
             this.Fuerza = fuerza;
         }
-        public Tanque(int vida, string nombre, int nivel, string estilo, int daño, TipoArmadura armadura) : this(vida, nombre, nivel, estilo, daño, armadura, 500)
+        public Tanque(int vida, string nombre, int nivel, string estilo, int daño, TipoArmadura armadura) : this(vida, nombre, nivel, estilo, daño, armadura, 1000)
         {
 
         }
-        public Tanque(int vida, string nombre, int nivel, string estilo, int daño) : this(vida, nombre, nivel, estilo, daño, TipoArmadura.Cuero, 500)
+        //Constructor de Tanque sin Daño
+        public Tanque(int vida, string nombre, int nivel, string estilo, TipoArmadura armadura, int fuerza) : this(vida, nombre, nivel, estilo, 500, armadura, fuerza)
         {
 
         }
 
+        public Tanque(int vida, string nombre, int nivel, string estilo, TipoArmadura armadura) : this(vida, nombre, nivel, estilo, 500, armadura, 1000)
+        {
+
+        }
+        //Constructor Tanque sin Vida
+        public Tanque(string nombre, int nivel, string estilo, int daño, TipoArmadura armadura, int fuerza) : this(5000, nombre, nivel, estilo, daño, armadura, fuerza)
+        {
+
+        }
+        public Tanque(string nombre, int nivel, string estilo, int daño, TipoArmadura armadura) : this(5000, nombre, nivel, estilo, daño, armadura, 1000)
+        {
+
+        }
+        //Constructos Tanque sin Vida ni Daño
+        public Tanque(string nombre, int nivel, string estilo, TipoArmadura armadura, int fuerza) : this(5000, nombre, nivel, estilo, 500, armadura, fuerza)
+        {
+
+        }
+        public Tanque(string nombre, int nivel, string estilo, TipoArmadura armadura) : this(5000, nombre, nivel, estilo, 500, armadura, 1000)
+        {
+
+        }
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();

@@ -112,7 +112,6 @@ namespace Forms
             }
             if (int.TryParse(textBox.Text, out resultado) && resultado >= 0&& textBox.Text.Length <= 6 && this.textBoxNombre.Text.Length > 0)
             {
-                this.DialogResult = DialogResult.OK;
                 retorno = true;
             }
             else if (textBox.ForeColor == Color.Black)

@@ -17,12 +17,35 @@ namespace Libreria_De_Clases
             this.TipoMagia = tipoMagia;
             this.Mana = mana;
         }
-
-        public Mago(int vida, string nombre, int nivel, string estilo, int daño, TipoMagia tipoMagia) : this(vida, nombre, nivel, estilo, daño, tipoMagia, 100)
+        public Mago(int vida, string nombre, int nivel, string estilo, int daño, TipoMagia tipoMagia) : this(vida, nombre, nivel, estilo, daño, tipoMagia, 500)
         {
 
         }
-        public Mago(int vida, string nombre, int nivel, string estilo, int daño) : this(vida, nombre, nivel, estilo, daño, TipoMagia.Elemental, 100)
+        //Constructor de Mago sin Daño
+        public Mago(int vida, string nombre, int nivel, string estilo, TipoMagia tipoMagia, int mana) : this(vida, nombre, nivel, estilo, 100, tipoMagia, mana)
+        {
+
+        }
+
+        public Mago(int vida, string nombre, int nivel, string estilo, TipoMagia tipoMagia) : this(vida, nombre, nivel, estilo, 100, tipoMagia, 500)
+        {
+
+        }
+        //Constructor Mago sin Vida
+        public Mago(string nombre, int nivel, string estilo, int daño, TipoMagia tipoMagia, int mana) : this(1000, nombre, nivel, estilo, daño, tipoMagia, mana)
+        {
+
+        }
+        public Mago(string nombre, int nivel, string estilo, int daño, TipoMagia tipoMagia) : this(1000, nombre, nivel, estilo, daño, tipoMagia, 500)
+        {
+
+        }
+        //Constructos Mago sin Vida ni Daño
+        public Mago(string nombre, int nivel, string estilo, TipoMagia tipoMagia, int mana) : this(1000, nombre, nivel, estilo, 100, tipoMagia, mana)
+        {
+
+        }
+        public Mago(string nombre, int nivel, string estilo, TipoMagia tipoMagia) : this(1000, nombre, nivel, estilo, 100, tipoMagia, 500)
         {
 
         }
