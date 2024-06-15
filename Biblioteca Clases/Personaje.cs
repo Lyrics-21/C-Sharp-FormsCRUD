@@ -22,7 +22,7 @@
             }
             public Personaje(int vida, string nombre, int nivel, string estilo) : this (vida, nombre, nivel, estilo, 100)
             {
-
+             
             }
             public Personaje(string nombre, int nivel, string estilo, int daño) : this(1000, nombre, nivel, estilo, daño)
             {

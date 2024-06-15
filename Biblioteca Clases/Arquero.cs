@@ -61,5 +61,35 @@ namespace Libreria_De_Clases
             sb.AppendLine($"Cantidad de flechas : {this.CantidadFlechas}");
             return sb.ToString();
         }
+
+        //Sobrecarga operados == que verifica si el nombre y estilo del personaje son iguales
+        public static bool operator ==(Arquero arquero1, Arquero arquero2)
+        {
+            if (arquero1 is null || arquero2 is null)
+            {
+                return false;
+            }
+            else
+            {
+                return (arquero1.TipoArco == arquero2.TipoArco && arquero1.Nombre == arquero2.Nombre);
+            }
+        }
+        //De lo contrario false
+        public static bool operator !=(Arquero arquero1, Arquero arquero2)
+        {
+            return !(arquero1 == arquero2);
+        }
+        //Sobreescribo Equals usando el == y si el objeto es distitno a null, y es arquero, y ese arquero es igual al this retorna true
+        public override bool Equals(object? obj)
+        {
+            if (obj is Arquero && obj != null)
+            {
+                return ((Arquero)obj) == this;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

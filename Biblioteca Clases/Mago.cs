@@ -54,9 +54,24 @@ namespace Libreria_De_Clases
         {
             StringBuilder sb = new StringBuilder();
             sb.Append(base.ToString());
-            sb.AppendLine($"Tipo de magia {this.TipoMagia.ToString()}");
+            sb.AppendLine($"Tipo de magia : {this.TipoMagia.ToString()}");
             sb.AppendLine($"Mana: {this.Mana}");
             return sb.ToString();
+        }
+        public static bool operator ==(Mago mago1, Mago mago2)
+        {
+            if (mago1 is null || mago2 is null)
+            {
+                return false;
+            }
+            else
+            {
+                return (mago1.TipoMagia == mago2.TipoMagia && mago1.Nombre == mago2.Nombre);
+            }
+        }
+        public static bool operator !=(Mago mago1, Mago mago2)
+        {
+            return !(mago1 == mago2);
         }
     }
 }

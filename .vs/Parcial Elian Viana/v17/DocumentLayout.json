@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial elian viana\\login\\personajes\\formtanque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|solutionrelative:login\\personajes\\formtanque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial elian viana\\biblioteca clases\\mago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|solutionrelative:biblioteca clases\\mago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial elian viana\\login\\personajes\\formarquera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|solutionrelative:login\\personajes\\formarquera.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\biblioteca clases\\tanque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|solutionrelative:biblioteca clases\\tanque.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\biblioteca clases\\arquero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|solutionrelative:biblioteca clases\\arquero.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\biblioteca clases\\personaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C7901583-CCFB-49A3-9B76-1763AF7C6EFB}|Biblioteca Clases\\Biblioteca Clases.csproj|solutionrelative:biblioteca clases\\personaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +38,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FormArquera.cs",
-              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Personajes\\FormArquera.cs",
-              "RelativeDocumentMoniker": "Login\\Personajes\\FormArquera.cs",
-              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Personajes\\FormArquera.cs",
-              "RelativeToolTip": "Login\\Personajes\\FormArquera.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAAAwwC0AAAARAAAA",
+              "DocumentIndex": 3,
+              "Title": "Personaje.cs",
+              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Personaje.cs",
+              "RelativeDocumentMoniker": "Biblioteca Clases\\Personaje.cs",
+              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Personaje.cs",
+              "RelativeToolTip": "Biblioteca Clases\\Personaje.cs",
+              "ViewState": "AQIAACsAAAAAAAAAAAAhwEgAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T01:15:33.518Z",
+              "WhenOpened": "2024-06-14T17:13:49.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Arquero.cs",
+              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Arquero.cs",
+              "RelativeDocumentMoniker": "Biblioteca Clases\\Arquero.cs",
+              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Arquero.cs",
+              "RelativeToolTip": "Biblioteca Clases\\Arquero.cs",
+              "ViewState": "AQIAADUAAAAAAAAAAAAIwFEAAABpAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T17:13:45.997Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FormTanque.cs",
-              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Personajes\\FormTanque.cs",
-              "RelativeDocumentMoniker": "Login\\Personajes\\FormTanque.cs",
-              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Login\\Personajes\\FormTanque.cs",
-              "RelativeToolTip": "Login\\Personajes\\FormTanque.cs",
-              "ViewState": "AQIAACAAAAAAAAAAAADwvyUAAAANAAAA",
+              "Title": "Mago.cs",
+              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Mago.cs",
+              "RelativeDocumentMoniker": "Biblioteca Clases\\Mago.cs",
+              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Mago.cs",
+              "RelativeToolTip": "Biblioteca Clases\\Mago.cs",
+              "ViewState": "AQIAACgAAAAAAAAAAAAYwEgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-14T01:10:13.556Z",
+              "WhenOpened": "2024-06-14T17:58:39.377Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Tanque.cs",
+              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Tanque.cs",
+              "RelativeDocumentMoniker": "Biblioteca Clases\\Tanque.cs",
+              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Tanque.cs",
+              "RelativeToolTip": "Biblioteca Clases\\Tanque.cs",
+              "ViewState": "AQIAACYAAAAAAAAAAAAAwD8AAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-14T17:58:40.316Z",
               "EditorCaption": ""
             }
           ]

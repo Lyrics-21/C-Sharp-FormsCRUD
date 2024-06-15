@@ -26,7 +26,7 @@ namespace Forms
         private Coleccion coleccion;
         private int itemSeleccionado;
 
-        List<object> listaPersonajesSrlz = new List<object>();
+        List<object> listaPersonajeParseados = new List<object>();
         public Formulario1()
         {
             InitializeComponent();
@@ -92,15 +92,32 @@ namespace Forms
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        public bool equalsLista(Personaje personaje)
+        {
+            bool estado = false;
+            foreach (Personaje item in this.coleccion.listPersonajes)
+            {
+                if (item.Equals(personaje))
+                {
+                    estado = true;
+                    MessageBox.Show("Este Personaje ya existe en la lista");
+                    break;
+                }
+            }
+            return estado;
+        }
         private void magoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormMago formMago = new FormMago();
             this.PersonajeResultCancel(formMago);
             if (formMago.DialogResult == DialogResult.OK)
             {
-                this.coleccion += formMago.Magos;
-                this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
-                formMago.Close();
+                if(!equalsLista(formMago.Magos))
+                {
+                    this.coleccion += formMago.Magos;
+                    this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
+                    formMago.Close();
+                }
             }
         }
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
@@ -109,9 +126,12 @@ namespace Forms
             this.PersonajeResultCancel(formArquera);
             if (formArquera.DialogResult == DialogResult.OK)
             {
-                this.coleccion += formArquera.Arqueros;
-                this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}");
-                formArquera.Close();
+                if(!equalsLista(formArquera.Arqueros))
+                {
+                    this.coleccion += formArquera.Arqueros;
+                    this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}");
+                    formArquera.Close();
+                }
             }
         }
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,9 +140,12 @@ namespace Forms
             this.PersonajeResultCancel(formTanque);
             if (formTanque.DialogResult == DialogResult.OK)
             {
-                this.coleccion += formTanque.Tanques;
-                this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
-                formTanque.Close();
+                if(!equalsLista(formTanque.Tanques))
+                {
+                    this.coleccion += formTanque.Tanques;
+                    this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
+                    formTanque.Close();
+                }
             }
         }
         private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -137,18 +160,18 @@ namespace Forms
                 {
                     if (personajes is Arquero)
                     {
-                        listaPersonajesSrlz.Add((Arquero)personajes);
+                        listaPersonajeParseados.Add((Arquero)personajes);
                     }
                     else if (personajes is Tanque)
                     {
-                        listaPersonajesSrlz.Add((Tanque)personajes);
+                        listaPersonajeParseados.Add((Tanque)personajes);
                     }
                     else if (personajes is Mago)
                     {
-                        listaPersonajesSrlz.Add((Mago)personajes);
+                        listaPersonajeParseados.Add((Mago)personajes);
                     }
                 }
-                string archivoJson = JsonSerializer.Serialize(listaPersonajesSrlz, options);
+                string archivoJson = JsonSerializer.Serialize(listaPersonajeParseados, options);
                 File.WriteAllText(this.pathPersonajes, archivoJson);
             }
             catch (JsonException ex)

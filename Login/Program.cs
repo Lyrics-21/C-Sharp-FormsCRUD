@@ -8,10 +8,6 @@ namespace Forms
         ///  The main entry point for the application.
         /// </summary>
         /// 
-
-        //Faltan más comentarios XML
-        //Faltan sobrecargas de operadores ==, Equals, ToString, implicit/explicit en clases derivadas
-
         [STAThread]
         static void Main()
         {

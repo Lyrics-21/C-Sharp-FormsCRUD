@@ -106,7 +106,6 @@ namespace Forms
             bool retorno = false;
             if (textBox.ForeColor != Color.Black && this.textBoxNombre.Text.Length > 0)
             {
-                this.DialogResult = DialogResult.OK;
                 resultado = 0;
                 retorno = true;
             }

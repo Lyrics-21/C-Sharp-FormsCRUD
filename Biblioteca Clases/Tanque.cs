@@ -57,5 +57,20 @@ namespace Libreria_De_Clases
             sb.AppendLine($"Fuerza: {this.Fuerza}");
             return sb.ToString();
         }
+        public static bool operator ==(Tanque tanque1, Tanque tanque2)
+        {
+            if (tanque1 is null || tanque2 is null)
+            {
+                return false;
+            }
+            else
+            {
+                return (tanque1.TipoArmadura == tanque2.TipoArmadura && tanque1.Nombre == tanque2.Nombre);
+            }
+        }
+        public static bool operator !=(Tanque tanque1, Tanque tanque2)
+        {
+            return !(tanque1 == tanque2);
+        }
     }
 }
