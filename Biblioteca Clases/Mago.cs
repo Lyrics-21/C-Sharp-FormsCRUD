@@ -50,6 +50,7 @@ namespace Libreria_De_Clases
 
         }
 
+        //Sobreescribo Tostring
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -58,6 +59,8 @@ namespace Libreria_De_Clases
             sb.AppendLine($"Mana: {this.Mana}");
             return sb.ToString();
         }
+
+        //Sobrecarga operados == que verifica si el nombre y estilo del personaje son iguales
         public static bool operator ==(Mago mago1, Mago mago2)
         {
             if (mago1 is null || mago2 is null)
@@ -66,12 +69,26 @@ namespace Libreria_De_Clases
             }
             else
             {
-                return (mago1.TipoMagia == mago2.TipoMagia && mago1.Nombre == mago2.Nombre);
+                return (mago1.Nombre == mago2.Nombre);
             }
         }
+        //De lo contrario false
         public static bool operator !=(Mago mago1, Mago mago2)
         {
             return !(mago1 == mago2);
+        }
+
+        //Sobreescribo Equals usando el == y si el objeto es distitno a null, y es arquero, y ese arquero es igual al this retorna true
+        public override bool Equals(object? obj)
+        {
+            if (obj is Mago && obj != null)
+            {
+                return ((Mago)obj) == this;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

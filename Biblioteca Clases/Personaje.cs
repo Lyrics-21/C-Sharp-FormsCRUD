@@ -1,37 +1,37 @@
-﻿    using System.Text;
+﻿using System.Text;
 
-    namespace Libreria_De_Clases
+namespace Libreria_De_Clases
+{
+    public abstract class Personaje
     {
-        public abstract class Personaje
+        //Atributos con propiedad get set
+        public int Vida { get; set; }
+        public string Nombre { get; set; }
+        public int Nivel { get; set; }
+        public string Estilo { get; set; }
+        public int Daño { get; set; }
+
+        public Personaje() { }
+        public Personaje(int vida, string nombre, int nivel, string estilo, int daño)
         {
-            //Atributos con propiedad get set
-            public int Vida { get; set; }
-            public string Nombre { get; set; }
-            public int Nivel { get; set; }
-            public string Estilo { get; set; }
-            public int Daño { get; set; }
-        
-            public Personaje() { }
-            public Personaje(int vida, string nombre, int nivel, string estilo, int daño)
-            {
-                this.Vida = vida;
-                this.Nombre = nombre;
-                this.Nivel = nivel;
-                this.Estilo = estilo;
-                this.Daño = daño;
-            }
-            public Personaje(int vida, string nombre, int nivel, string estilo) : this (vida, nombre, nivel, estilo, 100)
-            {
-             
-            }
-            public Personaje(string nombre, int nivel, string estilo, int daño) : this(1000, nombre, nivel, estilo, daño)
-            {
+            this.Vida = vida;
+            this.Nombre = nombre;
+            this.Nivel = nivel;
+            this.Estilo = estilo;
+            this.Daño = daño;
+        }
+        public Personaje(int vida, string nombre, int nivel, string estilo) : this(vida, nombre, nivel, estilo, 100)
+        {
 
-            }
-            public Personaje(string nombre, int nivel, string estilo) : this (1000, nombre, nivel, estilo, 100)
-            {
+        }
+        public Personaje(string nombre, int nivel, string estilo, int daño) : this(1000, nombre, nivel, estilo, daño)
+        {
 
-            }
+        }
+        public Personaje(string nombre, int nivel, string estilo) : this(1000, nombre, nivel, estilo, 100)
+        {
+
+        }
 
         //Metodo para devolver cada atributo del Personaje
         public string mostrarInfo()

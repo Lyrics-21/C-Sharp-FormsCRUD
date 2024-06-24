@@ -92,6 +92,8 @@ namespace Forms
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        //Creo un metodo que utiliza el Equals de Personaje o de sus derivados
         public bool equalsLista(Personaje personaje)
         {
             bool estado = false;
@@ -100,19 +102,21 @@ namespace Forms
                 if (item.Equals(personaje))
                 {
                     estado = true;
-                    MessageBox.Show("Este Personaje ya existe en la lista");
+                    MessageBox.Show("Este Personaje ya existe en la lista", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.None);
                     break;
                 }
             }
             return estado;
         }
+
+        //Verifica si se hizo click en Mago, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void magoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormMago formMago = new FormMago();
             this.PersonajeResultCancel(formMago);
             if (formMago.DialogResult == DialogResult.OK)
             {
-                if(!equalsLista(formMago.Magos))
+                if (!equalsLista(formMago.Magos))
                 {
                     this.coleccion += formMago.Magos;
                     this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
@@ -120,13 +124,15 @@ namespace Forms
                 }
             }
         }
+
+        //Verifica si se hizo click en Arquero, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormArquera formArquera = new FormArquera();
             this.PersonajeResultCancel(formArquera);
             if (formArquera.DialogResult == DialogResult.OK)
             {
-                if(!equalsLista(formArquera.Arqueros))
+                if (!equalsLista(formArquera.Arqueros))
                 {
                     this.coleccion += formArquera.Arqueros;
                     this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}");
@@ -134,13 +140,15 @@ namespace Forms
                 }
             }
         }
+
+        //Verifica si se hizo click en Tanque, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormTanque formTanque = new FormTanque();
             this.PersonajeResultCancel(formTanque);
             if (formTanque.DialogResult == DialogResult.OK)
             {
-                if(!equalsLista(formTanque.Tanques))
+                if (!equalsLista(formTanque.Tanques))
                 {
                     this.coleccion += formTanque.Tanques;
                     this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
@@ -148,6 +156,8 @@ namespace Forms
                 }
             }
         }
+
+        //Si le da a boton Guardar, agrega los personajes a un nueva lista pero Parseados, para que al momento de serealizar, se serializen con sus respectivos atributos
         private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
@@ -183,6 +193,13 @@ namespace Forms
                 MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Genero un metodo que muestra algun formulario y si presiono Cancelar en el fomrulario, cierra el formulario
         private void PersonajeResultCancel(Form formulario)
         {
             formulario.ShowDialog();
@@ -195,6 +212,7 @@ namespace Forms
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        //Modifico el personaje sleccionado reutilizando codigo, volviendo a abrir el formulario necesario
         private void buttonModificar_Click(object sender, EventArgs e)
         {
             if (devolverMensaje())
@@ -207,7 +225,7 @@ namespace Forms
                     case Arquero:
                         FormArquera formArquera = new FormArquera();
                         this.PersonajeResultCancel(formArquera);
-                        if (formArquera.DialogResult == DialogResult.OK)
+                        if (formArquera.DialogResult == DialogResult.OK && !equalsLista(formArquera.Arqueros))
                         {
                             this.buttonEliminar.PerformClick();
                             this.coleccion += formArquera.Arqueros;
@@ -219,7 +237,7 @@ namespace Forms
                     case Mago:
                         FormMago formMago = new FormMago();
                         this.PersonajeResultCancel(formMago);
-                        if (formMago.DialogResult == DialogResult.OK)
+                        if (formMago.DialogResult == DialogResult.OK && !equalsLista(formMago.Magos))
                         {
                             this.buttonEliminar.PerformClick();
                             this.coleccion += formMago.Magos;
@@ -231,7 +249,7 @@ namespace Forms
                     case Tanque:
                         FormTanque formTanque = new FormTanque();
                         this.PersonajeResultCancel(formTanque);
-                        if (formTanque.DialogResult == DialogResult.OK)
+                        if (formTanque.DialogResult == DialogResult.OK && !equalsLista(formTanque.Tanques))
                         {
                             this.buttonEliminar.PerformClick();
                             this.coleccion += formTanque.Tanques;
@@ -242,6 +260,8 @@ namespace Forms
                 }
             }
         }
+
+        //Genero un metodo que muestra todos los datos del personaje, llamando al Form MostrarDatos
         private void buttonMostrarDatos_Click(object sender, EventArgs e)
         {
             if (devolverMensaje())
@@ -251,6 +271,8 @@ namespace Forms
                 mostrarDatos.Show();
             }
         }
+
+        //Elimina el personaje de la lista dependiendo el index seleccionado utilizando sobrecarga -
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             if (devolverMensaje())
@@ -261,6 +283,8 @@ namespace Forms
                 this.coleccion = this.coleccion - personajeAEliminar;
             }
         }
+
+        //Gebero metodo que si la lista esta vacia o no seleccione nada, me muestre un mensaje
         public bool devolverMensaje()
         {
             bool estado = false;
@@ -281,6 +305,7 @@ namespace Forms
             return estado;
         }
 
+        //Me pregunta si estoy seguro si deseo cerrar el formulario
         private void Formulario1_FormClosing(object sender, FormClosingEventArgs e)
         {
             DialogResult result = MessageBox.Show("¿Desea salir de la Aplicacion?", "Atencion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

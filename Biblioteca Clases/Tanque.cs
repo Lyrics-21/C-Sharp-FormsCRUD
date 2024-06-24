@@ -49,6 +49,8 @@ namespace Libreria_De_Clases
         {
 
         }
+
+        //Sobreescribo Tostring
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
@@ -57,6 +59,8 @@ namespace Libreria_De_Clases
             sb.AppendLine($"Fuerza: {this.Fuerza}");
             return sb.ToString();
         }
+
+        //Sobrecarga operados == que verifica si el nombre y estilo del personaje son iguales
         public static bool operator ==(Tanque tanque1, Tanque tanque2)
         {
             if (tanque1 is null || tanque2 is null)
@@ -65,12 +69,26 @@ namespace Libreria_De_Clases
             }
             else
             {
-                return (tanque1.TipoArmadura == tanque2.TipoArmadura && tanque1.Nombre == tanque2.Nombre);
+                return (tanque1.Nombre == tanque2.Nombre);
             }
         }
+        //De lo contrario false
         public static bool operator !=(Tanque tanque1, Tanque tanque2)
         {
             return !(tanque1 == tanque2);
+        }
+
+        //Sobreescribo Equals usando el == y si el objeto es distitno a null, y es arquero, y ese arquero es igual al this retorna true
+        public override bool Equals(object? obj)
+        {
+            if (obj is Tanque && obj != null)
+            {
+                return ((Tanque)obj) == this;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

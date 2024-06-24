@@ -71,7 +71,7 @@ namespace Libreria_De_Clases
             }
             else
             {
-                return (arquero1.TipoArco == arquero2.TipoArco && arquero1.Nombre == arquero2.Nombre);
+                return (arquero1.Nombre == arquero2.Nombre);
             }
         }
         //De lo contrario false
@@ -79,6 +79,7 @@ namespace Libreria_De_Clases
         {
             return !(arquero1 == arquero2);
         }
+
         //Sobreescribo Equals usando el == y si el objeto es distitno a null, y es arquero, y ese arquero es igual al this retorna true
         public override bool Equals(object? obj)
         {

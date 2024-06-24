@@ -34,10 +34,7 @@ namespace Libreria_De_Clases
         //Sobrecarga operador + agrega a el personaje a la lista de personaje siempre y cuando este no este en la lista y devuelve esa lista
         public static Coleccion operator +(Coleccion co, Personaje personaje)
         {
-            if (!co.listPersonajes.Any(c => c == personaje))
-            {
-                co.listPersonajes.Add(personaje);
-            }
+            co.listPersonajes.Add(personaje);
             return co;
         }
 

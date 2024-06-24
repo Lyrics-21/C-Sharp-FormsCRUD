@@ -25,3 +25,17 @@ namespace Forms
         }
     }
 }
+
+
+
+//NO genera método abstracto.
+//Faltan sobrecargas de operadores implicit/explicit en clases derivadas
+//? Poder elegir la ubicación del archivo para la serialización / deserialización
+//(utilizando controles de tipo OpenFileDialog y SaveFileDialog)
+//? Crear un archivo usuarios.log que agregue toda la información del usuario que ha
+//accedido a la aplicación, informando la fecha de acceso con formato ‘año-mes-día
+//hora:minutos: segundos’.
+//? Realizar un ‘visualizador’ para el log del punto anterior.
+//Agregar la posibilidad de poder ordenar los objetos de la colección con, al menos, dos criterios
+//distintos de ordenamiento. Cada criterio de ordenación deberá incluir el modo ascendente y
+//descendente.

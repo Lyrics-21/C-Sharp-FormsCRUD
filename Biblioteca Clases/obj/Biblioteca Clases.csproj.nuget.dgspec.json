@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Biblioteca Clases.csproj": {}
+    "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Biblioteca Clases.csproj": {
+    "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Biblioteca Clases.csproj",
+        "projectUniqueName": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj",
         "projectName": "Biblioteca Clases",
-        "projectPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\Biblioteca Clases.csproj",
+        "projectPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj",
         "packagesPath": "C:\\Users\\Lyrics\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial Elian Viana\\Biblioteca Clases\\obj\\",
+        "outputPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Lyrics\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +61,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

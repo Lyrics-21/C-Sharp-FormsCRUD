@@ -91,11 +91,11 @@ namespace Forms
         public Arquero Arqueros
         {
             get { return this.arqueros; }
-        }  
+        }
         public Tanque Tanques
         {
             get { return this.tanques; }
-        }    
+        }
         public Mago Magos
         {
             get { return this.magos; }
@@ -109,7 +109,7 @@ namespace Forms
                 resultado = 0;
                 retorno = true;
             }
-            if (int.TryParse(textBox.Text, out resultado) && resultado >= 0&& textBox.Text.Length <= 6 && this.textBoxNombre.Text.Length > 0)
+            if (int.TryParse(textBox.Text, out resultado) && resultado >= 0 && textBox.Text.Length <= 6 && this.textBoxNombre.Text.Length > 0)
             {
                 retorno = true;
             }
