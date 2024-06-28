@@ -20,6 +20,8 @@ namespace Forms
 {
     public partial class Formulario1 : Form
     {
+        #region Atributos
+
         private string datoNombre;
         private string pathPersonajes;
 
@@ -28,6 +30,10 @@ namespace Forms
 
         private string pathUsuarios;
         private string datosUsuarios;
+
+        #endregion
+
+        #region Constructor
 
         List<object> listaPersonajeParseados = new List<object>();
         public Formulario1()
@@ -39,6 +45,10 @@ namespace Forms
 
             this.coleccion = new Coleccion();
         }
+
+        #endregion
+
+        #region LoadForm
         private void Formulario1_Load(object sender, EventArgs e)
         {
             datoNombre = ObtenerDatos.DatoNombre;
@@ -46,22 +56,24 @@ namespace Forms
             this.toolStripStatusLabel1.Text = $"{datoNombre} - Logeado - {dateTime.Date.ToString("dd/MM/yyyy")}";
 
             this.pathUsuarios = Path.Combine(Directory.GetCurrentDirectory(), "Usuarios.log");
-            this.datosUsuarios += $"{ObtenerDatos.DatosLogin}Fecha: { dateTime.ToString()}\n";
+            this.datosUsuarios += $"{ObtenerDatos.DatosLogin}Fecha: {dateTime.ToString()}\n";
 
-            if (File.Exists(this.pathPersonajes))
+            // Guardar el mensaje en el archivo .log
+            using (StreamWriter sw = new StreamWriter(pathUsuarios, true))
             {
-                // Guardar el mensaje en el archivo .log
-                using (StreamWriter sw = new StreamWriter(pathUsuarios, true))
-                {
-                    sw.WriteLine(datosUsuarios);
-                }
-
+                sw.WriteLine(datosUsuarios);
+            }
+            try
+            {
                 using (StreamReader sr = new StreamReader(this.pathUsuarios))
                 {
-                    this.datosUsuarios = sr.ReadToEnd(); 
+                    this.datosUsuarios = sr.ReadToEnd();
                 }
             }
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             try
             {
                 this.pathPersonajes = Path.Combine(Directory.GetCurrentDirectory(), "personajes.json");
@@ -94,10 +106,7 @@ namespace Forms
                                     break;
                             }
                         }
-                        foreach (Personaje personaje in this.coleccion.listPersonajes)
-                        {
-                            this.listBoxPersonajes.Items.Add($"{personaje.Nombre} - {personaje.Estilo} - Nivel: {personaje.Nivel}");
-                        }
+                        this.añadirPersonajeALista(this.coleccion.listPersonajes);
                     }
                 }
             }
@@ -111,24 +120,11 @@ namespace Forms
             }
         }
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #endregion
 
-        //Creo un metodo que utiliza el Equals de Personaje o de sus derivados
-        public bool equalsLista(Personaje personaje)
-        {
-            bool estado = false;
-            foreach (Personaje item in this.coleccion.listPersonajes)
-            {
-                if (item.Equals(personaje))
-                {
-                    estado = true;
-                    MessageBox.Show("Este Personaje ya existe en la lista", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.None);
-                    break;
-                }
-            }
-            return estado;
-        }
+        #region Botones
+
+        #region Personajes
 
         //Verifica si se hizo click en Mago, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void magoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -178,60 +174,9 @@ namespace Forms
             }
         }
 
-        //Si le da a boton Guardar, agrega los personajes a un nueva lista pero Parseados, para que al momento de serealizar, se serializen con sus respectivos atributos
-        private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                JsonSerializerOptions options = new JsonSerializerOptions()
-                {
-                    WriteIndented = true,
-                };
-                foreach (Personaje personajes in this.coleccion.listPersonajes)
-                {
-                    if (personajes is Arquero)
-                    {
-                        listaPersonajeParseados.Add((Arquero)personajes);
-                    }
-                    else if (personajes is Tanque)
-                    {
-                        listaPersonajeParseados.Add((Tanque)personajes);
-                    }
-                    else if (personajes is Mago)
-                    {
-                        listaPersonajeParseados.Add((Mago)personajes);
-                    }
-                }
-                string archivoJson = JsonSerializer.Serialize(listaPersonajeParseados, options);
-                File.WriteAllText(this.pathPersonajes, archivoJson);
-            }
-            catch (JsonException ex)
-            {
-                MessageBox.Show($"Ocurrio un error al serializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+        #endregion
 
-        private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //Genero un metodo que muestra algun formulario y si presiono Cancelar en el fomrulario, cierra el formulario
-        private void PersonajeResultCancel(Form formulario)
-        {
-            formulario.ShowDialog();
-            if (formulario.DialogResult == DialogResult.Cancel)
-            {
-                formulario.Close();
-            }
-        }
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #region Modificar
 
         //Modifico el personaje sleccionado reutilizando codigo, volviendo a abrir el formulario necesario
         private void buttonModificar_Click(object sender, EventArgs e)
@@ -282,12 +227,24 @@ namespace Forms
             }
         }
 
-        //Muestra todos los usuarios logueados, llamando al Form Usuarios
-        private void usuariosLogeadosToolStripMenuItem_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Eliminar
+        //Elimina el personaje de la lista dependiendo el index seleccionado utilizando sobrecarga -
+        private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            Usuarios usuarios = new Usuarios(this.datosUsuarios);
-            usuarios.Show();
+            if (devolverMensaje())
+            {
+                int posicion = this.listBoxPersonajes.SelectedIndex;
+                this.listBoxPersonajes.Items.RemoveAt(posicion);
+                Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion];
+                this.coleccion = this.coleccion - personajeAEliminar;
+            }
         }
+
+        #endregion
+
+        #region Mostrar Datos
 
         //Muestra todos los datos del personaje, llamando al Form MostrarDatos
         private void buttonMostrarDatos_Click(object sender, EventArgs e)
@@ -300,17 +257,85 @@ namespace Forms
             }
         }
 
-        //Elimina el personaje de la lista dependiendo el index seleccionado utilizando sobrecarga -
-        private void buttonEliminar_Click(object sender, EventArgs e)
+        #endregion
+
+        #region Tools
+
+        //Si le da a boton Guardar, agrega los personajes a un nueva lista pero Parseados, para que al momento de serealizar, se serializen con sus respectivos atributos
+        private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (devolverMensaje())
+            try
             {
-                int posicion = this.listBoxPersonajes.SelectedIndex;
-                this.listBoxPersonajes.Items.RemoveAt(posicion);
-                Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion];
-                this.coleccion = this.coleccion - personajeAEliminar;
+                JsonSerializerOptions options = new JsonSerializerOptions()
+                {
+                    WriteIndented = true,
+                };
+                foreach (Personaje personajes in this.coleccion.listPersonajes)
+                {
+                    if (personajes is Arquero)
+                    {
+                        listaPersonajeParseados.Add((Arquero)personajes);
+                    }
+                    else if (personajes is Tanque)
+                    {
+                        listaPersonajeParseados.Add((Tanque)personajes);
+                    }
+                    else if (personajes is Mago)
+                    {
+                        listaPersonajeParseados.Add((Mago)personajes);
+                    }
+                }
+                string archivoJson = JsonSerializer.Serialize(listaPersonajeParseados, options);
+                File.WriteAllText(this.pathPersonajes, archivoJson);
+            }
+            catch (JsonException ex)
+            {
+                MessageBox.Show($"Ocurrio un error al serializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //Muestra todos los usuarios logueados, llamando al Form Usuarios
+        private void usuariosLogeadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Usuarios usuarios = new Usuarios(this.datosUsuarios);
+            usuarios.Show();
+        }
+
+        //Ordena los items de forma ascendento o descendente dependiendo el nivel o daño
+        private void nivelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ordenarPersonajes(this.coleccion.listPersonajes, "Nivel", false);
+        }
+
+        private void dañoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.ordenarPersonajes(this.coleccion.listPersonajes, "Daño", false);
+        }
+
+        private void nivelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.ordenarPersonajes(this.coleccion.listPersonajes, "Nivel", true);
+        }
+
+        private void dañoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.ordenarPersonajes(this.coleccion.listPersonajes, "Daño", true);
+        }
+
+        #endregion
+
+        #endregion
+
+        #region Metodos
 
         //Gebero metodo que si la lista esta vacia o no seleccione nada, me muestre un mensaje
         public bool devolverMensaje()
@@ -333,6 +358,75 @@ namespace Forms
             return estado;
         }
 
+        //Creo un metodo que utiliza el Equals de Personaje o de sus derivados
+        public bool equalsLista(Personaje personaje)
+        {
+            bool estado = false;
+            foreach (Personaje item in this.coleccion.listPersonajes)
+            {
+                if (item.Equals(personaje))
+                {
+                    estado = true;
+                    MessageBox.Show("Este Personaje ya existe en la lista", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.None);
+                    break;
+                }
+            }
+            return estado;
+        }
+
+        //Genero un metodo que muestra algun formulario y si presiono Cancelar en el fomrulario, cierra el formulario
+        private void PersonajeResultCancel(Form formulario)
+        {
+            formulario.ShowDialog();
+            if (formulario.DialogResult == DialogResult.Cancel)
+            {
+                formulario.Close();
+            }
+        }
+
+        //Genero metodo que recorre una lista de personajes y los añade a la listBox del form principal
+        public void añadirPersonajeALista(List<Personaje> listaPersonajes)
+        {
+            foreach (Personaje personaje in listaPersonajes)
+            {
+                this.listBoxPersonajes.Items.Add($"{personaje.Nombre} - {personaje.Estilo} - Nivel: {personaje.Nivel}");
+            }
+        }
+
+        //Genero metodo que ordena de forma ascendente o descendente una lista y la agrega al forms
+        public void ordenarPersonajes(List<Personaje> listaPersonaje, string atributo, bool orden)
+        {
+            this.listBoxPersonajes.Items.Clear();
+
+            if (atributo == "Nivel")
+            {
+                if (!orden)
+                {
+                    listaPersonaje.Sort((a, b) => a.Nivel.CompareTo(b.Nivel));
+                }
+                if (orden)
+                {
+                    listaPersonaje.Sort((a, b) => b.Nivel.CompareTo(a.Nivel));
+                }
+            }
+            else if (atributo == "Daño")
+            {
+                if (!orden)
+                {
+                    listaPersonaje.Sort((a, b) => a.Daño.CompareTo(b.Daño));
+                }
+                if (orden)
+                {
+                    listaPersonaje.Sort((a, b) => b.Daño.CompareTo(a.Daño));
+                }
+            }
+
+            this.añadirPersonajeALista(this.coleccion.listPersonajes);
+        }
+
+        #endregion
+
+        #region Cerrar
         //Me pregunta si estoy seguro si deseo cerrar el formulario
         private void Formulario1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -342,5 +436,7 @@ namespace Forms
                 e.Cancel = true;
             }
         }
+
+        #endregion
     }
 }

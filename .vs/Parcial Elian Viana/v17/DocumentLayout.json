@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial-elian-viana\\login\\formulario1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|solutionrelative:login\\formulario1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial-elian-viana\\login\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|solutionrelative:login\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|c:\\users\\lyrics\\desktop\\utn\\programacion 2\\parcial-elian-viana\\login\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}|Login\\Forms.csproj|solutionrelative:login\\formlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,21 +14,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\Program.cs",
-              "RelativeDocumentMoniker": "Login\\Program.cs",
-              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\Program.cs",
-              "RelativeToolTip": "Login\\Program.cs",
-              "ViewState": "AQIAAA0AAAAAAAAAAAAgwCcAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T20:38:34.724Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -44,14 +27,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Formulario1.cs",
-              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\Formulario1.cs",
-              "RelativeDocumentMoniker": "Login\\Formulario1.cs",
-              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\Formulario1.cs",
-              "RelativeToolTip": "Login\\Formulario1.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAAgwDsAAAARAAAA",
+              "Title": "FormLogin.cs",
+              "DocumentMoniker": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\FormLogin.cs",
+              "RelativeDocumentMoniker": "Login\\FormLogin.cs",
+              "ToolTip": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\FormLogin.cs",
+              "RelativeToolTip": "Login\\FormLogin.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAABZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-28T19:40:08.632Z",
+              "WhenOpened": "2024-06-28T23:15:39.106Z",
               "EditorCaption": ""
             }
           ]

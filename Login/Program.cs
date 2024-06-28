@@ -33,10 +33,4 @@ namespace Forms
 //Faltan sobrecargas de operadores implicit/explicit en clases derivadas
 
 //? Poder elegir la ubicación del archivo para la serialización / deserialización
-
 //(utilizando controles de tipo OpenFileDialog y SaveFileDialog)
-
-//Agregar la posibilidad de poder ordenar los objetos de la colección con, al menos, dos criterios
-
-//distintos de ordenamiento. Cada criterio de ordenación deberá incluir el modo ascendente y
-//descendente.
