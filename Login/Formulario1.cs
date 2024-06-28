@@ -26,6 +26,9 @@ namespace Forms
         private Coleccion coleccion;
         private int itemSeleccionado;
 
+        private string pathUsuarios;
+        private string datosUsuarios;
+
         List<object> listaPersonajeParseados = new List<object>();
         public Formulario1()
         {
@@ -38,13 +41,31 @@ namespace Forms
         }
         private void Formulario1_Load(object sender, EventArgs e)
         {
-            datoNombre = ObtenerDato.DatoNombre;
+            datoNombre = ObtenerDatos.DatoNombre;
             DateTime dateTime = DateTime.Now;
             this.toolStripStatusLabel1.Text = $"{datoNombre} - Logeado - {dateTime.Date.ToString("dd/MM/yyyy")}";
+
+            this.pathUsuarios = Path.Combine(Directory.GetCurrentDirectory(), "Usuarios.log");
+            this.datosUsuarios += $"{ObtenerDatos.DatosLogin}Fecha: { dateTime.ToString()}\n";
+
+            if (File.Exists(this.pathPersonajes))
+            {
+                // Guardar el mensaje en el archivo .log
+                using (StreamWriter sw = new StreamWriter(pathUsuarios, true))
+                {
+                    sw.WriteLine(datosUsuarios);
+                }
+
+                using (StreamReader sr = new StreamReader(this.pathUsuarios))
+                {
+                    this.datosUsuarios = sr.ReadToEnd(); 
+                }
+            }
 
             try
             {
                 this.pathPersonajes = Path.Combine(Directory.GetCurrentDirectory(), "personajes.json");
+
                 if (File.Exists(this.pathPersonajes))
                 {
                     using (StreamReader sr = new StreamReader(this.pathPersonajes))
@@ -261,7 +282,14 @@ namespace Forms
             }
         }
 
-        //Genero un metodo que muestra todos los datos del personaje, llamando al Form MostrarDatos
+        //Muestra todos los usuarios logueados, llamando al Form Usuarios
+        private void usuariosLogeadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Usuarios usuarios = new Usuarios(this.datosUsuarios);
+            usuarios.Show();
+        }
+
+        //Muestra todos los datos del personaje, llamando al Form MostrarDatos
         private void buttonMostrarDatos_Click(object sender, EventArgs e)
         {
             if (devolverMensaje())

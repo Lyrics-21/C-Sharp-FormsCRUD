@@ -48,3 +48,31 @@ C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Login\obj\Debug\n
 C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Login\obj\Debug\net6.0-windows\Forms.FormMago.resources
 C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Login\obj\Debug\net6.0-windows\Forms.FormTanque.resources
 C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial Elian Viana\Login\obj\Debug\net6.0-windows\Forms.MostrarDatos.resources
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\bin\Debug\net6.0-windows\Forms.exe
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\bin\Debug\net6.0-windows\Forms.deps.json
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\bin\Debug\net6.0-windows\Forms.runtimeconfig.json
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\bin\Debug\net6.0-windows\Forms.dll
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\bin\Debug\net6.0-windows\Forms.pdb
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\bin\Debug\net6.0-windows\Biblioteca Clases.dll
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\bin\Debug\net6.0-windows\Biblioteca Clases.pdb
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.csproj.AssemblyReference.cache
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.FormLogin.resources
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.FormPersonaje.resources
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.Formulario1.resources
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.MostrarDatos.resources
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.FormArquera.resources
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.FormMago.resources
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.FormTanque.resources
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.csproj.GenerateResource.cache
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.AssemblyInfoInputs.cache
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.AssemblyInfo.cs
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.csproj.CoreCompileInputs.cache
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.sourcelink.json
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.csproj.Up2Date
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.dll
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\refint\Forms.dll
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.pdb
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.genruntimeconfig.cache
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\ref\Forms.dll
+C:\Users\Lyrics\Desktop\UTN\Programacion 2\Parcial-Elian-Viana\Login\obj\Debug\net6.0-windows\Forms.Usuarios.resources

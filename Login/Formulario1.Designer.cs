@@ -39,6 +39,7 @@
             tanqueToolStripMenuItem = new ToolStripMenuItem();
             guardarPersonajesToolStripMenuItem = new ToolStripMenuItem();
             guardarComoToolStripMenuItem = new ToolStripMenuItem();
+            usuariosLogeadosToolStripMenuItem = new ToolStripMenuItem();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
             listBoxPersonajes = new ListBox();
@@ -80,7 +81,7 @@
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.ControlDark;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { agregarToolStripMenuItem, usuariosLogeadosToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(599, 27);
@@ -137,6 +138,14 @@
             guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
             guardarComoToolStripMenuItem.Size = new Size(189, 24);
             guardarComoToolStripMenuItem.Text = "Guardar Como";
+            // 
+            // usuariosLogeadosToolStripMenuItem
+            // 
+            usuariosLogeadosToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            usuariosLogeadosToolStripMenuItem.Name = "usuariosLogeadosToolStripMenuItem";
+            usuariosLogeadosToolStripMenuItem.Size = new Size(133, 23);
+            usuariosLogeadosToolStripMenuItem.Text = "Usuarios logeados";
+            usuariosLogeadosToolStripMenuItem.Click += usuariosLogeadosToolStripMenuItem_Click;
             // 
             // toolStripStatusLabel1
             // 
@@ -217,5 +226,6 @@
         private ListBox listBoxPersonajes;
         private Button buttonMostrarDatos;
         private ToolStripMenuItem guardarComoToolStripMenuItem;
+        private ToolStripMenuItem usuariosLogeadosToolStripMenuItem;
     }
 }

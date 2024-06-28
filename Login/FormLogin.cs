@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Forms
 {
     public partial class FormLogin : Form
@@ -40,7 +42,16 @@ namespace Forms
                 if (this.textBox1.Text == dato.correo && this.textBox2.Text == dato.clave || true)
                 {
                     this.DialogResult = DialogResult.OK;
-                    ObtenerDato.DatoNombre = dato.nombre;
+                    ObtenerDatos.DatoNombre = dato.nombre;
+
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append($"Usuario logueado:\n");
+                    sb.Append($"Tipo: {dato.perfil}\n");
+                    sb.Append($"Nombre: {dato.nombre} {dato.apellido}\n");
+                    sb.Append($"Correo: {dato.correo}\n");
+                    sb.Append($"Legajo: {dato.legajo}\n");
+                    ObtenerDatos.DatosLogin = sb.ToString();
+
                 }
                 else if (this.textBox1.Text.Length <= 0 || this.textBox2.Text.Length <= 0)
                 {
@@ -62,9 +73,10 @@ namespace Forms
             public string perfil { get; set; }
         }
 
-        public static class ObtenerDato
+        public static class ObtenerDatos
         {
             public static string DatoNombre { get; set; }
+            public static string DatosLogin { get; set; }
         }
 
     }
