@@ -90,5 +90,15 @@ namespace Libreria_De_Clases
                 return false;
             }
         }
+
+        //Sobrecarga operador Implicit Explicit
+        public static implicit operator string(Tanque tanque)
+        {
+            return tanque.Nombre;
+        }
+        public static explicit operator int(Tanque tanque)
+        {
+            return tanque.Nivel;
+        }
     }
 }

@@ -22,14 +22,14 @@ namespace Forms
     {
         #region Atributos
 
-        private string datoNombre;
-        private string pathPersonajes;
+        private string datoNombre; //Este atributo lo utilizo para mostrar el nombre del usuario logeado en el toolstrip
+        private string pathPersonajes; //Este atributo guarda el path del archivo json para guardar a los personajes
 
-        private Coleccion coleccion;
-        private int itemSeleccionado;
+        private Coleccion coleccion; //Este atributo guarda la collecion de personajes
+        private int itemSeleccionado; //Este atributo guarda el item seleccionado de la listbox
 
-        private string pathUsuarios;
-        private string datosUsuarios;
+        private string pathUsuarios; //Este atributo guarda el path del archivo log de los usuarios logeados
+        private string datosUsuarios; //Este atributo guarda los datos de los usuarios logueados
 
         #endregion
 
@@ -39,9 +39,9 @@ namespace Forms
         public Formulario1()
         {
             InitializeComponent();
-            this.FormBorderStyle = FormBorderStyle.FixedSingle;
-            this.CenterToScreen();
-            this.MaximizeBox = false;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle; //Con esto evito que se pueda cambiar el tamaño del formulario
+            this.CenterToScreen(); //Lo centro en pantalla
+            this.MaximizeBox = false; //No dejo que se pueda maximizar
 
             this.coleccion = new Coleccion();
         }
@@ -113,6 +113,7 @@ namespace Forms
                 if (!EqualsLista(formMago.Magos))
                 {
                     this.coleccion += formMago.Magos;
+
                     this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
                     formMago.Close();
                 }
@@ -145,6 +146,7 @@ namespace Forms
                 if (!EqualsLista(formTanque.Tanques))
                 {
                     this.coleccion += formTanque.Tanques;
+                    //Agrego un nuevo personaje a la lista
                     this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
                     formTanque.Close();
                 }
@@ -161,18 +163,19 @@ namespace Forms
             if (DevolverMensaje())
             {
                 int index = this.listBoxPersonajes.SelectedIndex;
-                Personaje personajeAModificar = this.coleccion.listPersonajes[index];
+                Personaje personajeAModificar = this.coleccion.listPersonajes[index]; //Guardo el personaje seleccionado
 
+                //Depende que personaje sea le modifico los atributos
                 switch (personajeAModificar)
                 {
                     case Arquero:
                         FormArquera formArquera = new FormArquera();
-                        this.PersonajeResultCancel(formArquera);
-                        if (formArquera.DialogResult == DialogResult.OK && !EqualsLista(formArquera.Arqueros))
+                        this.PersonajeResultCancel(formArquera); //Si el DialogResult es Cancel cierra el form
+                        if (formArquera.DialogResult == DialogResult.OK && !EqualsLista(formArquera.Arqueros)) //Si el DialogResult es OK muestra el form
                         {
-                            this.buttonEliminar.PerformClick();
-                            this.coleccion += formArquera.Arqueros;
-                            this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo}");
+                            this.buttonEliminar.PerformClick(); //Simulo un click para borrar el personaje de la lista
+                            this.coleccion += formArquera.Arqueros; //Agrego a la coleccion el nuevo personaje modificado
+                            this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo}"); //Agrego a la listBox el nuevo personaje modificado
                             formArquera.Close();
                         }
                         break;
@@ -213,9 +216,9 @@ namespace Forms
             if (DevolverMensaje())
             {
                 int posicion = this.listBoxPersonajes.SelectedIndex;
-                this.listBoxPersonajes.Items.RemoveAt(posicion);
-                Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion];
-                this.coleccion = this.coleccion - personajeAEliminar;
+                this.listBoxPersonajes.Items.RemoveAt(posicion); // Remuevo de la listbox el personaje seleccionado con el index
+                Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion]; //Guardo el personaje seleccionado
+                this.coleccion -= personajeAEliminar; //Borro el personaje con sobrecarga -
             }
         }
 
@@ -226,7 +229,7 @@ namespace Forms
         //Muestra todos los datos del personaje, llamando al Form MostrarDatos
         private void buttonMostrarDatos_Click(object sender, EventArgs e)
         {
-            if (DevolverMensaje())
+            if (DevolverMensaje()) //Si no seleccione nada o no hay nada en la lista es false
             {
                 itemSeleccionado = this.listBoxPersonajes.SelectedIndex;
                 MostrarDatos mostrarDatos = new MostrarDatos(this.coleccion.listPersonajes, itemSeleccionado);
@@ -238,13 +241,13 @@ namespace Forms
 
         #region Tools
 
-        //Si le da a boton Guardar, agrega los personajes a un nueva lista pero Parseados, para que al momento de serealizar, se serializen con sus respectivos atributos
+        //Guardo los personajes en un archivo json
         private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
-                string archivoJson = this.Serializar(this.coleccion.listPersonajes);
-                File.WriteAllText(this.pathPersonajes, archivoJson);
+                string archivoJson = this.Serializar(this.coleccion.listPersonajes); //Llamo a Serializar para generar un atributo json con la lista serializada
+                File.WriteAllText(this.pathPersonajes, archivoJson); //Guardo el atributo anterior en el path
             }
             catch (JsonException ex)
             {
@@ -265,7 +268,7 @@ namespace Forms
                 try
                 {
                     string archivoJson = this.Serializar(this.coleccion.listPersonajes);
-                    File.WriteAllText(saveFileDialog.FileName + ".json", archivoJson);
+                    File.WriteAllText(saveFileDialog.FileName + ".json", archivoJson); //Lo mismo que en Guardar pero con un path a eleccion
                 }
                 catch (Exception ex)
                 {
@@ -274,18 +277,21 @@ namespace Forms
             }
         }
         
-        //Abro un archivo desde el openfile
+        //Abro un archivo desde el openFile y lo deserealizo
         private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON files (*.json)|*.json";
+            openFileDialog.Filter = "JSON files (*.json)|*.json"; //Filtro el openFile para que solo me muestre archivos Json
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
+                //Al momento de abir un nuevo archivo debo resetear todas las listas
                 this.coleccion.listPersonajes.Clear();
                 this.listBoxPersonajes.Items.Clear();
                 try
                 {
                     this.Deserealizar(openFileDialog.FileName);
+
+                    //Cambio el path principal para que sea el del archivo sleccionado y no el por defecto en bin
                     this.pathPersonajes = openFileDialog.FileName;
                 }
                 catch (Exception ex)
@@ -376,12 +382,15 @@ namespace Forms
             }
         }
 
-        //Genero metodo que recorre una lista de personajes y los añade a la listBox del form principal
+        //Genero metodo que recorre una lista de personajes y los añade a todos a la listBox del form principal
         public void AñadirPersonajeALista(List<Personaje> listaPersonajes)
         {
             foreach (Personaje personaje in listaPersonajes)
             {
-                this.listBoxPersonajes.Items.Add($"{personaje.Nombre} - {personaje.Estilo} - Nivel: {personaje.Nivel}");
+                //Utilizo implicit/explicit
+                string nombre = personaje;
+                int nivel = (int)personaje;
+                this.listBoxPersonajes.Items.Add($"{nombre} - {personaje.Estilo} - Nivel: {nivel}");
             }
         }
 
@@ -394,10 +403,14 @@ namespace Forms
             {
                 if (!orden)
                 {
+                    //Si el orden es false lo ordena de forma ascendente
+                    //CompareTo devuelve 0 si a = b, -1 si a < b y 1 si b > a
+                    //Sort si tiene -1 lo ordena de forma ascendente primero a despues b
                     this.coleccion.listPersonajes.Sort((a, b) => a.Nivel.CompareTo(b.Nivel));
                 }
                 if (orden)
                 {
+                    //Si el orden es true lo ordena de forma descendente
                     this.coleccion.listPersonajes.Sort((a, b) => b.Nivel.CompareTo(a.Nivel));
                 }
             }

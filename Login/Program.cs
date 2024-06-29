@@ -16,7 +16,7 @@ namespace Forms
             ApplicationConfiguration.Initialize();
 
             FormLogin formLogin = new FormLogin();
-            formLogin.ShowDialog();
+                formLogin.ShowDialog();
             if (formLogin.DialogResult == DialogResult.OK)
             {
                 formLogin.Close();
@@ -29,4 +29,3 @@ namespace Forms
 
 
 //NO genera método abstracto.
-//Faltan sobrecargas de operadores implicit/explicit en clases derivadas

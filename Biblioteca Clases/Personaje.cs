@@ -82,5 +82,15 @@ namespace Libreria_De_Clases
                 return false;
             }
         }
+
+        //Sobrecarga operador Implicit Explicit
+        public static implicit operator string(Personaje personaje)
+        {
+            return personaje.Nombre;
+        }
+        public static explicit operator int(Personaje personaje)
+        {
+            return personaje.Nivel;
+        }
     }
 }
