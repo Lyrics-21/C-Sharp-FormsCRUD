@@ -51,6 +51,7 @@
             statusStrip1 = new StatusStrip();
             listBoxPersonajes = new ListBox();
             buttonMostrarDatos = new Button();
+            abrirToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -98,7 +99,7 @@
             // agregarToolStripMenuItem
             // 
             agregarToolStripMenuItem.BackColor = SystemColors.ControlDark;
-            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarPersonajeToolStripMenuItem, guardarPersonajesToolStripMenuItem, guardarComoToolStripMenuItem });
+            agregarToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarPersonajeToolStripMenuItem, guardarPersonajesToolStripMenuItem, guardarComoToolStripMenuItem, abrirToolStripMenuItem });
             agregarToolStripMenuItem.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             agregarToolStripMenuItem.MergeIndex = 1;
             agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
@@ -241,6 +242,13 @@
             buttonMostrarDatos.UseVisualStyleBackColor = true;
             buttonMostrarDatos.Click += buttonMostrarDatos_Click;
             // 
+            // abrirToolStripMenuItem
+            // 
+            abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            abrirToolStripMenuItem.Size = new Size(189, 24);
+            abrirToolStripMenuItem.Text = "Abrir";
+            abrirToolStripMenuItem.Click += abrirToolStripMenuItem_Click;
+            // 
             // Formulario1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -292,5 +300,6 @@
         private ToolStripMenuItem nivelToolStripMenuItem1;
         private ToolStripMenuItem dañoToolStripMenuItem;
         private ToolStripMenuItem dañoToolStripMenuItem1;
+        private ToolStripMenuItem abrirToolStripMenuItem;
     }
 }

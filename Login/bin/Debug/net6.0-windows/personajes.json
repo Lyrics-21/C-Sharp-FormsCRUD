@@ -1,14 +1,5 @@
 [
   {
-    "TipoArco": 2,
-    "CantidadFlechas": 5,
-    "Vida": 6000,
-    "Nombre": "Dante",
-    "Nivel": 21,
-    "Estilo": "Arquero/a",
-    "Da\u00F1o": 100
-  },
-  {
     "TipoMagia": 3,
     "Mana": 500,
     "Vida": 2000,
@@ -16,6 +7,15 @@
     "Nivel": 60,
     "Estilo": "Mago",
     "Da\u00F1o": 5000
+  },
+  {
+    "TipoArco": 2,
+    "CantidadFlechas": 5,
+    "Vida": 6000,
+    "Nombre": "Dante",
+    "Nivel": 21,
+    "Estilo": "Arquero/a",
+    "Da\u00F1o": 100
   },
   {
     "TipoArmadura": 4,
