@@ -91,14 +91,14 @@ namespace Libreria_De_Clases
             }
         }
 
-        ////Sobrecarga operador Implicit Explicit
-        //public static implicit operator string(Mago mago)
-        //{
-        //    return mago.Nombre;
-        //}
-        //public static explicit operator int(Mago mago)
-        //{
-        //    return mago.Nivel;
-        //}
+        //Sobrecarga operador Implicit Explicit
+        public static implicit operator string(Mago mago)
+        {
+            return mago.Nombre;
+        }
+        public static explicit operator int(Mago mago)
+        {
+            return mago.Nivel;
+        }
     }
 }

@@ -166,43 +166,43 @@ namespace Forms
                 Personaje personajeAModificar = this.coleccion.listPersonajes[index]; //Guardo el personaje seleccionado
 
                 //Depende que personaje sea le modifico los atributos
-                switch (personajeAModificar)
+                if(personajeAModificar is Arquero)
                 {
-                    case Arquero:
                         FormArquera formArquera = new FormArquera();
                         this.PersonajeResultCancel(formArquera); //Si el DialogResult es Cancel cierra el form
                         if (formArquera.DialogResult == DialogResult.OK && !EqualsLista(formArquera.Arqueros)) //Si el DialogResult es OK muestra el form
                         {
                             this.buttonEliminar.PerformClick(); //Simulo un click para borrar el personaje de la lista
                             this.coleccion += formArquera.Arqueros; //Agrego a la coleccion el nuevo personaje modificado
-                            this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo}"); //Agrego a la listBox el nuevo personaje modificado
+                            this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}"); //Agrego a la listBox el nuevo personaje modificado
                             formArquera.Close();
                         }
-                        break;
+                }
 
-                    case Mago:
-                        FormMago formMago = new FormMago();
-                        this.PersonajeResultCancel(formMago);
-                        if (formMago.DialogResult == DialogResult.OK && !EqualsLista(formMago.Magos))
-                        {
-                            this.buttonEliminar.PerformClick();
-                            this.coleccion += formMago.Magos;
-                            this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo}");
-                            formMago.Close();
-                        }
-                        break;
+                else if(personajeAModificar is Mago)
+                {
+                    FormMago formMago = new FormMago();
+                    this.PersonajeResultCancel(formMago);
+                    if (formMago.DialogResult == DialogResult.OK && !EqualsLista(formMago.Magos))
+                    {
+                        this.buttonEliminar.PerformClick();
+                        this.coleccion += formMago.Magos;
+                        this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
+                        formMago.Close();
+                    }
+                }
 
-                    case Tanque:
-                        FormTanque formTanque = new FormTanque();
-                        this.PersonajeResultCancel(formTanque);
-                        if (formTanque.DialogResult == DialogResult.OK && !EqualsLista(formTanque.Tanques))
-                        {
-                            this.buttonEliminar.PerformClick();
-                            this.coleccion += formTanque.Tanques;
-                            this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo}");
-                            formTanque.Close();
-                        }
-                        break;
+                else if(personajeAModificar is Tanque)
+                {
+                    FormTanque formTanque = new FormTanque();
+                    this.PersonajeResultCancel(formTanque);
+                    if (formTanque.DialogResult == DialogResult.OK && !EqualsLista(formTanque.Tanques))
+                    {
+                        this.buttonEliminar.PerformClick();
+                        this.coleccion += formTanque.Tanques;
+                        this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
+                        formTanque.Close();
+                    }
                 }
             }
         }
@@ -388,9 +388,9 @@ namespace Forms
             foreach (Personaje personaje in listaPersonajes)
             {
                 //Utilizo implicit/explicit
-                //string nombre = personaje;
-                //int nivel = (int)personaje;
-                this.listBoxPersonajes.Items.Add($"{personaje.Nombre} - {personaje.Estilo} - Nivel: {personaje.Nivel}");
+                string nombre = personaje;
+                int nivel = (int)personaje;
+                this.listBoxPersonajes.Items.Add($"{nombre} - {personaje.Estilo} - Nivel: {nivel}");
             }
         }
 

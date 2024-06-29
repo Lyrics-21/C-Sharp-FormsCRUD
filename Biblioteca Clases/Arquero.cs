@@ -93,14 +93,14 @@ namespace Libreria_De_Clases
             }
         }
 
-        ////Sobrecarga operador Implicit Explicit
-        //public static implicit operator string(Arquero arquero)
-        //{
-        //    return arquero.Nombre;
-        //}
-        //public static explicit operator int(Arquero arquero)
-        //{
-        //    return arquero.Nivel;
-        //}
+        //Sobrecarga operador Implicit Explicit
+        public static implicit operator string(Arquero arquero)
+        {
+            return arquero.Nombre;
+        }
+        public static explicit operator int(Arquero arquero)
+        {
+            return arquero.Nivel;
+        }
     }
 }
