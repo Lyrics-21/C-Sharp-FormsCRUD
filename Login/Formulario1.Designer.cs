@@ -41,16 +41,16 @@
             guardarComoToolStripMenuItem = new ToolStripMenuItem();
             ordenarToolStripMenuItem = new ToolStripMenuItem();
             ascendenteToolStripMenuItem = new ToolStripMenuItem();
+            nivelToolStripMenuItem = new ToolStripMenuItem();
+            dañoToolStripMenuItem = new ToolStripMenuItem();
             descendenteToolStripMenuItem = new ToolStripMenuItem();
+            nivelToolStripMenuItem1 = new ToolStripMenuItem();
+            dañoToolStripMenuItem1 = new ToolStripMenuItem();
             usuariosLogeadosToolStripMenuItem = new ToolStripMenuItem();
             toolStripStatusLabel1 = new ToolStripStatusLabel();
             statusStrip1 = new StatusStrip();
             listBoxPersonajes = new ListBox();
             buttonMostrarDatos = new Button();
-            nivelToolStripMenuItem = new ToolStripMenuItem();
-            nivelToolStripMenuItem1 = new ToolStripMenuItem();
-            dañoToolStripMenuItem = new ToolStripMenuItem();
-            dañoToolStripMenuItem1 = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -145,6 +145,7 @@
             guardarComoToolStripMenuItem.Name = "guardarComoToolStripMenuItem";
             guardarComoToolStripMenuItem.Size = new Size(189, 24);
             guardarComoToolStripMenuItem.Text = "Guardar Como";
+            guardarComoToolStripMenuItem.Click += guardarComoToolStripMenuItem_Click_1;
             // 
             // ordenarToolStripMenuItem
             // 
@@ -158,15 +159,43 @@
             // 
             ascendenteToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nivelToolStripMenuItem, dañoToolStripMenuItem });
             ascendenteToolStripMenuItem.Name = "ascendenteToolStripMenuItem";
-            ascendenteToolStripMenuItem.Size = new Size(180, 24);
+            ascendenteToolStripMenuItem.Size = new Size(157, 24);
             ascendenteToolStripMenuItem.Text = "Ascendente";
+            // 
+            // nivelToolStripMenuItem
+            // 
+            nivelToolStripMenuItem.Name = "nivelToolStripMenuItem";
+            nivelToolStripMenuItem.Size = new Size(111, 24);
+            nivelToolStripMenuItem.Text = "Nivel";
+            nivelToolStripMenuItem.Click += nivelToolStripMenuItem_Click;
+            // 
+            // dañoToolStripMenuItem
+            // 
+            dañoToolStripMenuItem.Name = "dañoToolStripMenuItem";
+            dañoToolStripMenuItem.Size = new Size(111, 24);
+            dañoToolStripMenuItem.Text = "Daño";
+            dañoToolStripMenuItem.Click += dañoToolStripMenuItem_Click;
             // 
             // descendenteToolStripMenuItem
             // 
             descendenteToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { nivelToolStripMenuItem1, dañoToolStripMenuItem1 });
             descendenteToolStripMenuItem.Name = "descendenteToolStripMenuItem";
-            descendenteToolStripMenuItem.Size = new Size(180, 24);
+            descendenteToolStripMenuItem.Size = new Size(157, 24);
             descendenteToolStripMenuItem.Text = "Descendente";
+            // 
+            // nivelToolStripMenuItem1
+            // 
+            nivelToolStripMenuItem1.Name = "nivelToolStripMenuItem1";
+            nivelToolStripMenuItem1.Size = new Size(111, 24);
+            nivelToolStripMenuItem1.Text = "Nivel";
+            nivelToolStripMenuItem1.Click += nivelToolStripMenuItem1_Click;
+            // 
+            // dañoToolStripMenuItem1
+            // 
+            dañoToolStripMenuItem1.Name = "dañoToolStripMenuItem1";
+            dañoToolStripMenuItem1.Size = new Size(111, 24);
+            dañoToolStripMenuItem1.Text = "Daño";
+            dañoToolStripMenuItem1.Click += dañoToolStripMenuItem1_Click;
             // 
             // usuariosLogeadosToolStripMenuItem
             // 
@@ -211,34 +240,6 @@
             buttonMostrarDatos.Text = "Mostrar Informacion";
             buttonMostrarDatos.UseVisualStyleBackColor = true;
             buttonMostrarDatos.Click += buttonMostrarDatos_Click;
-            // 
-            // nivelToolStripMenuItem
-            // 
-            nivelToolStripMenuItem.Name = "nivelToolStripMenuItem";
-            nivelToolStripMenuItem.Size = new Size(180, 24);
-            nivelToolStripMenuItem.Text = "Nivel";
-            nivelToolStripMenuItem.Click += nivelToolStripMenuItem_Click;
-            // 
-            // nivelToolStripMenuItem1
-            // 
-            nivelToolStripMenuItem1.Name = "nivelToolStripMenuItem1";
-            nivelToolStripMenuItem1.Size = new Size(180, 24);
-            nivelToolStripMenuItem1.Text = "Nivel";
-            nivelToolStripMenuItem1.Click += nivelToolStripMenuItem1_Click;
-            // 
-            // dañoToolStripMenuItem
-            // 
-            dañoToolStripMenuItem.Name = "dañoToolStripMenuItem";
-            dañoToolStripMenuItem.Size = new Size(180, 24);
-            dañoToolStripMenuItem.Text = "Daño";
-            dañoToolStripMenuItem.Click += dañoToolStripMenuItem_Click;
-            // 
-            // dañoToolStripMenuItem1
-            // 
-            dañoToolStripMenuItem1.Name = "dañoToolStripMenuItem1";
-            dañoToolStripMenuItem1.Size = new Size(180, 24);
-            dañoToolStripMenuItem1.Text = "Daño";
-            dañoToolStripMenuItem1.Click += dañoToolStripMenuItem1_Click;
             // 
             // Formulario1
             // 

@@ -58,13 +58,14 @@ namespace Forms
             this.pathUsuarios = Path.Combine(Directory.GetCurrentDirectory(), "Usuarios.log");
             this.datosUsuarios += $"{ObtenerDatos.DatosLogin}Fecha: {dateTime.ToString()}\n";
 
-            // Guardar el mensaje en el archivo .log
+            //Guarda los datos del usuario en un un archivo .log
             using (StreamWriter sw = new StreamWriter(pathUsuarios, true))
             {
                 sw.WriteLine(datosUsuarios);
             }
             try
             {
+                //Lee los datos guardados en Usuarios.log y los guarda en un atributo
                 using (StreamReader sr = new StreamReader(this.pathUsuarios))
                 {
                     this.datosUsuarios = sr.ReadToEnd();
@@ -74,6 +75,8 @@ namespace Forms
             {
                 MessageBox.Show($"Ocurrió un error\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            //Deserealizo el archivo Json y lo guardo en la lista dependiendo que tipo de personaje sea
             try
             {
                 this.pathPersonajes = Path.Combine(Directory.GetCurrentDirectory(), "personajes.json");
@@ -266,26 +269,7 @@ namespace Forms
         {
             try
             {
-                JsonSerializerOptions options = new JsonSerializerOptions()
-                {
-                    WriteIndented = true,
-                };
-                foreach (Personaje personajes in this.coleccion.listPersonajes)
-                {
-                    if (personajes is Arquero)
-                    {
-                        listaPersonajeParseados.Add((Arquero)personajes);
-                    }
-                    else if (personajes is Tanque)
-                    {
-                        listaPersonajeParseados.Add((Tanque)personajes);
-                    }
-                    else if (personajes is Mago)
-                    {
-                        listaPersonajeParseados.Add((Mago)personajes);
-                    }
-                }
-                string archivoJson = JsonSerializer.Serialize(listaPersonajeParseados, options);
+                string archivoJson = this.serializar(this.coleccion.listPersonajes);
                 File.WriteAllText(this.pathPersonajes, archivoJson);
             }
             catch (JsonException ex)
@@ -298,9 +282,21 @@ namespace Forms
             }
         }
 
-        private void guardarComoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void guardarComoToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    string archivoJson = this.serializar(this.coleccion.listPersonajes);
+                    File.WriteAllText(saveFileDialog.FileName + ".json", archivoJson);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         //Muestra todos los usuarios logueados, llamando al Form Usuarios
@@ -424,6 +420,32 @@ namespace Forms
             this.añadirPersonajeALista(this.coleccion.listPersonajes);
         }
 
+        public string serializar(List<Personaje> listaP)
+        {
+            JsonSerializerOptions options = new JsonSerializerOptions()
+            {
+                WriteIndented = true,
+            };
+            foreach (Personaje personajes in listaP)
+            {
+                if (personajes is Arquero)
+                {
+                    this.listaPersonajeParseados.Add((Arquero)personajes);
+                }
+                else if (personajes is Tanque)
+                {
+                    this.listaPersonajeParseados.Add((Tanque)personajes);
+                }
+                else if (personajes is Mago)
+                {
+                    this.listaPersonajeParseados.Add((Mago)personajes);
+                }
+            }
+            string archivoJson = JsonSerializer.Serialize(this.listaPersonajeParseados, options);
+
+            return archivoJson;
+        }
+
         #endregion
 
         #region Cerrar
@@ -436,7 +458,7 @@ namespace Forms
                 e.Cancel = true;
             }
         }
-
         #endregion
+
     }
 }

@@ -32,5 +32,5 @@ namespace Forms
 
 //Faltan sobrecargas de operadores implicit/explicit en clases derivadas
 
-//? Poder elegir la ubicación del archivo para la serialización / deserialización
+//Poder elegir la ubicación del archivo para la serialización / deserialización
 //(utilizando controles de tipo OpenFileDialog y SaveFileDialog)
