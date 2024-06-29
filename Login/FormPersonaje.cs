@@ -16,8 +16,8 @@ namespace Forms
     public partial class FormPersonaje : Form
     {
         protected Arquero arqueros;
-        protected Libreria_De_Clases.Mago magos;
-        protected Libreria_De_Clases.Tanque tanques;
+        protected Mago magos;
+        protected Tanque tanques;
         public FormPersonaje()
         {
             InitializeComponent();
@@ -91,11 +91,11 @@ namespace Forms
         public Arquero Arqueros
         {
             get { return this.arqueros; }
-        }  
+        }
         public Tanque Tanques
         {
             get { return this.tanques; }
-        }    
+        }
         public Mago Magos
         {
             get { return this.magos; }
@@ -106,13 +106,11 @@ namespace Forms
             bool retorno = false;
             if (textBox.ForeColor != Color.Black && this.textBoxNombre.Text.Length > 0)
             {
-                this.DialogResult = DialogResult.OK;
                 resultado = 0;
                 retorno = true;
             }
-            if (int.TryParse(textBox.Text, out resultado) && resultado >= 0&& textBox.Text.Length <= 6 && this.textBoxNombre.Text.Length > 0)
+            if (int.TryParse(textBox.Text, out resultado) && resultado >= 0 && textBox.Text.Length <= 6 && this.textBoxNombre.Text.Length > 0)
             {
-                this.DialogResult = DialogResult.OK;
                 retorno = true;
             }
             else if (textBox.ForeColor == Color.Black)

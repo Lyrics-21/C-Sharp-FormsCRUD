@@ -1,3 +1,5 @@
+using System.Text;
+
 namespace Forms
 {
     public partial class FormLogin : Form
@@ -15,11 +17,9 @@ namespace Forms
         private void Form1_Load(object sender, EventArgs e)
         {
             path = @".\MOCK_DATA.json";
-            string pathLogin = Path.Combine(Directory.GetCurrentDirectory(), path);
-
-            if (File.Exists(pathLogin))
+            if (File.Exists(path))
             {
-                using (StreamReader sr = new StreamReader(pathLogin))
+                using (StreamReader sr = new StreamReader(path))
                 {
                     string json_str = sr.ReadToEnd();
                     listaAux = System.Text.Json.JsonSerializer.Deserialize<List<Datos>>(json_str);
@@ -42,7 +42,16 @@ namespace Forms
                 if (this.textBox1.Text == dato.correo && this.textBox2.Text == dato.clave)
                 {
                     this.DialogResult = DialogResult.OK;
-                    ObtenerDato.DatoNombre = dato.nombre;
+                    ObtenerDatos.DatoNombre = dato.nombre;
+
+                    StringBuilder sb = new StringBuilder();
+                    sb.Append($"Usuario logueado:\n");
+                    sb.Append($"Tipo: {dato.perfil}\n");
+                    sb.Append($"Nombre: {dato.nombre} {dato.apellido}\n");
+                    sb.Append($"Correo: {dato.correo}\n");
+                    sb.Append($"Legajo: {dato.legajo}\n");
+                    ObtenerDatos.DatosLogin = sb.ToString();
+
                 }
                 else if (this.textBox1.Text.Length <= 0 || this.textBox2.Text.Length <= 0)
                 {
@@ -64,9 +73,10 @@ namespace Forms
             public string perfil { get; set; }
         }
 
-        public static class ObtenerDato
+        public static class ObtenerDatos
         {
             public static string DatoNombre { get; set; }
+            public static string DatosLogin { get; set; }
         }
 
     }

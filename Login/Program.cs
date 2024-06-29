@@ -1,3 +1,5 @@
+using System;
+
 namespace Forms
 {
     internal static class Program
@@ -5,6 +7,7 @@ namespace Forms
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>
+        /// 
         [STAThread]
         static void Main()
         {
@@ -22,3 +25,7 @@ namespace Forms
         }
     }
 }
+
+
+
+//NO genera método abstracto.
