@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Biblioteca Clases", "Biblio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Forms", "Login\Forms.csproj", "{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ADO", "ADO\ADO.csproj", "{386A8003-EBE0-4B1E-A6D1-5A42D90EBABB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F2AA9B5-1FF7-49B7-885F-681BAD5F288E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{386A8003-EBE0-4B1E-A6D1-5A42D90EBABB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{386A8003-EBE0-4B1E-A6D1-5A42D90EBABB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{386A8003-EBE0-4B1E-A6D1-5A42D90EBABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{386A8003-EBE0-4B1E-A6D1-5A42D90EBABB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using Libreria_De_Clases;
+﻿using ADO;
+using Libreria_De_Clases;
 using Microsoft.VisualBasic.Logging;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,9 @@ namespace Forms
         private string pathUsuarios; //Este atributo guarda el path del archivo log de los usuarios logeados
         private string datosUsuarios; //Este atributo guarda los datos de los usuarios logueados
 
+        private AccesoDatos accesoDatos;
+        private bool conexionExitosa; //Este atributo guarda el estado de la conexion de la base de datos
+
         #endregion
 
         #region Constructor
@@ -44,6 +48,9 @@ namespace Forms
             this.MaximizeBox = false; //No dejo que se pueda maximizar
 
             this.coleccion = new Coleccion();
+
+            this.accesoDatos = new AccesoDatos();
+            this.conexionExitosa = false;
         }
 
         #endregion
@@ -55,9 +62,10 @@ namespace Forms
             DateTime dateTime = DateTime.Now;
             this.toolStripStatusLabel1.Text = $"{datoNombre} - Logeado - {dateTime.Date.ToString("dd/MM/yyyy")}";
 
+            #region Archivos
+
             this.pathUsuarios = Path.Combine(Directory.GetCurrentDirectory(), "Usuarios.log");
             this.datosUsuarios += $"{ObtenerDatos.DatosLogin}Fecha: {dateTime.ToString()}\n";
-
 
             //Guarda los datos del usuario en un un archivo .log
             using (StreamWriter sw = new StreamWriter(pathUsuarios, true))
@@ -95,6 +103,17 @@ namespace Forms
             {
                 MessageBox.Show($"Ocurrió un error\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            #endregion
+
+            #region BaseDeDatos
+
+            if (this.accesoDatos.ProbarConexion())
+            {
+                this.conexionExitosa = true;
+            }
+
+            #endregion
         }
 
         #endregion
@@ -166,20 +185,20 @@ namespace Forms
                 Personaje personajeAModificar = this.coleccion.listPersonajes[index]; //Guardo el personaje seleccionado
 
                 //Depende que personaje sea le modifico los atributos
-                if(personajeAModificar is Arquero)
+                if (personajeAModificar is Arquero)
                 {
-                        FormArquera formArquera = new FormArquera();
-                        this.PersonajeResultCancel(formArquera); //Si el DialogResult es Cancel cierra el form
-                        if (formArquera.DialogResult == DialogResult.OK && !EqualsLista(formArquera.Arqueros)) //Si el DialogResult es OK muestra el form
-                        {
-                            this.buttonEliminar.PerformClick(); //Simulo un click para borrar el personaje de la lista
-                            this.coleccion += formArquera.Arqueros; //Agrego a la coleccion el nuevo personaje modificado
-                            this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}"); //Agrego a la listBox el nuevo personaje modificado
-                            formArquera.Close();
-                        }
+                    FormArquera formArquera = new FormArquera();
+                    this.PersonajeResultCancel(formArquera); //Si el DialogResult es Cancel cierra el form
+                    if (formArquera.DialogResult == DialogResult.OK && !EqualsLista(formArquera.Arqueros)) //Si el DialogResult es OK muestra el form
+                    {
+                        this.buttonEliminar.PerformClick(); //Simulo un click para borrar el personaje de la lista
+                        this.coleccion += formArquera.Arqueros; //Agrego a la coleccion el nuevo personaje modificado
+                        this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}"); //Agrego a la listBox el nuevo personaje modificado
+                        formArquera.Close();
+                    }
                 }
 
-                else if(personajeAModificar is Mago)
+                else if (personajeAModificar is Mago)
                 {
                     FormMago formMago = new FormMago();
                     this.PersonajeResultCancel(formMago);
@@ -192,7 +211,7 @@ namespace Forms
                     }
                 }
 
-                else if(personajeAModificar is Tanque)
+                else if (personajeAModificar is Tanque)
                 {
                     FormTanque formTanque = new FormTanque();
                     this.PersonajeResultCancel(formTanque);
@@ -218,7 +237,13 @@ namespace Forms
                 int posicion = this.listBoxPersonajes.SelectedIndex;
                 this.listBoxPersonajes.Items.RemoveAt(posicion); // Remuevo de la listbox el personaje seleccionado con el index
                 Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion]; //Guardo el personaje seleccionado
-                this.coleccion -= personajeAEliminar; //Borro el personaje con sobrecarga -
+                this.coleccion -= personajeAEliminar; //Borro el personaje con sobrecarga 
+
+                if (this.conexionExitosa)
+                {
+                    // Elimino el personaje de la base de datos, el booleano es para habilitar el Where y eliminar solo por el nombre ingresado
+                    this.accesoDatos.EliminarDato(personajeAEliminar.Nombre, true);
+                }
             }
         }
 
@@ -241,8 +266,10 @@ namespace Forms
 
         #region Tools
 
+        #region Guardar
+
         //Guardo los personajes en un archivo json
-        private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             try
             {
@@ -256,6 +283,15 @@ namespace Forms
             catch (Exception ex)
             {
                 MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Guardo los personajes en la base de datos
+        private void nubeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(this.conexionExitosa)
+            {
+                accesoDatos.AgregarDato(this.coleccion);
             }
         }
 
@@ -277,8 +313,12 @@ namespace Forms
             }
         }
 
+        #endregion
+
+        #region Abrir
+
         //Abro un archivo desde el openFile y lo deserealizo
-        private void abrirToolStripMenuItem_Click(object sender, EventArgs e)
+        private void archivoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "JSON files (*.json)|*.json"; //Filtro el openFile para que solo me muestre archivos Json
@@ -301,12 +341,25 @@ namespace Forms
             }
         }
 
+        private void nubeToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            //insert
+        }
+
+        #endregion
+
+        #region Usuarios
+
         //Muestra todos los usuarios logueados, llamando al Form Usuarios
         private void usuariosLogeadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Usuarios usuarios = new Usuarios(this.datosUsuarios);
             usuarios.Show();
         }
+
+        #endregion
+
+        #region Ordenar
 
         //Ordena los items de forma ascendento o descendente dependiendo el nivel o daño
         private void nivelToolStripMenuItem_Click(object sender, EventArgs e)
@@ -328,6 +381,8 @@ namespace Forms
         {
             this.OrdenarPersonajes("Daño", true);
         }
+
+        #endregion
 
         #endregion
 

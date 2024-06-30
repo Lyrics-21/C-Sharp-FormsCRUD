@@ -38,7 +38,12 @@
             arqueroToolStripMenuItem = new ToolStripMenuItem();
             tanqueToolStripMenuItem = new ToolStripMenuItem();
             guardarPersonajesToolStripMenuItem = new ToolStripMenuItem();
+            archivoToolStripMenuItem = new ToolStripMenuItem();
+            nubeToolStripMenuItem = new ToolStripMenuItem();
             guardarComoToolStripMenuItem = new ToolStripMenuItem();
+            abrirToolStripMenuItem = new ToolStripMenuItem();
+            archivoToolStripMenuItem1 = new ToolStripMenuItem();
+            nubeToolStripMenuItem1 = new ToolStripMenuItem();
             ordenarToolStripMenuItem = new ToolStripMenuItem();
             ascendenteToolStripMenuItem = new ToolStripMenuItem();
             nivelToolStripMenuItem = new ToolStripMenuItem();
@@ -51,7 +56,6 @@
             statusStrip1 = new StatusStrip();
             listBoxPersonajes = new ListBox();
             buttonMostrarDatos = new Button();
-            abrirToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             statusStrip1.SuspendLayout();
             SuspendLayout();
@@ -136,10 +140,24 @@
             // 
             // guardarPersonajesToolStripMenuItem
             // 
+            guardarPersonajesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, nubeToolStripMenuItem });
             guardarPersonajesToolStripMenuItem.Name = "guardarPersonajesToolStripMenuItem";
             guardarPersonajesToolStripMenuItem.Size = new Size(189, 24);
             guardarPersonajesToolStripMenuItem.Text = "Guardar";
-            guardarPersonajesToolStripMenuItem.Click += guardarPersonajesToolStripMenuItem_Click;
+            // 
+            // archivoToolStripMenuItem
+            // 
+            archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
+            archivoToolStripMenuItem.Size = new Size(180, 24);
+            archivoToolStripMenuItem.Text = "Archivo";
+            archivoToolStripMenuItem.Click += archivoToolStripMenuItem_Click;
+            // 
+            // nubeToolStripMenuItem
+            // 
+            nubeToolStripMenuItem.Name = "nubeToolStripMenuItem";
+            nubeToolStripMenuItem.Size = new Size(180, 24);
+            nubeToolStripMenuItem.Text = "Nube";
+            nubeToolStripMenuItem.Click += nubeToolStripMenuItem_Click;
             // 
             // guardarComoToolStripMenuItem
             // 
@@ -147,6 +165,27 @@
             guardarComoToolStripMenuItem.Size = new Size(189, 24);
             guardarComoToolStripMenuItem.Text = "Guardar Como";
             guardarComoToolStripMenuItem.Click += guardarComoToolStripMenuItem_Click_1;
+            // 
+            // abrirToolStripMenuItem
+            // 
+            abrirToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { archivoToolStripMenuItem1, nubeToolStripMenuItem1 });
+            abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
+            abrirToolStripMenuItem.Size = new Size(189, 24);
+            abrirToolStripMenuItem.Text = "Abrir";
+            // 
+            // archivoToolStripMenuItem1
+            // 
+            archivoToolStripMenuItem1.Name = "archivoToolStripMenuItem1";
+            archivoToolStripMenuItem1.Size = new Size(180, 24);
+            archivoToolStripMenuItem1.Text = "Archivo";
+            archivoToolStripMenuItem1.Click += archivoToolStripMenuItem1_Click;
+            // 
+            // nubeToolStripMenuItem1
+            // 
+            nubeToolStripMenuItem1.Name = "nubeToolStripMenuItem1";
+            nubeToolStripMenuItem1.Size = new Size(180, 24);
+            nubeToolStripMenuItem1.Text = "Nube";
+            nubeToolStripMenuItem1.Click += nubeToolStripMenuItem1_Click;
             // 
             // ordenarToolStripMenuItem
             // 
@@ -242,13 +281,6 @@
             buttonMostrarDatos.UseVisualStyleBackColor = true;
             buttonMostrarDatos.Click += buttonMostrarDatos_Click;
             // 
-            // abrirToolStripMenuItem
-            // 
-            abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
-            abrirToolStripMenuItem.Size = new Size(189, 24);
-            abrirToolStripMenuItem.Text = "Abrir";
-            abrirToolStripMenuItem.Click += abrirToolStripMenuItem_Click;
-            // 
             // Formulario1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -301,5 +333,9 @@
         private ToolStripMenuItem dañoToolStripMenuItem;
         private ToolStripMenuItem dañoToolStripMenuItem1;
         private ToolStripMenuItem abrirToolStripMenuItem;
+        private ToolStripMenuItem archivoToolStripMenuItem;
+        private ToolStripMenuItem nubeToolStripMenuItem;
+        private ToolStripMenuItem archivoToolStripMenuItem1;
+        private ToolStripMenuItem nubeToolStripMenuItem1;
     }
 }
