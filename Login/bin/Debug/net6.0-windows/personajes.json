@@ -1,0 +1,29 @@
+[
+  {
+    "TipoArco": 2,
+    "CantidadFlechas": 5,
+    "Vida": 6000,
+    "Nombre": "Dante",
+    "Nivel": 21,
+    "Estilo": "Arquero/a",
+    "Da\u00F1o": 100
+  },
+  {
+    "TipoArmadura": 4,
+    "Fuerza": 5000,
+    "Vida": 60000,
+    "Nombre": "Gordon",
+    "Nivel": 21,
+    "Estilo": "Tanque",
+    "Da\u00F1o": 8000
+  },
+  {
+    "TipoMagia": 3,
+    "Mana": 500,
+    "Vida": 2000,
+    "Nombre": "Darwin",
+    "Nivel": 60,
+    "Estilo": "Mago",
+    "Da\u00F1o": 5000
+  }
+]

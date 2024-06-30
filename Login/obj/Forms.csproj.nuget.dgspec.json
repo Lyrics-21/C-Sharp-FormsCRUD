@@ -1,0 +1,211 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\Forms.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\ADO\\ADO.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\ADO\\ADO.csproj",
+        "projectName": "ADO",
+        "projectPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\ADO\\ADO.csproj",
+        "packagesPath": "C:\\Users\\Lyrics\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\ADO\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Lyrics\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj": {
+                "projectPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.Data.SqlClient": {
+              "target": "Package",
+              "version": "[5.2.1, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj",
+        "projectName": "Biblioteca Clases",
+        "projectPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj",
+        "packagesPath": "C:\\Users\\Lyrics\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Lyrics\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\Forms.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\Forms.csproj",
+        "projectName": "Forms",
+        "projectPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\Forms.csproj",
+        "packagesPath": "C:\\Users\\Lyrics\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Login\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Lyrics\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0-windows"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0-windows7.0": {
+            "targetAlias": "net6.0-windows",
+            "projectReferences": {
+              "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\ADO\\ADO.csproj": {
+                "projectPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\ADO\\ADO.csproj"
+              },
+              "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj": {
+                "projectPath": "C:\\Users\\Lyrics\\Desktop\\UTN\\Programacion 2\\Parcial-Elian-Viana\\Biblioteca Clases\\Biblioteca Clases.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net6.0-windows7.0": {
+          "targetAlias": "net6.0-windows",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
