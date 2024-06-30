@@ -69,10 +69,15 @@ namespace Forms
                     Arquero arquero6 = new Arquero(vida, this.textBoxNombre.Text, nivel, "Arquero/a", tipoArco, cantidadFlechas);
                     this.arqueros = arquero6;
                 }
+                else if (vida != 0 && daño != 0 && cantidadFlechas == 0)
+                {
+                    Arquero arquero7 = new Arquero(vida, this.textBoxNombre.Text, nivel, "Arquero/a", daño, tipoArco);
+                    this.arqueros = arquero7;
+                }
                 else if (vida != 0 && daño != 0 && cantidadFlechas != 0)
                 {
-                    Arquero arquero7 = new Arquero(vida, this.textBoxNombre.Text, nivel, "Arquero/a", daño, tipoArco, cantidadFlechas);
-                    this.arqueros = arquero7;
+                    Arquero arquero8 = new Arquero(vida, this.textBoxNombre.Text, nivel, "Arquero/a", daño, tipoArco, cantidadFlechas);
+                    this.arqueros = arquero8;
                 }
                 this.DialogResult = DialogResult.OK;
             }

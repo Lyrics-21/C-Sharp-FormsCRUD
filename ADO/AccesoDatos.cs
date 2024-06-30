@@ -131,14 +131,14 @@ namespace ADO
 
             try
             {
-                foreach(Personaje personaje in coleccion.listPersonajes)
+                foreach (Personaje personaje in coleccion.listPersonajes)
                 {
                     string sql = "INSERT INTO Tabla_Personajes (nombre, vida, nivel, estilo, daño, tipoArco, cantidadFlechas, tipoMagia, mana, tipoArmadura, fuerza) VALUES(";
-                    sql += (personaje.Nombre != null? "'" + personaje.Nombre + "'" : "NULL") + ", ";
-                    sql += (personaje.Vida != null? "'" + personaje.Vida + "'" : "NULL") + ", ";
-                    sql += (personaje.Nivel != null? "'" + personaje.Nivel + "'" : "NULL") + ", ";
-                    sql += (personaje.Estilo != null? "'" + personaje.Estilo + "'" : "NULL") + ", ";
-                    sql += (personaje.Daño != null? "'" + personaje.Daño + "'" : "NULL") + ", ";
+                    sql += (personaje.Nombre != null ? "'" + personaje.Nombre + "'" : "NULL") + ", ";
+                    sql += (personaje.Vida != null ? "'" + personaje.Vida + "'" : "NULL") + ", ";
+                    sql += (personaje.Nivel != null ? "'" + personaje.Nivel + "'" : "NULL") + ", ";
+                    sql += (personaje.Estilo != null ? "'" + personaje.Estilo + "'" : "NULL") + ", ";
+                    sql += (personaje.Daño != null ? "'" + personaje.Daño + "'" : "NULL") + ", ";
 
                     if (personaje is Arquero arquero)
                     {
@@ -154,8 +154,8 @@ namespace ADO
                     {
                         sql += ("NULL" + ", ");
                         sql += ("NULL" + ", ");
-                        sql += (mago.TipoMagia != null? "'" + mago.TipoMagia + "'" : "NULL") + ", ";
-                        sql += (mago.Mana != null? "'" + mago.Mana + "'" : "NULL") + ", ";
+                        sql += (mago.TipoMagia != null ? "'" + mago.TipoMagia + "'" : "NULL") + ", ";
+                        sql += (mago.Mana != null ? "'" + mago.Mana + "'" : "NULL") + ", ";
                         sql += ("NULL" + ", ");
                         sql += ("NULL" + ")");
                     }
@@ -184,7 +184,7 @@ namespace ADO
                     {
                         rta = false;
                     }
-                    else if(this.conexion.State == ConnectionState.Open)
+                    else if (this.conexion.State == ConnectionState.Open)
                     {
                         this.conexion.Close();
                     }
@@ -222,7 +222,7 @@ namespace ADO
                 this.comando.Parameters.AddWithValue("@estilo", (object)personaje.Estilo ?? DBNull.Value);
                 this.comando.Parameters.AddWithValue("@daño", (object)personaje.Daño ?? DBNull.Value);
 
-                if(personaje is Arquero arquero)
+                if (personaje is Arquero arquero)
                 {
                     this.comando.Parameters.AddWithValue("@tipoArco", (object)arquero.TipoArco ?? DBNull.Value);
                     this.comando.Parameters.AddWithValue("@cantidadFlechas", (object)arquero.CantidadFlechas ?? DBNull.Value);
@@ -300,7 +300,7 @@ namespace ADO
 
                 string sql = "DELETE FROM Tabla_Personajes ";
 
-                if(opcion)
+                if (opcion)
                 {
                     this.comando.Parameters.AddWithValue("@nombre", nombre);
                     sql += "WHERE nombre = @nombre";

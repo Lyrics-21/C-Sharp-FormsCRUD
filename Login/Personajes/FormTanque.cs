@@ -67,10 +67,15 @@ namespace Forms
                     Tanque tanque6 = new Tanque(vida, this.textBoxNombre.Text, nivel, "Tanque", tipoArmadura, fuerza);
                     this.tanques = tanque6;
                 }
+                else if (vida != 0 && daño != 0 && fuerza == 0)
+                {
+                    Tanque tanque7 = new Tanque(vida, this.textBoxNombre.Text, nivel, "Tanque", daño, tipoArmadura);
+                    this.tanques = tanque7;
+                }
                 else if (vida != 0 && daño != 0 && fuerza != 0)
                 {
-                    Tanque tanque7 = new Tanque(vida, this.textBoxNombre.Text, nivel, "Tanque", daño, tipoArmadura, fuerza);
-                    this.tanques = tanque7;
+                    Tanque tanque8 = new Tanque(vida, this.textBoxNombre.Text, nivel, "Tanque", daño, tipoArmadura, fuerza);
+                    this.tanques = tanque8;
                 }
                 this.DialogResult = DialogResult.OK;
             }

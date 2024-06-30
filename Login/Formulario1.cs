@@ -289,7 +289,7 @@ namespace Forms
         //Guardo los personajes en la base de datos
         private void nubeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(this.conexionExitosa)
+            if (this.conexionExitosa)
             {
                 accesoDatos.AgregarDato(this.coleccion);
             }

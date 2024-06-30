@@ -66,10 +66,15 @@ namespace Forms
                     Mago mago6 = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago", tipoMagia, mana);
                     this.magos = mago6;
                 }
+                else if (vida != 0 && daño != 0 && mana == 0)
+                {
+                    Mago mago7 = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago", daño, tipoMagia);
+                    this.magos = mago7;
+                }
                 else if (vida != 0 && daño != 0 && mana != 0)
                 {
-                    Mago mago7 = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago", daño, tipoMagia, mana);
-                    this.magos = mago7;
+                    Mago mago8 = new Mago(vida, this.textBoxNombre.Text, nivel, "Mago", daño, tipoMagia, mana);
+                    this.magos = mago8;
                 }
                 this.DialogResult = DialogResult.OK;
             }
