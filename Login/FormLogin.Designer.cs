@@ -80,6 +80,7 @@
             // 
             textBox2.Location = new Point(23, 101);
             textBox2.Name = "textBox2";
+            textBox2.PasswordChar = '*';
             textBox2.Size = new Size(151, 23);
             textBox2.TabIndex = 5;
             // 
@@ -125,7 +126,7 @@
             label6.Text = "requeridos.";
             label6.Visible = false;
             // 
-            // Form1
+            // FormLogin
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -140,7 +141,7 @@
             Controls.Add(button1);
             Controls.Add(label1);
             HelpButton = true;
-            Name = "Form1";
+            Name = "FormLogin";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Iniciar sesion";
             Load += Form1_Load;

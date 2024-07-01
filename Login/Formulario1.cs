@@ -24,6 +24,7 @@ namespace Forms
         #region Atributos
 
         private string datoNombre; //Este atributo lo utilizo para mostrar el nombre del usuario logeado en el toolstrip
+        private string datoPerfil; //Este atributo lo utilizo para guardar el perfil del usuario logeado
         private string pathPersonajes; //Este atributo guarda el path del archivo json para guardar a los personajes
 
         private Coleccion coleccion; //Este atributo guarda la collecion de personajes
@@ -33,7 +34,9 @@ namespace Forms
         private string datosUsuarios; //Este atributo guarda los datos de los usuarios logueados
 
         private AccesoDatos accesoDatos;
-        private bool conexionExitosa; //Este atributo guarda el estado de la conexion de la base de datos
+        private bool conexionExitosa; //Este atributo guarda el estado de la conexion de la base de datos}
+        private string nombreAntiguo; //Estos atributos los utilizo para el where del update de la base de datos
+        private string estiloAntiguo;
 
         #endregion
 
@@ -59,6 +62,8 @@ namespace Forms
         private void Formulario1_Load(object sender, EventArgs e)
         {
             this.datoNombre = ObtenerDatos.DatoNombre;
+            this.datoPerfil = ObtenerDatos.DatoPerfil;
+
             DateTime dateTime = DateTime.Now;
             this.toolStripStatusLabel1.Text = $"{datoNombre} - Logeado - {dateTime.Date.ToString("dd/MM/yyyy")}";
 
@@ -125,50 +130,71 @@ namespace Forms
         //Verifica si se hizo click en Mago, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void magoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormMago formMago = new FormMago();
-            this.PersonajeResultCancel(formMago);
-            if (formMago.DialogResult == DialogResult.OK)
+            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                if (!EqualsLista(formMago.Magos))
+                FormMago formMago = new FormMago();
+                this.PersonajeResultCancel(formMago);
+                if (formMago.DialogResult == DialogResult.OK)
                 {
-                    this.coleccion += formMago.Magos;
+                    if (!EqualsLista(formMago.Magos))
+                    {
+                        this.coleccion += formMago.Magos;
 
-                    this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
-                    formMago.Close();
+                        this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
+                        formMago.Close();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
         //Verifica si se hizo click en Arquero, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormArquera formArquera = new FormArquera();
-            this.PersonajeResultCancel(formArquera);
-            if (formArquera.DialogResult == DialogResult.OK)
+            if(this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                if (!EqualsLista(formArquera.Arqueros))
+                    FormArquera formArquera = new FormArquera();
+                this.PersonajeResultCancel(formArquera);
+                if (formArquera.DialogResult == DialogResult.OK)
                 {
-                    this.coleccion += formArquera.Arqueros;
-                    this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}");
-                    formArquera.Close();
+                    if (!EqualsLista(formArquera.Arqueros))
+                    {
+                        this.coleccion += formArquera.Arqueros;
+                        this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}");
+                        formArquera.Close();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
         //Verifica si se hizo click en Tanque, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormTanque formTanque = new FormTanque();
-            this.PersonajeResultCancel(formTanque);
-            if (formTanque.DialogResult == DialogResult.OK)
+            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                if (!EqualsLista(formTanque.Tanques))
+                    FormTanque formTanque = new FormTanque();
+                this.PersonajeResultCancel(formTanque);
+                if (formTanque.DialogResult == DialogResult.OK)
                 {
-                    this.coleccion += formTanque.Tanques;
-                    //Agrego un nuevo personaje a la lista
-                    this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
-                    formTanque.Close();
+                    if (!EqualsLista(formTanque.Tanques))
+                    {
+                        this.coleccion += formTanque.Tanques;
+                        //Agrego un nuevo personaje a la lista
+                        this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
+                        formTanque.Close();
+                    }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
@@ -179,50 +205,71 @@ namespace Forms
         //Modifico el personaje sleccionado reutilizando codigo, volviendo a abrir el formulario necesario
         private void buttonModificar_Click(object sender, EventArgs e)
         {
-            if (DevolverMensaje())
+            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                int index = this.listBoxPersonajes.SelectedIndex;
-                Personaje personajeAModificar = this.coleccion.listPersonajes[index]; //Guardo el personaje seleccionado
-
-                //Depende que personaje sea le modifico los atributos
-                if (personajeAModificar is Arquero)
+                if (DevolverMensaje())
                 {
-                    FormArquera formArquera = new FormArquera();
-                    this.PersonajeResultCancel(formArquera); //Si el DialogResult es Cancel cierra el form
-                    if (formArquera.DialogResult == DialogResult.OK && !EqualsLista(formArquera.Arqueros)) //Si el DialogResult es OK muestra el form
+                    int index = this.listBoxPersonajes.SelectedIndex;
+                    Personaje personajeAModificar = this.coleccion.listPersonajes[index]; //Guardo el personaje seleccionado
+                    this.nombreAntiguo = personajeAModificar.Nombre;
+                    this.estiloAntiguo = personajeAModificar.Estilo;
+
+                    //Depende que personaje sea le modifico los atributos
+                    if (personajeAModificar is Arquero)
                     {
-                        this.buttonEliminar.PerformClick(); //Simulo un click para borrar el personaje de la lista
-                        this.coleccion += formArquera.Arqueros; //Agrego a la coleccion el nuevo personaje modificado
-                        this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}"); //Agrego a la listBox el nuevo personaje modificado
-                        formArquera.Close();
+                        FormArquera formArquera = new FormArquera();
+                        this.PersonajeResultCancel(formArquera); //Si el DialogResult es Cancel cierra el form
+                        if (formArquera.DialogResult == DialogResult.OK && !EqualsLista(formArquera.Arqueros)) //Si el DialogResult es OK muestra el form
+                        {
+                            this.eliminarPersonaje(false); //Llamo a eliminar personaje pero no lo borro de la base de datos ya que uso el Update
+                            this.coleccion += formArquera.Arqueros; //Agrego a la coleccion el nuevo personaje modificado
+                            this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}"); //Agrego a la listBox el nuevo personaje modificado
+
+                            //Update de SQL 
+                            this.accesoDatos.ModificarDato(formArquera.Arqueros, this.nombreAntiguo, this.estiloAntiguo);
+
+                            formArquera.Close();
+                        }
+                    }
+
+                    else if (personajeAModificar is Mago)
+                    {
+                        FormMago formMago = new FormMago();
+                        this.PersonajeResultCancel(formMago);
+                        if (formMago.DialogResult == DialogResult.OK && !EqualsLista(formMago.Magos))
+                        {
+                            this.eliminarPersonaje(false);
+                            this.coleccion += formMago.Magos;
+                            this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
+
+                            //Update de SQL 
+                            this.accesoDatos.ModificarDato(formMago.Magos, this.nombreAntiguo, this.estiloAntiguo);
+
+                            formMago.Close();
+                        }
+                    }
+
+                    else if (personajeAModificar is Tanque)
+                    {
+                        FormTanque formTanque = new FormTanque();
+                        this.PersonajeResultCancel(formTanque);
+                        if (formTanque.DialogResult == DialogResult.OK && !EqualsLista(formTanque.Tanques))
+                        {
+                            this.eliminarPersonaje(false);
+                            this.coleccion += formTanque.Tanques;
+                            this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
+
+                            //Update de SQL 
+                            this.accesoDatos.ModificarDato(formTanque.Tanques, this.nombreAntiguo, this.estiloAntiguo);
+
+                            formTanque.Close();
+                        }
                     }
                 }
-
-                else if (personajeAModificar is Mago)
-                {
-                    FormMago formMago = new FormMago();
-                    this.PersonajeResultCancel(formMago);
-                    if (formMago.DialogResult == DialogResult.OK && !EqualsLista(formMago.Magos))
-                    {
-                        this.buttonEliminar.PerformClick();
-                        this.coleccion += formMago.Magos;
-                        this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
-                        formMago.Close();
-                    }
-                }
-
-                else if (personajeAModificar is Tanque)
-                {
-                    FormTanque formTanque = new FormTanque();
-                    this.PersonajeResultCancel(formTanque);
-                    if (formTanque.DialogResult == DialogResult.OK && !EqualsLista(formTanque.Tanques))
-                    {
-                        this.buttonEliminar.PerformClick();
-                        this.coleccion += formTanque.Tanques;
-                        this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
-                        formTanque.Close();
-                    }
-                }
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
@@ -232,18 +279,16 @@ namespace Forms
         //Elimina el personaje de la lista dependiendo el index seleccionado utilizando sobrecarga -
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
-            if (DevolverMensaje())
+            if (this.datoPerfil == "Administrador")
             {
-                int posicion = this.listBoxPersonajes.SelectedIndex;
-                this.listBoxPersonajes.Items.RemoveAt(posicion); // Remuevo de la listbox el personaje seleccionado con el index
-                Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion]; //Guardo el personaje seleccionado
-                this.coleccion -= personajeAEliminar; //Borro el personaje con sobrecarga 
-
-                if (this.conexionExitosa)
+                if (DevolverMensaje())
                 {
-                    // Elimino el personaje de la base de datos, el booleano es para habilitar el Where y eliminar solo por el nombre ingresado
-                    this.accesoDatos.EliminarDato(personajeAEliminar.Nombre, true);
+                    this.eliminarPersonaje(true);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
@@ -271,79 +316,120 @@ namespace Forms
         //Guardo los personajes en un archivo json
         private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            try
+            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                string archivoJson = this.Serializar(this.coleccion.listPersonajes); //Llamo a Serializar para generar un atributo json con la lista serializada
-                File.WriteAllText(this.pathPersonajes, archivoJson); //Guardo el atributo anterior en el path
+                try
+                {
+                    string archivoJson = this.Serializar(this.coleccion.listPersonajes); //Llamo a Serializar para generar un atributo json con la lista serializada
+                    File.WriteAllText(this.pathPersonajes, archivoJson); //Guardo el atributo anterior en el path
+                    MessageBox.Show("Guardado exitoso", "Guardar archivo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+                catch (JsonException ex)
+                {
+                    MessageBox.Show($"Ocurrio un error al serializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            catch (JsonException ex)
+            else
             {
-                MessageBox.Show($"Ocurrio un error al serializar el archivo\n{ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
         //Guardo los personajes en la base de datos
         private void nubeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.conexionExitosa)
+            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                accesoDatos.AgregarDato(this.coleccion);
+                if (this.conexionExitosa)
+                {
+                    accesoDatos.AgregarDato(this.coleccion);
+                    MessageBox.Show("Guardado exitoso", "Guardar en la nube", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
         //Guardo los datos en el directorio que elija y lo serializo
         private void guardarComoToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            if (saveFileDialog.ShowDialog() == DialogResult.OK)
+            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                try
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    string archivoJson = this.Serializar(this.coleccion.listPersonajes);
-                    File.WriteAllText(saveFileDialog.FileName + ".json", archivoJson); //Lo mismo que en Guardar pero con un path a eleccion
+                    try
+                    {
+                        string archivoJson = this.Serializar(this.coleccion.listPersonajes);
+                        File.WriteAllText(saveFileDialog.FileName + ".json", archivoJson); //Lo mismo que en Guardar pero con un path a eleccion
+                        MessageBox.Show("Guardado exitoso", "Guardar archivo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
         #endregion
 
-        #region Abrir
+        #region Cargar
 
         //Abro un archivo desde el openFile y lo deserealizo
         private void archivoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "JSON files (*.json)|*.json"; //Filtro el openFile para que solo me muestre archivos Json
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                //Al momento de abir un nuevo archivo debo resetear todas las listas
-                this.coleccion.listPersonajes.Clear();
-                this.listBoxPersonajes.Items.Clear();
-                try
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "JSON files (*.json)|*.json"; //Filtro el openFile para que solo me muestre archivos Json
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-                    this.Deserealizar(openFileDialog.FileName);
+                    //Al momento de abir un nuevo archivo debo resetear todas las listas
+                    this.coleccion.listPersonajes.Clear();
+                    this.listBoxPersonajes.Items.Clear();
+                    try
+                    {
+                        this.Deserealizar(openFileDialog.FileName);
 
-                    //Cambio el path principal para que sea el del archivo sleccionado y no el por defecto en bin
-                    this.pathPersonajes = openFileDialog.FileName;
+                        //Cambio el path principal para que sea el del archivo sleccionado y no el por defecto en bin
+                        this.pathPersonajes = openFileDialog.FileName;
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
         }
 
         private void nubeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            //insert
+            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
+            {
+                this.coleccion.listPersonajes.Clear();
+                this.listBoxPersonajes.Items.Clear();
+                this.accesoDatos.MostrarListaDatos(this.coleccion);
+                this.AñadirPersonajeALista(this.coleccion.listPersonajes);
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
         }
 
         #endregion
@@ -353,8 +439,15 @@ namespace Forms
         //Muestra todos los usuarios logueados, llamando al Form Usuarios
         private void usuariosLogeadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Usuarios usuarios = new Usuarios(this.datosUsuarios);
-            usuarios.Show();
+            if(this.datoPerfil == "Administrador")
+            {
+                Usuarios usuarios = new Usuarios(this.datosUsuarios);
+                usuarios.Show();
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
         }
 
         #endregion
@@ -543,6 +636,21 @@ namespace Forms
                     }
                 }
                 this.AñadirPersonajeALista(this.coleccion.listPersonajes);
+            }
+        }
+
+        //Genero un metodo que elimina el personaje pero si el booleano es true tambien lo elimino de base de datos
+        public void eliminarPersonaje(bool opcion)
+        {
+            int posicion = this.listBoxPersonajes.SelectedIndex;
+            this.listBoxPersonajes.Items.RemoveAt(posicion); // Remuevo de la listbox el personaje seleccionado con el index
+            Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion]; //Guardo el personaje seleccionado
+            this.coleccion -= personajeAEliminar; //Borro el personaje con sobrecarga 
+
+            if (this.conexionExitosa && opcion)
+            {
+                // Elimino el personaje de la base de datos, el booleano es para habilitar el Where y eliminar solo por el nombre ingresado
+                this.accesoDatos.EliminarDato(personajeAEliminar.Nombre, personajeAEliminar.Estilo, true);
             }
         }
 

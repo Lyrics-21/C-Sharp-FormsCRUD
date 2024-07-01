@@ -43,6 +43,7 @@ namespace Forms
                 {
                     this.DialogResult = DialogResult.OK;
                     ObtenerDatos.DatoNombre = dato.nombre;
+                    ObtenerDatos.DatoPerfil = dato.perfil;
 
                     StringBuilder sb = new StringBuilder();
                     sb.Append($"Usuario logueado:\n");
@@ -76,6 +77,7 @@ namespace Forms
         public static class ObtenerDatos
         {
             public static string DatoNombre { get; set; }
+            public static string DatoPerfil { get; set; }
             public static string DatosLogin { get; set; }
         }
 

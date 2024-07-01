@@ -148,14 +148,14 @@
             // archivoToolStripMenuItem
             // 
             archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(180, 24);
+            archivoToolStripMenuItem.Size = new Size(124, 24);
             archivoToolStripMenuItem.Text = "Archivo";
             archivoToolStripMenuItem.Click += archivoToolStripMenuItem_Click;
             // 
             // nubeToolStripMenuItem
             // 
             nubeToolStripMenuItem.Name = "nubeToolStripMenuItem";
-            nubeToolStripMenuItem.Size = new Size(180, 24);
+            nubeToolStripMenuItem.Size = new Size(124, 24);
             nubeToolStripMenuItem.Text = "Nube";
             nubeToolStripMenuItem.Click += nubeToolStripMenuItem_Click;
             // 
@@ -171,7 +171,7 @@
             abrirToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { archivoToolStripMenuItem1, nubeToolStripMenuItem1 });
             abrirToolStripMenuItem.Name = "abrirToolStripMenuItem";
             abrirToolStripMenuItem.Size = new Size(189, 24);
-            abrirToolStripMenuItem.Text = "Abrir";
+            abrirToolStripMenuItem.Text = "Cargar";
             // 
             // archivoToolStripMenuItem1
             // 

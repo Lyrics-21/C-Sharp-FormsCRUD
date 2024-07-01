@@ -131,46 +131,51 @@ namespace ADO
 
             try
             {
+                this.comando = new SqlCommand();
+
                 foreach (Personaje personaje in coleccion.listPersonajes)
                 {
-                    string sql = "INSERT INTO Tabla_Personajes (nombre, vida, nivel, estilo, daño, tipoArco, cantidadFlechas, tipoMagia, mana, tipoArmadura, fuerza) VALUES(";
-                    sql += (personaje.Nombre != null ? "'" + personaje.Nombre + "'" : "NULL") + ", ";
-                    sql += (personaje.Vida != null ? "'" + personaje.Vida + "'" : "NULL") + ", ";
-                    sql += (personaje.Nivel != null ? "'" + personaje.Nivel + "'" : "NULL") + ", ";
-                    sql += (personaje.Estilo != null ? "'" + personaje.Estilo + "'" : "NULL") + ", ";
-                    sql += (personaje.Daño != null ? "'" + personaje.Daño + "'" : "NULL") + ", ";
+                    this.comando.Parameters.AddWithValue("@nombre", personaje.Nombre);
+                    this.comando.Parameters.AddWithValue("@vida", personaje.Vida);
+                    this.comando.Parameters.AddWithValue("@nivel", personaje.Nivel);
+                    this.comando.Parameters.AddWithValue("@estilo", personaje.Estilo);
+                    this.comando.Parameters.AddWithValue("@daño", personaje.Daño);
 
                     if (personaje is Arquero arquero)
                     {
-                        sql += (arquero.TipoArco != null ? "'" + arquero.TipoArco + "'" : "NULL") + ", ";
-                        sql += (arquero.CantidadFlechas != null ? "'" + arquero.CantidadFlechas + "'" : "NULL") + ", ";
-                        sql += ("NULL" + ", ");
-                        sql += ("NULL" + ", ");
-                        sql += ("NULL" + ", ");
-                        sql += ("NULL" + ")");
+                        this.comando.Parameters.AddWithValue("@tipoArco", (int)arquero.TipoArco);
+                        this.comando.Parameters.AddWithValue("@cantidadFlechas", arquero.CantidadFlechas);
+                        this.comando.Parameters.AddWithValue("@tipoMagia", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@mana", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@tipoArmadura", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@fuerza", DBNull.Value);
                     }
 
                     else if (personaje is Mago mago)
                     {
-                        sql += ("NULL" + ", ");
-                        sql += ("NULL" + ", ");
-                        sql += (mago.TipoMagia != null ? "'" + mago.TipoMagia + "'" : "NULL") + ", ";
-                        sql += (mago.Mana != null ? "'" + mago.Mana + "'" : "NULL") + ", ";
-                        sql += ("NULL" + ", ");
-                        sql += ("NULL" + ")");
+                        this.comando.Parameters.AddWithValue("@tipoArco", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@cantidadFlechas", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@tipoMagia", (int)mago.TipoMagia);
+                        this.comando.Parameters.AddWithValue("@mana", mago.Mana);
+                        this.comando.Parameters.AddWithValue("@tipoArmadura", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@fuerza", DBNull.Value);
                     }
 
                     else if (personaje is Tanque tanque)
                     {
-                        sql += ("NULL" + ", ");
-                        sql += ("NULL" + ", ");
-                        sql += ("NULL" + ", ");
-                        sql += ("NULL" + ", ");
-                        sql += (tanque.TipoArmadura != null ? "'" + tanque.TipoArmadura + "'" : "NULL") + ", ";
-                        sql += (tanque.Fuerza != null ? "'" + tanque.Fuerza + "'" : "NULL") + ")";
+                        this.comando.Parameters.AddWithValue("@tipoArco", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@cantidadFlechas", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@tipoMagia", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@mana", DBNull.Value);
+                        this.comando.Parameters.AddWithValue("@tipoArmadura", (int)tanque.TipoArmadura);
+                        this.comando.Parameters.AddWithValue("@fuerza", tanque.Fuerza);
                     }
 
-                    this.comando = new SqlCommand();
+                    string sql = "INSERT INTO Tabla_Personajes (nombre, vida, nivel, estilo, daño, tipoArco, cantidadFlechas, tipoMagia, mana, tipoArmadura, fuerza) VALUES(";
+                    sql += "SET nombre = @nombre, vida = @vida, nivel = @nivel, estilo = @estilo, daño = @daño, " +
+                        "tipoArco = @tipoArco, cantidadFlechas = @cantidadFlechas, tipoMagia = @tipoMagia, mana = @mana, tipoArmadura = @tipoArmadura, fuerza = @fuerza ";
+                    sql += "WHERE nombre = @nombreAntiguo AND estilo = @estiloAntiguo";
+
 
                     this.comando.CommandType = CommandType.Text;
                     this.comando.CommandText = sql;
@@ -209,13 +214,16 @@ namespace ADO
 
         #region Update
 
-        public bool ModificarDato(Personaje personaje)
+        public bool ModificarDato(Personaje personaje, string nombreAntiguo, string estiloAntiguo)
         {
             bool rta = true;
 
             try
             {
                 this.comando = new SqlCommand();
+                this.comando.Parameters.AddWithValue("@nombreAntiguo", nombreAntiguo);
+                this.comando.Parameters.AddWithValue("@estiloAntiguo", estiloAntiguo);
+
                 this.comando.Parameters.AddWithValue("@nombre", (object)personaje.Nombre ?? DBNull.Value);
                 this.comando.Parameters.AddWithValue("@vida", (object)personaje.Vida ?? DBNull.Value);
                 this.comando.Parameters.AddWithValue("@nivel", (object)personaje.Nivel ?? DBNull.Value);
@@ -224,38 +232,38 @@ namespace ADO
 
                 if (personaje is Arquero arquero)
                 {
-                    this.comando.Parameters.AddWithValue("@tipoArco", (object)arquero.TipoArco ?? DBNull.Value);
-                    this.comando.Parameters.AddWithValue("@cantidadFlechas", (object)arquero.CantidadFlechas ?? DBNull.Value);
-                    this.comando.Parameters.AddWithValue("@tipoMagia", "NULL");
-                    this.comando.Parameters.AddWithValue("@mana", "NULL");
-                    this.comando.Parameters.AddWithValue("@tipoArmadura", "NULL");
-                    this.comando.Parameters.AddWithValue("@fuerza", "NULL");
+                    this.comando.Parameters.AddWithValue("@tipoArco", (int)arquero.TipoArco);
+                    this.comando.Parameters.AddWithValue("@cantidadFlechas", arquero.CantidadFlechas);
+                    this.comando.Parameters.AddWithValue("@tipoMagia", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@mana", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@tipoArmadura", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@fuerza", DBNull.Value);
                 }
 
                 else if (personaje is Mago mago)
                 {
-                    this.comando.Parameters.AddWithValue("@tipoArco", "NULL");
-                    this.comando.Parameters.AddWithValue("@cantidadFlechas", "NULL");
-                    this.comando.Parameters.AddWithValue("@tipoMagia", (object)mago.TipoMagia ?? DBNull.Value);
-                    this.comando.Parameters.AddWithValue("@mana", (object)mago.Mana ?? DBNull.Value);
-                    this.comando.Parameters.AddWithValue("@tipoArmadura", "NULL");
-                    this.comando.Parameters.AddWithValue("@fuerza", "NULL");
+                    this.comando.Parameters.AddWithValue("@tipoArco", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@cantidadFlechas", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@tipoMagia", (int)mago.TipoMagia);
+                    this.comando.Parameters.AddWithValue("@mana", mago.Mana);
+                    this.comando.Parameters.AddWithValue("@tipoArmadura", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@fuerza", DBNull.Value);
                 }
 
                 else if (personaje is Tanque tanque)
                 {
-                    this.comando.Parameters.AddWithValue("@tipoArco", "NULL");
-                    this.comando.Parameters.AddWithValue("@cantidadFlechas", "NULL");
-                    this.comando.Parameters.AddWithValue("@tipoMagia", "NULL");
-                    this.comando.Parameters.AddWithValue("@mana", "NULL");
-                    this.comando.Parameters.AddWithValue("@tipoArmadura", (object)tanque.TipoArmadura ?? DBNull.Value);
-                    this.comando.Parameters.AddWithValue("@fuerza", (object)tanque.Fuerza ?? DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@tipoArco", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@cantidadFlechas", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@tipoMagia", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@mana", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@tipoArmadura", (int)tanque.TipoArmadura);
+                    this.comando.Parameters.AddWithValue("@fuerza", tanque.Fuerza);
                 }
 
                 string sql = "UPDATE Tabla_Personajes ";
                 sql += "SET nombre = @nombre, vida = @vida, nivel = @nivel, estilo = @estilo, daño = @daño, " +
                     "tipoArco = @tipoArco, cantidadFlechas = @cantidadFlechas, tipoMagia = @tipoMagia, mana = @mana, tipoArmadura = @tipoArmadura, fuerza = @fuerza ";
-                sql += "WHERE nombre = '@nombre'";
+                sql += "WHERE nombre = @nombreAntiguo AND estilo = @estiloAntiguo";
 
                 this.comando.CommandType = CommandType.Text;
                 this.comando.CommandText = sql;
@@ -270,7 +278,7 @@ namespace ADO
                     rta = false;
                 }
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 rta = false;
             }
@@ -289,7 +297,7 @@ namespace ADO
 
         #region Delete
 
-        public bool EliminarDato(string nombre, bool opcion)
+        public bool EliminarDato(string nombre, string estilo, bool opcion)
         {
             bool rta = true;
 
@@ -303,7 +311,8 @@ namespace ADO
                 if (opcion)
                 {
                     this.comando.Parameters.AddWithValue("@nombre", nombre);
-                    sql += "WHERE nombre = @nombre";
+                    this.comando.Parameters.AddWithValue("@estilo", estilo);
+                    sql += "WHERE nombre = @nombre AND estilo = @estilo";
                 }
 
                 this.comando.CommandType = CommandType.Text;
@@ -320,7 +329,7 @@ namespace ADO
                 }
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
                 rta = false;
             }
