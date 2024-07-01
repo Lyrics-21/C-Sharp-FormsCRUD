@@ -37,6 +37,9 @@ namespace Forms
         private bool conexionExitosa; //Este atributo guarda el estado de la conexion de la base de datos}
         private string nombreAntiguo; //Estos atributos los utilizo para el where del update de la base de datos
         private string estiloAntiguo;
+        private string offlineOnline;
+
+        private Task task;
 
         #endregion
 
@@ -52,6 +55,7 @@ namespace Forms
 
             this.coleccion = new Coleccion();
 
+            //Base de datos
             this.accesoDatos = new AccesoDatos();
             this.conexionExitosa = false;
         }
@@ -61,11 +65,23 @@ namespace Forms
         #region LoadForm
         private void Formulario1_Load(object sender, EventArgs e)
         {
+            //Si la coneccion es exitosa de la base de datos muestra Online, de lo contrario Offline
+            if (this.accesoDatos.ProbarConexion())
+            {
+                this.conexionExitosa = true;
+                this.offlineOnline = "Online";
+            }
+            else
+            {
+                this.offlineOnline = "Offline";
+            }
+
+
             this.datoNombre = ObtenerDatos.DatoNombre;
             this.datoPerfil = ObtenerDatos.DatoPerfil;
 
             DateTime dateTime = DateTime.Now;
-            this.toolStripStatusLabel1.Text = $"{datoNombre} - Logeado - {dateTime.Date.ToString("dd/MM/yyyy")}";
+            this.toolStripStatusLabel1.Text = $"{datoNombre} - Logeado - {dateTime.Date.ToString("dd/MM/yyyy")} - {this.offlineOnline}";
 
             #region Archivos
 
@@ -110,15 +126,6 @@ namespace Forms
             }
 
             #endregion
-
-            #region BaseDeDatos
-
-            if (this.accesoDatos.ProbarConexion())
-            {
-                this.conexionExitosa = true;
-            }
-
-            #endregion
         }
 
         #endregion
@@ -156,7 +163,7 @@ namespace Forms
         {
             if(this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                    FormArquera formArquera = new FormArquera();
+                FormArquera formArquera = new FormArquera();
                 this.PersonajeResultCancel(formArquera);
                 if (formArquera.DialogResult == DialogResult.OK)
                 {
@@ -225,8 +232,11 @@ namespace Forms
                             this.coleccion += formArquera.Arqueros; //Agrego a la coleccion el nuevo personaje modificado
                             this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}"); //Agrego a la listBox el nuevo personaje modificado
 
-                            //Update de SQL 
-                            this.accesoDatos.ModificarDato(formArquera.Arqueros, this.nombreAntiguo, this.estiloAntiguo);
+                            //Update de SQL
+                            if(this.conexionExitosa)
+                            {
+                                this.accesoDatos.ModificarDato(formArquera.Arqueros, this.nombreAntiguo, this.estiloAntiguo);
+                            }
 
                             formArquera.Close();
                         }
@@ -242,8 +252,11 @@ namespace Forms
                             this.coleccion += formMago.Magos;
                             this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
 
-                            //Update de SQL 
-                            this.accesoDatos.ModificarDato(formMago.Magos, this.nombreAntiguo, this.estiloAntiguo);
+                            //Update de SQL
+                            if (this.conexionExitosa)
+                            {
+                                this.accesoDatos.ModificarDato(formMago.Magos, this.nombreAntiguo, this.estiloAntiguo);
+                            }
 
                             formMago.Close();
                         }
@@ -260,7 +273,10 @@ namespace Forms
                             this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
 
                             //Update de SQL 
-                            this.accesoDatos.ModificarDato(formTanque.Tanques, this.nombreAntiguo, this.estiloAntiguo);
+                            if(this.conexionExitosa)
+                            {
+                                this.accesoDatos.ModificarDato(formTanque.Tanques, this.nombreAntiguo, this.estiloAntiguo);
+                            }
 
                             formTanque.Close();
                         }
@@ -339,23 +355,6 @@ namespace Forms
             }
         }
 
-        //Guardo los personajes en la base de datos
-        private void nubeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
-            {
-                if (this.conexionExitosa)
-                {
-                    accesoDatos.AgregarDato(this.coleccion);
-                    MessageBox.Show("Guardado exitoso", "Guardar en la nube", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-        }
-
         //Guardo los datos en el directorio que elija y lo serializo
         private void guardarComoToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
@@ -374,6 +373,23 @@ namespace Forms
                     {
                         MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            }
+        }
+
+        //Guardo los personajes en la base de datos
+        private void nubeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
+            {
+                if (this.conexionExitosa)
+                {
+                    accesoDatos.AgregarDato(this.coleccion);
+                    MessageBox.Show("Guardado exitoso", "Guardar en la nube", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             }
             else
@@ -419,15 +435,19 @@ namespace Forms
             }
         }
 
+        //Cargo el archivo desde la base de datos
         private void nubeToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
-                this.coleccion.listPersonajes.Clear();
-                this.listBoxPersonajes.Items.Clear();
-                this.coleccion.listPersonajes = this.accesoDatos.MostrarListaDatos();
-                this.AñadirPersonajeALista(this.coleccion.listPersonajes);
-                MessageBox.Show("Cargado exitoso", "Cargar desde la Nube", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                if (this.conexionExitosa)
+                {
+                    this.coleccion.listPersonajes.Clear();
+                    this.listBoxPersonajes.Items.Clear();
+                    this.coleccion.listPersonajes = this.accesoDatos.MostrarListaDatos();
+                    this.AñadirPersonajeALista(this.coleccion.listPersonajes);
+                    MessageBox.Show("Cargado exitoso", "Cargar desde la Nube", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
             }
             else
             {

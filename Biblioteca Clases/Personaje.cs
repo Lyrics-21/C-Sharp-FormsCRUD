@@ -33,24 +33,8 @@ namespace Libreria_De_Clases
 
         }
 
-        //Metodo para devolver cada atributo del Personaje
-        public string mostrarInfo()
-        {
-            StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Nombre: {this.Nombre}");
-            sb.AppendLine($"Vida: {this.Vida}");
-            sb.AppendLine($"Nivel: {this.Nivel}");
-            sb.AppendLine($"Estilo: {this.Estilo}");
-            sb.AppendLine($"Daño: {this.Daño}");
-
-            return sb.ToString();
-        }
-
-        //Sobreescrbio ToStrign que llama al metodo anterior
-        public override string ToString()
-        {
-            return mostrarInfo();
-        }
+        //Genero metodo abstracto que sobrescribe ToString
+        public abstract override string ToString();
 
         //Sobrecarga operados == que verifica si el nombre y estilo del personaje son iguales
         public static bool operator ==(Personaje personaje1, Personaje personaje2)

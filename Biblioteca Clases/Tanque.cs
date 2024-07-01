@@ -54,7 +54,11 @@ namespace Libreria_De_Clases
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(base.ToString());
+            sb.AppendLine($"Nombre: {this.Nombre}");
+            sb.AppendLine($"Vida: {this.Vida}");
+            sb.AppendLine($"Nivel: {this.Nivel}");
+            sb.AppendLine($"Estilo: {this.Estilo}");
+            sb.AppendLine($"Daño: {this.Daño}");
             sb.AppendLine($"Tipo de armadura: {this.TipoArmadura.ToString()}");
             sb.AppendLine($"Fuerza: {this.Fuerza}");
             return sb.ToString();

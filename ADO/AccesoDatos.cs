@@ -36,15 +36,15 @@ namespace ADO
 
         public bool ProbarConexion()
         {
-            bool rta = true;
-
+            bool estado;
             try
             {
                 this.conexion.Open();
+               estado = true;
             }
             catch (Exception e)
             {
-                rta = false;
+                estado = false;
             }
             finally
             {
@@ -53,8 +53,7 @@ namespace ADO
                     this.conexion.Close();
                 }
             }
-
-            return rta;
+            return estado;
         }
 
         #endregion

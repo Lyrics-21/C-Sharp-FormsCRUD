@@ -55,6 +55,7 @@
             // 
             // richTextBox1
             // 
+            richTextBox1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             richTextBox1.Location = new Point(12, 56);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.Size = new Size(326, 301);
@@ -71,6 +72,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Name = "Usuarios";
             Text = "Usuarios";
+            FormClosing += Usuarios_FormClosing;
             Load += Usuarios_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
