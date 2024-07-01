@@ -404,6 +404,8 @@ namespace Forms
 
                         //Cambio el path principal para que sea el del archivo sleccionado y no el por defecto en bin
                         this.pathPersonajes = openFileDialog.FileName;
+
+                        MessageBox.Show("Cargado exitoso", "Cargar desde Archivo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
                     catch (Exception ex)
                     {
@@ -423,8 +425,9 @@ namespace Forms
             {
                 this.coleccion.listPersonajes.Clear();
                 this.listBoxPersonajes.Items.Clear();
-                this.accesoDatos.MostrarListaDatos(this.coleccion);
+                this.coleccion.listPersonajes = this.accesoDatos.MostrarListaDatos();
                 this.AñadirPersonajeALista(this.coleccion.listPersonajes);
+                MessageBox.Show("Cargado exitoso", "Cargar desde la Nube", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
             }
             else
             {

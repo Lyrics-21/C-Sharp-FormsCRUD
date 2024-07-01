@@ -18,15 +18,6 @@
     "Da\u00F1o": 8000
   },
   {
-    "TipoArmadura": 4,
-    "Fuerza": 1000,
-    "Vida": 5000,
-    "Nombre": "Dante",
-    "Nivel": 21,
-    "Estilo": "Tanque",
-    "Da\u00F1o": 1000
-  },
-  {
     "TipoMagia": 3,
     "Mana": 500,
     "Vida": 2000,

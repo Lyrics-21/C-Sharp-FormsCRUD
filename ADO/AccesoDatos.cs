@@ -61,8 +61,9 @@ namespace ADO
 
         #region Select
 
-        public void MostrarListaDatos(Coleccion coleccion)
+        public List<Personaje> MostrarListaDatos()
         {
+            List<Personaje> lista = new List<Personaje>();  
             try
             {
                 this.comando = new SqlCommand();
@@ -77,36 +78,48 @@ namespace ADO
 
                 while (lector.Read())
                 {
-                    foreach (Personaje personaje in coleccion.listPersonajes)
-                    {
-                        personaje.Nombre = lector[1].ToString();
-                        personaje.Vida = (int)lector[2];
-                        personaje.Nivel = (int)lector[3];
-                        personaje.Estilo = lector[4].ToString();
-                        personaje.Daño = (int)lector[5];
+                    string estilo = lector["estilo"].ToString();
 
-                        if (personaje is Arquero arquero)
-                        {
+                    switch(estilo)
+                    {
+                        case "Arquero/a":
+                            Arquero arquero = new Arquero();
+                            arquero.Nombre = lector[1].ToString();
+                            arquero.Vida = (int)lector[2];
+                            arquero.Nivel = (int)lector[3];
+                            arquero.Estilo = lector[4].ToString();
+                            arquero.Daño = (int)lector[5];
                             arquero.TipoArco = (TipoArco)lector[6];
                             arquero.CantidadFlechas = (int)lector[7];
-                        }
+                            lista.Add(arquero);
+                            break;
 
-                        else if (personaje is Mago mago)
-                        {
+                        case "Mago":
+                            Mago mago = new Mago();
+                            mago.Nombre = lector[1].ToString();
+                            mago.Vida = (int)lector[2];
+                            mago.Nivel = (int)lector[3];
+                            mago.Estilo = lector[4].ToString();
+                            mago.Daño = (int)lector[5];
                             mago.TipoMagia = (TipoMagia)lector[8];
                             mago.Mana = (int)lector[9];
-                        }
+                            lista.Add(mago);
+                            break;
 
-                        else if (personaje is Tanque tanque)
-                        {
+                        case "Tanque":
+                            Tanque tanque = new Tanque();
+                            tanque.Nombre = lector[1].ToString();
+                            tanque.Vida = (int)lector[2];
+                            tanque.Nivel = (int)lector[3];
+                            tanque.Estilo = lector[4].ToString();
+                            tanque.Daño = (int)lector[5];
                             tanque.TipoArmadura = (TipoArmadura)lector[10];
                             tanque.Fuerza = (int)lector[11];
-                        }
+                            lista.Add(tanque);
+                            break;
                     }
                 }
-
                 lector.Close();
-
             }
             catch (Exception ex)
             {
@@ -119,6 +132,7 @@ namespace ADO
                     this.conexion.Close();
                 }
             }
+            return lista;
         }
 
         #endregion
@@ -131,10 +145,10 @@ namespace ADO
 
             try
             {
-                this.comando = new SqlCommand();
-
                 foreach (Personaje personaje in coleccion.listPersonajes)
                 {
+                    this.comando = new SqlCommand();
+
                     this.comando.Parameters.AddWithValue("@nombre", personaje.Nombre);
                     this.comando.Parameters.AddWithValue("@vida", personaje.Vida);
                     this.comando.Parameters.AddWithValue("@nivel", personaje.Nivel);
@@ -171,12 +185,9 @@ namespace ADO
                         this.comando.Parameters.AddWithValue("@fuerza", tanque.Fuerza);
                     }
 
-                    string sql = "INSERT INTO Tabla_Personajes (nombre, vida, nivel, estilo, daño, tipoArco, cantidadFlechas, tipoMagia, mana, tipoArmadura, fuerza) VALUES(";
-                    sql += "SET nombre = @nombre, vida = @vida, nivel = @nivel, estilo = @estilo, daño = @daño, " +
-                        "tipoArco = @tipoArco, cantidadFlechas = @cantidadFlechas, tipoMagia = @tipoMagia, mana = @mana, tipoArmadura = @tipoArmadura, fuerza = @fuerza ";
-                    sql += "WHERE nombre = @nombreAntiguo AND estilo = @estiloAntiguo";
-
-
+                    string sql = "INSERT INTO Tabla_Personajes (nombre, vida, nivel, estilo, daño, tipoArco, cantidadFlechas, tipoMagia, mana, tipoArmadura, fuerza) VALUES( ";
+                    sql += "@nombre, @vida, @nivel, @estilo, @daño, @tipoArco, @cantidadFlechas, @tipoMagia, @mana, @tipoArmadura, @fuerza)";
+    
                     this.comando.CommandType = CommandType.Text;
                     this.comando.CommandText = sql;
                     this.comando.Connection = this.conexion;
@@ -224,11 +235,11 @@ namespace ADO
                 this.comando.Parameters.AddWithValue("@nombreAntiguo", nombreAntiguo);
                 this.comando.Parameters.AddWithValue("@estiloAntiguo", estiloAntiguo);
 
-                this.comando.Parameters.AddWithValue("@nombre", (object)personaje.Nombre ?? DBNull.Value);
-                this.comando.Parameters.AddWithValue("@vida", (object)personaje.Vida ?? DBNull.Value);
-                this.comando.Parameters.AddWithValue("@nivel", (object)personaje.Nivel ?? DBNull.Value);
-                this.comando.Parameters.AddWithValue("@estilo", (object)personaje.Estilo ?? DBNull.Value);
-                this.comando.Parameters.AddWithValue("@daño", (object)personaje.Daño ?? DBNull.Value);
+                this.comando.Parameters.AddWithValue("@nombre", personaje.Nombre);
+                this.comando.Parameters.AddWithValue("@vida", personaje.Vida);
+                this.comando.Parameters.AddWithValue("@nivel", personaje.Nivel);
+                this.comando.Parameters.AddWithValue("@estilo", personaje.Estilo);
+                this.comando.Parameters.AddWithValue("@daño", personaje.Daño);
 
                 if (personaje is Arquero arquero)
                 {
