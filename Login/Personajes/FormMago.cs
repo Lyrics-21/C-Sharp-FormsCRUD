@@ -21,19 +21,24 @@ namespace Forms
 
         private void FormMago_Load(object sender, EventArgs e)
         {
-            this.enumCombobox(typeof(TipoMagia), this.comboBoxMago);
+            //Llamo al metodo EnumComboBox para agregar el enumerado de Mago a mi comboBox 
+            FormPersonaje.EnumCombobox(typeof(TipoMagia), this.comboBoxMago);
             this.comboBoxMago.SelectedItem = TipoMagia.Elemental;
         }
+
+        //Sobrescribo el boton Confirmar de mi FormPersonaje
         protected override void buttonConfirmar_Click(object sender, EventArgs e)
         {
+            //Llamo lo que el boton de Clase padre hace
             base.buttonConfirmar_Click(sender, e);
 
+            //Instancio mi personaje validando cada dato y combinacion posible
             TipoMagia tipoMagia = (TipoMagia)Enum.Parse(typeof(TipoMagia), this.comboBoxMago.SelectedItem.ToString());
 
             int vida, daño, nivel, mana;
 
-            if (validarDatos(this.textBoxVida, out vida) && validarDatos(this.textBoxDaño, out daño) &&
-                validarDatos(this.textBoxNivel, out nivel) && validarDatos(this.textBoxMana, out mana))
+            if (ValidarDatos(this.textBoxVida, out vida) && ValidarDatos(this.textBoxDaño, out daño) &&
+                ValidarDatos(this.textBoxNivel, out nivel) && ValidarDatos(this.textBoxMana, out mana))
             {
                 //Instanciar al Personaje sin los atributos de cada if con todas las combinaciones posibles
                 if (vida == 0 && daño == 0 && mana == 0)
@@ -79,13 +84,17 @@ namespace Forms
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        //Sobrescribo ClearGroupBox y Llamo a ClearText de Personaje para limpiar los valores de groupBoxMago
         protected override void ClearGroupBox()
         {
-            this.ClearText(this.groupBoxMago);
+            FormPersonaje.ClearText(this.groupBoxMago);
         }
+
+        //Si presiono Mana lo limpia llamando a ResetTextBoxClick de clase padre
         private void textBoxMana_Click(object sender, EventArgs e)
         {
-            this.ResetTextBoxClick(this.textBoxMana);
+            FormPersonaje.ResetTextBoxClick(this.textBoxMana);
         }
     }
 }

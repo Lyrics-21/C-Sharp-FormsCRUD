@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Libreria_De_Clases
 {
-    public class Arquero : Personaje
+    public class Arquero : Personaje, IPersonaje
     {
         //Atributos con Propiedades get set
         public TipoArco TipoArco { get; set; }
@@ -52,8 +52,9 @@ namespace Libreria_De_Clases
         {
 
         }
-        //Sobreescribo Tostring 
-        public override string ToString()
+
+        //Metodo utilizo de la interfaz y le doy una implementacion
+        public string RetornarInfo()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Nombre: {this.Nombre}");
@@ -64,6 +65,12 @@ namespace Libreria_De_Clases
             sb.AppendLine($"Arco : {this.TipoArco.ToString()}");
             sb.AppendLine($"Cantidad de flechas : {this.CantidadFlechas}");
             return sb.ToString();
+        }
+
+        //Sobreescribo Tostring 
+        public override string ToString()
+        {
+            return this.RetornarInfo();
         }
 
         //Sobrecarga operados == que verifica si el nombre y estilo del personaje son iguales

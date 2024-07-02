@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ADO")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1d2299897eeaec1344fbbff1d182896f80e34107")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5a07b891f957aacd859619210e8f0562e5a12eab")]
 [assembly: System.Reflection.AssemblyProductAttribute("ADO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ADO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

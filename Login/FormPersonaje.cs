@@ -15,6 +15,7 @@ namespace Forms
 {
     public partial class FormPersonaje : Form
     {
+        //Estos atributos guardan el Personaje instanciado
         protected Arquero arqueros;
         protected Mago magos;
         protected Tanque tanques;
@@ -22,6 +23,10 @@ namespace Forms
         {
             InitializeComponent();
         }
+
+        #region Botones
+
+        //El evento Click es virtual porque lo sobrescribo en las clases derivadas
         protected virtual void buttonConfirmar_Click(object sender, EventArgs e)
         {
             if (this.textBoxNombre.Text.Length <= 0)
@@ -30,9 +35,10 @@ namespace Forms
             }
         }
 
+        //Llamo a dos metodos cuando presiona Limpiar
         private void buttonLimpiar_Click(object sender, EventArgs e)
         {
-            this.ClearText(this.groupBoxPersonaje);
+            FormPersonaje.ClearText(this.groupBoxPersonaje);
             this.ClearGroupBox();
         }
 
@@ -41,22 +47,28 @@ namespace Forms
             this.DialogResult = DialogResult.Cancel;
         }
 
+        //Los siguientes 3 eventos son solamente esteticos, si presiono el textBox llama a un metodo
         private void textBoxVida_Click(object sender, EventArgs e)
         {
-            this.ResetTextBoxClick(this.textBoxVida);
+            FormPersonaje.ResetTextBoxClick(this.textBoxVida);
         }
 
         private void textBoxNivel_Click(object sender, EventArgs e)
         {
-            this.ResetTextBoxClick(this.textBoxNivel);
+            FormPersonaje.ResetTextBoxClick(this.textBoxNivel);
         }
 
         private void textBoxDaño_Click(object sender, EventArgs e)
         {
-            this.ResetTextBoxClick(this.textBoxDaño);
+            FormPersonaje.ResetTextBoxClick(this.textBoxDaño);
         }
 
-        public void ClearText(Control parent)
+        #endregion
+
+        #region Metodos
+
+        //Este metodo estatico lo utilizo para limpiar los groupBox
+        public static void ClearText(Control parent)
         {
             foreach (Control control in parent.Controls)
             {
@@ -67,11 +79,13 @@ namespace Forms
             }
         }
 
+        //Genero un metodo virtual para sobrescribirlos en las clases derivadas
         protected virtual void ClearGroupBox()
         {
         }
 
-        protected void ResetTextBoxClick(TextBox textBox)
+        //Este metodo limpia y resetea el color de los textBox
+        protected static void ResetTextBoxClick(TextBox textBox)
         {
             if (textBox.ForeColor != Color.Black)
             {
@@ -80,7 +94,8 @@ namespace Forms
             }
         }
 
-        protected void enumCombobox(Type tipoEnum, ComboBox comboBox)
+        //Este metodo agrega los enumerados a mi Combobox en clases derivadas
+        protected static void EnumCombobox(Type tipoEnum, ComboBox comboBox)
         {
             foreach (Enum item in Enum.GetValues(tipoEnum))
             {
@@ -88,6 +103,7 @@ namespace Forms
             }
         }
 
+        //Genero propiedades para retornar los distintos personajes que instancie en clases derivadas
         public Arquero Arqueros
         {
             get { return this.arqueros; }
@@ -101,7 +117,8 @@ namespace Forms
             get { return this.magos; }
         }
 
-        public bool validarDatos(TextBox textBox, out int resultado)
+        //Este metodo valida todos los datos ingresados por el usuario antes de agregarlos como atributos al Personaje instanciado
+        public bool ValidarDatos(TextBox textBox, out int resultado)
         {
             bool retorno = false;
             if (textBox.ForeColor != Color.Black && this.textBoxNombre.Text.Length > 0)
@@ -120,5 +137,7 @@ namespace Forms
             }
             return retorno;
         }
+
+        #endregion
     }
 }

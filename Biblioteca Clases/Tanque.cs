@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Libreria_De_Clases
 {
-    public class Tanque : Personaje
+    public class Tanque : Personaje, IPersonaje
     {
         public TipoArmadura TipoArmadura { get; set; }
         public int Fuerza { get; set; }
@@ -50,8 +50,8 @@ namespace Libreria_De_Clases
 
         }
 
-        //Sobreescribo Tostring
-        public override string ToString()
+        //Metodo utilizo de la interfaz y le doy una implementacion
+        public string RetornarInfo()
         {
             StringBuilder sb = new StringBuilder();
             sb.AppendLine($"Nombre: {this.Nombre}");
@@ -62,6 +62,12 @@ namespace Libreria_De_Clases
             sb.AppendLine($"Tipo de armadura: {this.TipoArmadura.ToString()}");
             sb.AppendLine($"Fuerza: {this.Fuerza}");
             return sb.ToString();
+        }
+
+        //Sobreescribo Tostring
+        public override string ToString()
+        {
+            return this.RetornarInfo();
         }
 
         //Sobrecarga operados == que verifica si el nombre y estilo del personaje son iguales

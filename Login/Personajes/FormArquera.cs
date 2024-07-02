@@ -23,20 +23,24 @@ namespace Forms
 
         private void FormArquera_Load(object sender, EventArgs e)
         {
-            this.enumCombobox(typeof(TipoArco), this.comboBoxArquero);
+            //Llamo al metodo EnumComboBox para agregar el enumerado de Arquero a mi comboBox 
+            FormPersonaje.EnumCombobox(typeof(TipoArco), this.comboBoxArquero);
             this.comboBoxArquero.SelectedItem = TipoArco.Madera;
         }
 
+        //Sobrescribo el boton Confirmar de mi FormPersonaje
         protected override void buttonConfirmar_Click(object sender, EventArgs e)
         {
+            //Llamo lo que el boton de Clase padre hace
             base.buttonConfirmar_Click(sender, e);
 
+            //Instancio mi personaje validando cada dato y combinacion posible
             TipoArco tipoArco = (TipoArco)Enum.Parse(typeof(TipoArco), this.comboBoxArquero.SelectedItem.ToString());
 
             int vida, daño, nivel, cantidadFlechas;
 
-            if (validarDatos(this.textBoxVida, out vida) && validarDatos(this.textBoxDaño, out daño) &&
-                validarDatos(this.textBoxNivel, out nivel) && validarDatos(this.textBoxFlechas, out cantidadFlechas))
+            if (ValidarDatos(this.textBoxVida, out vida) && ValidarDatos(this.textBoxDaño, out daño) &&
+                ValidarDatos(this.textBoxNivel, out nivel) && ValidarDatos(this.textBoxFlechas, out cantidadFlechas))
             {
                 //Instanciar al Personaje sin los atributos de cada if con todas las combinaciones posibles
                 if (vida == 0 && daño == 0 && cantidadFlechas == 0)
@@ -82,14 +86,17 @@ namespace Forms
                 this.DialogResult = DialogResult.OK;
             }
         }
+
+        //Sobrescribo ClearGroupBox y Llamo a ClearText de Personaje para limpiar los valores de groupBoxArquero
         protected override void ClearGroupBox()
         {
-            this.ClearText(this.groupBoxArquero);
+            FormPersonaje.ClearText(this.groupBoxArquero);
         }
 
+        //Si presiono Cantidad Flechas lo limpia llamando a ResetTextBoxClick de clase padre
         private void textBoxFlechas_Click(object sender, EventArgs e)
         {
-            this.ResetTextBoxClick(this.textBoxFlechas);
+            FormPersonaje.ResetTextBoxClick(this.textBoxFlechas);
         }
     }
 }

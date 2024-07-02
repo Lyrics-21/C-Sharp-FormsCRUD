@@ -20,6 +20,7 @@ using static System.Windows.Forms.Design.AxImporter;
 
 namespace Forms
 {
+    public delegate bool Verificar();
     public partial class Formulario1 : Form
     {
         #region Atributos
@@ -44,7 +45,6 @@ namespace Forms
         private string offlineOnline; //Atributo para guardar si esta online o offline la base de datos
 
         //Eventos
-        private delegate bool Verificar();
         private event Verificar CapacidadMaxima;
 
         #endregion
