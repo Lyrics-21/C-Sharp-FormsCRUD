@@ -9,42 +9,41 @@ using System.Xml.Serialization;
 
 namespace Libreria_De_Clases
 {
-    public class Coleccion
+    public class Coleccion<T>
     {
         //Lista de personajes, aca se guarda ya sea un Arquero, Tanque o Mago
-        public List<Personaje> listPersonajes;
+        public List<T> listaColeccion;
         public Coleccion()
         {
-            this.listPersonajes = new List<Personaje>();
+            this.listaColeccion = new List<T>();
         }
 
         //Sobrecarga del operador == si personaje esta dentro de la lista de personajes devuelve true
-        public static bool operator ==(Coleccion co, Personaje personaje)
+        public static bool operator ==(Coleccion<T> co, T t)
 
         {
-            return co.listPersonajes.Contains(personaje);
+            return co.listaColeccion.Contains(t);
         }
 
         //De lo contrario false
-        public static bool operator !=(Coleccion co, Personaje personaje)
+        public static bool operator !=(Coleccion<T> co, T t)
         {
-            return !(co == personaje);
+            return !(co == t);
         }
 
         //Sobrecarga operador + agrega a el personaje a la lista de personaje siempre y cuando este no este en la lista y devuelve esa lista
-        public static Coleccion operator +(Coleccion co, Personaje personaje)
+        public static Coleccion<T> operator +(Coleccion<T> co, T t)
         {
-            co.listPersonajes.Add(personaje);
+            co.listaColeccion.Add(t);
             return co;
         }
 
         //Encuentra el indice seleccionado y si ese indice coincide con un personaje si conincide lo saca de la lista 
-        public static Coleccion operator -(Coleccion co, Personaje personaje)
+        public static Coleccion<T> operator -(Coleccion<T> co, T t)
         {
-            int index = co.listPersonajes.FindIndex(c => c == personaje);
-            if (index >= 0)
+            if(co == t)
             {
-                co.listPersonajes.RemoveAt(index);
+                co.listaColeccion.Remove(t);
             }
             return co;
         }

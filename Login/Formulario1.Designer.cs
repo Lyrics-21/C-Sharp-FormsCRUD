@@ -38,8 +38,6 @@
             arqueroToolStripMenuItem = new ToolStripMenuItem();
             tanqueToolStripMenuItem = new ToolStripMenuItem();
             guardarPersonajesToolStripMenuItem = new ToolStripMenuItem();
-            archivoToolStripMenuItem = new ToolStripMenuItem();
-            nubeToolStripMenuItem = new ToolStripMenuItem();
             guardarComoToolStripMenuItem = new ToolStripMenuItem();
             abrirToolStripMenuItem = new ToolStripMenuItem();
             archivoToolStripMenuItem1 = new ToolStripMenuItem();
@@ -140,24 +138,10 @@
             // 
             // guardarPersonajesToolStripMenuItem
             // 
-            guardarPersonajesToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { archivoToolStripMenuItem, nubeToolStripMenuItem });
             guardarPersonajesToolStripMenuItem.Name = "guardarPersonajesToolStripMenuItem";
             guardarPersonajesToolStripMenuItem.Size = new Size(189, 24);
             guardarPersonajesToolStripMenuItem.Text = "Guardar";
-            // 
-            // archivoToolStripMenuItem
-            // 
-            archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            archivoToolStripMenuItem.Size = new Size(124, 24);
-            archivoToolStripMenuItem.Text = "Archivo";
-            archivoToolStripMenuItem.Click += archivoToolStripMenuItem_Click;
-            // 
-            // nubeToolStripMenuItem
-            // 
-            nubeToolStripMenuItem.Name = "nubeToolStripMenuItem";
-            nubeToolStripMenuItem.Size = new Size(124, 24);
-            nubeToolStripMenuItem.Text = "Nube";
-            nubeToolStripMenuItem.Click += nubeToolStripMenuItem_Click;
+            guardarPersonajesToolStripMenuItem.Click += guardarPersonajesToolStripMenuItem_Click;
             // 
             // guardarComoToolStripMenuItem
             // 
@@ -176,14 +160,14 @@
             // archivoToolStripMenuItem1
             // 
             archivoToolStripMenuItem1.Name = "archivoToolStripMenuItem1";
-            archivoToolStripMenuItem1.Size = new Size(180, 24);
+            archivoToolStripMenuItem1.Size = new Size(124, 24);
             archivoToolStripMenuItem1.Text = "Archivo";
             archivoToolStripMenuItem1.Click += archivoToolStripMenuItem1_Click;
             // 
             // nubeToolStripMenuItem1
             // 
             nubeToolStripMenuItem1.Name = "nubeToolStripMenuItem1";
-            nubeToolStripMenuItem1.Size = new Size(180, 24);
+            nubeToolStripMenuItem1.Size = new Size(124, 24);
             nubeToolStripMenuItem1.Text = "Nube";
             nubeToolStripMenuItem1.Click += nubeToolStripMenuItem1_Click;
             // 
@@ -333,8 +317,6 @@
         private ToolStripMenuItem dañoToolStripMenuItem;
         private ToolStripMenuItem dañoToolStripMenuItem1;
         private ToolStripMenuItem abrirToolStripMenuItem;
-        private ToolStripMenuItem archivoToolStripMenuItem;
-        private ToolStripMenuItem nubeToolStripMenuItem;
         private ToolStripMenuItem archivoToolStripMenuItem1;
         private ToolStripMenuItem nubeToolStripMenuItem1;
     }

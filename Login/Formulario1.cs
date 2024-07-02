@@ -29,7 +29,7 @@ namespace Forms
         private string datoPerfil; //Este atributo lo utilizo para guardar el perfil del usuario logeado
         private string pathPersonajes; //Este atributo guarda el path del archivo json para guardar a los personajes
 
-        private Coleccion coleccion; //Este atributo guarda la collecion de personajes
+        private Coleccion<Personaje> coleccion; //Este atributo guarda la collecion de personajes
         private int itemSeleccionado; //Este atributo guarda el item seleccionado de la listbox
 
         private string pathUsuarios; //Este atributo guarda el path del archivo log de los usuarios logeados
@@ -59,7 +59,7 @@ namespace Forms
             this.CenterToScreen(); //Lo centro en pantalla
             this.MaximizeBox = false; //No dejo que se pueda maximizar
 
-            this.coleccion = new Coleccion();
+            this.coleccion = new Coleccion<Personaje>();
 
             //Base de datos
             this.accesoDatos = new AccesoDatos();
@@ -147,9 +147,9 @@ namespace Forms
         //Verifica si se hizo click en Arquero, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(this.CapacidadMaxima.Invoke())
+            if (this.CapacidadMaxima.Invoke())
             {
-                if(this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
+                if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
                 {
                     FormArquera formArquera = new FormArquera();
                     this.PersonajeResultCancel(formArquera);
@@ -159,6 +159,17 @@ namespace Forms
                         {
                             this.coleccion += formArquera.Arqueros;
                             this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}");
+
+                            #region Base de datos
+
+                            //Guardo los personajes en la base de datos
+                            if (this.conexionExitosa)
+                            {
+                                accesoDatos.AgregarDato(formArquera.Arqueros);
+                            }
+
+                            #endregion
+
                             formArquera.Close();
                         }
                     }
@@ -173,7 +184,7 @@ namespace Forms
         //Verifica si se hizo click en Mago, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void magoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(this.CapacidadMaxima.Invoke())
+            if (this.CapacidadMaxima.Invoke())
             {
                 if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
                 {
@@ -186,6 +197,17 @@ namespace Forms
                             this.coleccion += formMago.Magos;
 
                             this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
+
+                            #region Base de datos
+
+                            //Guardo los personajes en la base de datos
+                            if (this.conexionExitosa)
+                            {
+                                accesoDatos.AgregarDato(formMago.Magos);
+                            }
+
+                            #endregion
+
                             formMago.Close();
                         }
                     }
@@ -200,11 +222,11 @@ namespace Forms
         //Verifica si se hizo click en Tanque, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(this.CapacidadMaxima.Invoke())
+            if (this.CapacidadMaxima.Invoke())
             {
                 if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
                 {
-                        FormTanque formTanque = new FormTanque();
+                    FormTanque formTanque = new FormTanque();
                     this.PersonajeResultCancel(formTanque);
                     if (formTanque.DialogResult == DialogResult.OK)
                     {
@@ -213,6 +235,17 @@ namespace Forms
                             this.coleccion += formTanque.Tanques;
                             //Agrego un nuevo personaje a la lista
                             this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
+
+                            #region Base de datos
+
+                            //Guardo los personajes en la base de datos
+                            if (this.conexionExitosa)
+                            {
+                                accesoDatos.AgregarDato(formTanque.Tanques);
+                            }
+
+                            #endregion
+
                             formTanque.Close();
                         }
                     }
@@ -236,7 +269,7 @@ namespace Forms
                 if (DevolverMensaje())
                 {
                     int index = this.listBoxPersonajes.SelectedIndex;
-                    Personaje personajeAModificar = this.coleccion.listPersonajes[index]; //Guardo el personaje seleccionado
+                    Personaje personajeAModificar = this.coleccion.listaColeccion[index]; //Guardo el personaje seleccionado
                     this.nombreAntiguo = personajeAModificar.Nombre;
                     this.estiloAntiguo = personajeAModificar.Estilo;
 
@@ -252,7 +285,7 @@ namespace Forms
                             this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}"); //Agrego a la listBox el nuevo personaje modificado
 
                             //Update de SQL
-                            if(this.conexionExitosa)
+                            if (this.conexionExitosa)
                             {
                                 this.accesoDatos.ModificarDato(formArquera.Arqueros, this.nombreAntiguo, this.estiloAntiguo);
                             }
@@ -292,7 +325,7 @@ namespace Forms
                             this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
 
                             //Update de SQL 
-                            if(this.conexionExitosa)
+                            if (this.conexionExitosa)
                             {
                                 this.accesoDatos.ModificarDato(formTanque.Tanques, this.nombreAntiguo, this.estiloAntiguo);
                             }
@@ -337,7 +370,7 @@ namespace Forms
             if (DevolverMensaje()) //Si no seleccione nada o no hay nada en la lista es false
             {
                 itemSeleccionado = this.listBoxPersonajes.SelectedIndex;
-                MostrarDatos mostrarDatos = new MostrarDatos(this.coleccion.listPersonajes, itemSeleccionado);
+                MostrarDatos mostrarDatos = new MostrarDatos(this.coleccion.listaColeccion, itemSeleccionado);
                 mostrarDatos.Show();
             }
         }
@@ -349,13 +382,13 @@ namespace Forms
         #region Guardar
 
         //Guardo los personajes en un archivo json
-        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        private void guardarPersonajesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
             {
                 try
                 {
-                    string archivoJson = this.Serializar(this.coleccion.listPersonajes); //Llamo a Serializar para generar un atributo json con la lista serializada
+                    string archivoJson = this.Serializar(this.coleccion.listaColeccion); //Llamo a Serializar para generar un atributo json con la lista serializada
                     File.WriteAllText(this.pathPersonajes, archivoJson); //Guardo el atributo anterior en el path
                     MessageBox.Show("Guardado exitoso", "Guardar archivo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
@@ -384,7 +417,7 @@ namespace Forms
                 {
                     try
                     {
-                        string archivoJson = this.Serializar(this.coleccion.listPersonajes);
+                        string archivoJson = this.Serializar(this.coleccion.listaColeccion);
                         File.WriteAllText(saveFileDialog.FileName + ".json", archivoJson); //Lo mismo que en Guardar pero con un path a eleccion
                         MessageBox.Show("Guardado exitoso", "Guardar archivo", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     }
@@ -392,23 +425,6 @@ namespace Forms
                     {
                         MessageBox.Show($"Ocurrió un error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-        }
-
-        //Guardo los personajes en la base de datos
-        private void nubeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
-            {
-                if (this.conexionExitosa)
-                {
-                    accesoDatos.AgregarDato(this.coleccion);
-                    MessageBox.Show("Guardado exitoso", "Guardar en la nube", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             }
             else
@@ -431,7 +447,7 @@ namespace Forms
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     //Al momento de abir un nuevo archivo debo resetear todas las listas
-                    this.coleccion.listPersonajes.Clear();
+                    this.coleccion.listaColeccion.Clear();
                     this.listBoxPersonajes.Items.Clear();
                     try
                     {
@@ -461,10 +477,10 @@ namespace Forms
             {
                 if (this.conexionExitosa)
                 {
-                    this.coleccion.listPersonajes.Clear();
+                    this.coleccion.listaColeccion.Clear();
                     this.listBoxPersonajes.Items.Clear();
-                    this.coleccion.listPersonajes = this.accesoDatos.MostrarListaDatos();
-                    this.AñadirPersonajeALista(this.coleccion.listPersonajes);
+                    this.coleccion.listaColeccion = this.accesoDatos.MostrarListaDatos();
+                    this.AñadirPersonajeALista(this.coleccion.listaColeccion);
                     MessageBox.Show("Cargado exitoso", "Cargar desde la Nube", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 }
             }
@@ -481,7 +497,7 @@ namespace Forms
         //Muestra todos los usuarios logueados, llamando al Form Usuarios
         private void usuariosLogeadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(this.datoPerfil == "Administrador")
+            if (this.datoPerfil == "Administrador")
             {
                 Usuarios usuarios = new Usuarios(this.datosUsuarios);
                 usuarios.Show();
@@ -550,7 +566,7 @@ namespace Forms
         public bool EqualsLista(Personaje personaje)
         {
             bool estado = false;
-            foreach (Personaje item in this.coleccion.listPersonajes)
+            foreach (Personaje item in this.coleccion.listaColeccion)
             {
                 if (item.Equals(personaje))
                 {
@@ -596,27 +612,27 @@ namespace Forms
                     //Si el orden es false lo ordena de forma ascendente
                     //CompareTo devuelve 0 si a = b, -1 si a < b y 1 si b > a
                     //Sort si tiene -1 lo ordena de forma ascendente primero a despues b
-                    this.coleccion.listPersonajes.Sort((a, b) => a.Nivel.CompareTo(b.Nivel));
+                    this.coleccion.listaColeccion.Sort((a, b) => a.Nivel.CompareTo(b.Nivel));
                 }
                 if (orden)
                 {
                     //Si el orden es true lo ordena de forma descendente
-                    this.coleccion.listPersonajes.Sort((a, b) => b.Nivel.CompareTo(a.Nivel));
+                    this.coleccion.listaColeccion.Sort((a, b) => b.Nivel.CompareTo(a.Nivel));
                 }
             }
             else if (atributo == "Daño")
             {
                 if (!orden)
                 {
-                    this.coleccion.listPersonajes.Sort((a, b) => a.Daño.CompareTo(b.Daño));
+                    this.coleccion.listaColeccion.Sort((a, b) => a.Daño.CompareTo(b.Daño));
                 }
                 if (orden)
                 {
-                    this.coleccion.listPersonajes.Sort((a, b) => b.Daño.CompareTo(a.Daño));
+                    this.coleccion.listaColeccion.Sort((a, b) => b.Daño.CompareTo(a.Daño));
                 }
             }
 
-            this.AñadirPersonajeALista(this.coleccion.listPersonajes);
+            this.AñadirPersonajeALista(this.coleccion.listaColeccion);
         }
 
         //Serializo una lista y la guardo en otra pero parseada
@@ -677,7 +693,7 @@ namespace Forms
                             break;
                     }
                 }
-                this.AñadirPersonajeALista(this.coleccion.listPersonajes);
+                this.AñadirPersonajeALista(this.coleccion.listaColeccion);
             }
         }
 
@@ -686,7 +702,7 @@ namespace Forms
         {
             int posicion = this.listBoxPersonajes.SelectedIndex;
             this.listBoxPersonajes.Items.RemoveAt(posicion); // Remuevo de la listbox el personaje seleccionado con el index
-            Personaje personajeAEliminar = this.coleccion.listPersonajes[posicion]; //Guardo el personaje seleccionado
+            Personaje personajeAEliminar = this.coleccion.listaColeccion[posicion]; //Guardo el personaje seleccionado
             this.coleccion -= personajeAEliminar; //Borro el personaje con sobrecarga 
 
             if (this.conexionExitosa && opcion)

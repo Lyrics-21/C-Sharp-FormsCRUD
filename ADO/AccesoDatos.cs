@@ -138,71 +138,68 @@ namespace ADO
 
         #region Insert
 
-        public bool AgregarDato(Coleccion coleccion)
+        public bool AgregarDato(Personaje personaje)
         {
             bool rta = true;
 
             try
             {
-                foreach (Personaje personaje in coleccion.listPersonajes)
+                this.comando = new SqlCommand();
+
+                this.comando.Parameters.AddWithValue("@nombre", personaje.Nombre);
+                this.comando.Parameters.AddWithValue("@vida", personaje.Vida);
+                this.comando.Parameters.AddWithValue("@nivel", personaje.Nivel);
+                this.comando.Parameters.AddWithValue("@estilo", personaje.Estilo);
+                this.comando.Parameters.AddWithValue("@daño", personaje.Daño);
+
+                if (personaje is Arquero arquero)
                 {
-                    this.comando = new SqlCommand();
+                    this.comando.Parameters.AddWithValue("@tipoArco", (int)arquero.TipoArco);
+                    this.comando.Parameters.AddWithValue("@cantidadFlechas", arquero.CantidadFlechas);
+                    this.comando.Parameters.AddWithValue("@tipoMagia", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@mana", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@tipoArmadura", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@fuerza", DBNull.Value);
+                }
 
-                    this.comando.Parameters.AddWithValue("@nombre", personaje.Nombre);
-                    this.comando.Parameters.AddWithValue("@vida", personaje.Vida);
-                    this.comando.Parameters.AddWithValue("@nivel", personaje.Nivel);
-                    this.comando.Parameters.AddWithValue("@estilo", personaje.Estilo);
-                    this.comando.Parameters.AddWithValue("@daño", personaje.Daño);
+                else if (personaje is Mago mago)
+                {
+                    this.comando.Parameters.AddWithValue("@tipoArco", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@cantidadFlechas", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@tipoMagia", (int)mago.TipoMagia);
+                    this.comando.Parameters.AddWithValue("@mana", mago.Mana);
+                    this.comando.Parameters.AddWithValue("@tipoArmadura", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@fuerza", DBNull.Value);
+                }
 
-                    if (personaje is Arquero arquero)
-                    {
-                        this.comando.Parameters.AddWithValue("@tipoArco", (int)arquero.TipoArco);
-                        this.comando.Parameters.AddWithValue("@cantidadFlechas", arquero.CantidadFlechas);
-                        this.comando.Parameters.AddWithValue("@tipoMagia", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@mana", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@tipoArmadura", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@fuerza", DBNull.Value);
-                    }
+                else if (personaje is Tanque tanque)
+                {
+                    this.comando.Parameters.AddWithValue("@tipoArco", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@cantidadFlechas", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@tipoMagia", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@mana", DBNull.Value);
+                    this.comando.Parameters.AddWithValue("@tipoArmadura", (int)tanque.TipoArmadura);
+                    this.comando.Parameters.AddWithValue("@fuerza", tanque.Fuerza);
+                }
 
-                    else if (personaje is Mago mago)
-                    {
-                        this.comando.Parameters.AddWithValue("@tipoArco", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@cantidadFlechas", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@tipoMagia", (int)mago.TipoMagia);
-                        this.comando.Parameters.AddWithValue("@mana", mago.Mana);
-                        this.comando.Parameters.AddWithValue("@tipoArmadura", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@fuerza", DBNull.Value);
-                    }
-
-                    else if (personaje is Tanque tanque)
-                    {
-                        this.comando.Parameters.AddWithValue("@tipoArco", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@cantidadFlechas", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@tipoMagia", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@mana", DBNull.Value);
-                        this.comando.Parameters.AddWithValue("@tipoArmadura", (int)tanque.TipoArmadura);
-                        this.comando.Parameters.AddWithValue("@fuerza", tanque.Fuerza);
-                    }
-
-                    string sql = "INSERT INTO Tabla_Personajes (nombre, vida, nivel, estilo, daño, tipoArco, cantidadFlechas, tipoMagia, mana, tipoArmadura, fuerza) VALUES( ";
-                    sql += "@nombre, @vida, @nivel, @estilo, @daño, @tipoArco, @cantidadFlechas, @tipoMagia, @mana, @tipoArmadura, @fuerza)";
+                string sql = "INSERT INTO Tabla_Personajes (nombre, vida, nivel, estilo, daño, tipoArco, cantidadFlechas, tipoMagia, mana, tipoArmadura, fuerza) VALUES( ";
+                sql += "@nombre, @vida, @nivel, @estilo, @daño, @tipoArco, @cantidadFlechas, @tipoMagia, @mana, @tipoArmadura, @fuerza)";
     
-                    this.comando.CommandType = CommandType.Text;
-                    this.comando.CommandText = sql;
-                    this.comando.Connection = this.conexion;
+                this.comando.CommandType = CommandType.Text;
+                this.comando.CommandText = sql;
+                this.comando.Connection = this.conexion;
 
-                    this.conexion.Open();
+                this.conexion.Open();
 
-                    int filasAfectadas = this.comando.ExecuteNonQuery();
+                int filasAfectadas = this.comando.ExecuteNonQuery();
 
-                    if (filasAfectadas == 0)
-                    {
-                        rta = false;
-                    }
-                    else if (this.conexion.State == ConnectionState.Open)
-                    {
-                        this.conexion.Close();
-                    }
+                if (filasAfectadas == 0)
+                {
+                    rta = false;
+                }
+                else if (this.conexion.State == ConnectionState.Open)
+                {
+                    this.conexion.Close();
                 }
             }
             catch (Exception e)
