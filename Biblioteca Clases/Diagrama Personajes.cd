@@ -28,6 +28,7 @@
       <HashCode>AAAAoAAAAAAAACAEgAAAAAAAAAAAAAAAAgAAIAAAAiA=</HashCode>
       <FileName>Mago.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="Libreria_De_Clases.Tanque">
     <Position X="8" Y="6" Width="6.25" />

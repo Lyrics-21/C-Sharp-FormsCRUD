@@ -716,7 +716,7 @@ namespace Forms
         public bool VerificarCapacidad()
         {
             bool estado;
-            if (this.listBoxPersonajes.Items.Count >= 4)
+            if (this.listBoxPersonajes.Items.Count >= 10)
             {
                 estado = false;
                 MessageBox.Show("La lista de personajes esta llena", "No se puede agregar el personaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Libreria_De_Clases
 {
-    public class Mago : Personaje
+    public class Mago : Personaje, IPersonaje
     {
         public TipoMagia TipoMagia { get; set; }
         public int Mana { get; set; }

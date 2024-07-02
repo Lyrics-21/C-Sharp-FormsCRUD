@@ -9,7 +9,7 @@ using System.Xml.Serialization;
 
 namespace Libreria_De_Clases
 {
-    public class Coleccion<T>
+    public class Coleccion<T> where T : class
     {
         //Lista de personajes, aca se guarda ya sea un Arquero, Tanque o Mago
         public List<T> listaColeccion;
