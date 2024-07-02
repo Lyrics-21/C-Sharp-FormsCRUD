@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -33,13 +34,18 @@ namespace Forms
         private string pathUsuarios; //Este atributo guarda el path del archivo log de los usuarios logeados
         private string datosUsuarios; //Este atributo guarda los datos de los usuarios logueados
 
-        private AccesoDatos accesoDatos;
-        private bool conexionExitosa; //Este atributo guarda el estado de la conexion de la base de datos}
+        private AccesoDatos accesoDatos; //Toda la informacion de los usuarios logueados
+
+        //Base de datos
+        private bool conexionExitosa; //Este atributo guarda el estado de la conexion de la base de datos
         private string nombreAntiguo; //Estos atributos los utilizo para el where del update de la base de datos
         private string estiloAntiguo;
-        private string offlineOnline;
 
-        private Task task;
+        private string offlineOnline; //Atributo para guardar si esta online o offline la base de datos
+
+        //Eventos
+        private delegate bool Verificar();
+        private event Verificar CapacidadMaxima;
 
         #endregion
 
@@ -63,6 +69,7 @@ namespace Forms
         #endregion
 
         #region LoadForm
+
         private void Formulario1_Load(object sender, EventArgs e)
         {
             //Si la coneccion es exitosa de la base de datos muestra Online, de lo contrario Offline
@@ -75,7 +82,6 @@ namespace Forms
             {
                 this.offlineOnline = "Offline";
             }
-
 
             this.datoNombre = ObtenerDatos.DatoNombre;
             this.datoPerfil = ObtenerDatos.DatoPerfil;
@@ -126,6 +132,9 @@ namespace Forms
             }
 
             #endregion
+
+            //Asocio el metodo VerificarCapacidad al Evento CapacidadMaxima
+            this.CapacidadMaxima += this.VerificarCapacidad;
         }
 
         #endregion
@@ -134,74 +143,84 @@ namespace Forms
 
         #region Personajes
 
-        //Verifica si se hizo click en Mago, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
-        private void magoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
-            {
-                FormMago formMago = new FormMago();
-                this.PersonajeResultCancel(formMago);
-                if (formMago.DialogResult == DialogResult.OK)
-                {
-                    if (!EqualsLista(formMago.Magos))
-                    {
-                        this.coleccion += formMago.Magos;
-
-                        this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
-                        formMago.Close();
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-            }
-        }
 
         //Verifica si se hizo click en Arquero, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void arqueroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
+            if(this.CapacidadMaxima.Invoke())
             {
-                FormArquera formArquera = new FormArquera();
-                this.PersonajeResultCancel(formArquera);
-                if (formArquera.DialogResult == DialogResult.OK)
+                if(this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
                 {
-                    if (!EqualsLista(formArquera.Arqueros))
+                    FormArquera formArquera = new FormArquera();
+                    this.PersonajeResultCancel(formArquera);
+                    if (formArquera.DialogResult == DialogResult.OK)
                     {
-                        this.coleccion += formArquera.Arqueros;
-                        this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}");
-                        formArquera.Close();
+                        if (!EqualsLista(formArquera.Arqueros))
+                        {
+                            this.coleccion += formArquera.Arqueros;
+                            this.listBoxPersonajes.Items.Add($"{formArquera.Arqueros.Nombre} - {formArquera.Arqueros.Estilo} - Nivel: {formArquera.Arqueros.Nivel}");
+                            formArquera.Close();
+                        }
                     }
                 }
+                else
+                {
+                    MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
             }
-            else
+        }
+
+        //Verifica si se hizo click en Mago, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
+        private void magoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(this.CapacidadMaxima.Invoke())
             {
-                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
+                {
+                    FormMago formMago = new FormMago();
+                    this.PersonajeResultCancel(formMago);
+                    if (formMago.DialogResult == DialogResult.OK)
+                    {
+                        if (!EqualsLista(formMago.Magos))
+                        {
+                            this.coleccion += formMago.Magos;
+
+                            this.listBoxPersonajes.Items.Add($"{formMago.Magos.Nombre} - {formMago.Magos.Estilo} - Nivel: {formMago.Magos.Nivel}");
+                            formMago.Close();
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
             }
         }
 
         //Verifica si se hizo click en Tanque, y si no existe un personaje igual, lo agrega a las listas utilizando sobrecarga +
         private void tanqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
+            if(this.CapacidadMaxima.Invoke())
             {
-                    FormTanque formTanque = new FormTanque();
-                this.PersonajeResultCancel(formTanque);
-                if (formTanque.DialogResult == DialogResult.OK)
+                if (this.datoPerfil == "Administrador" || this.datoPerfil == "Supervisor")
                 {
-                    if (!EqualsLista(formTanque.Tanques))
+                        FormTanque formTanque = new FormTanque();
+                    this.PersonajeResultCancel(formTanque);
+                    if (formTanque.DialogResult == DialogResult.OK)
                     {
-                        this.coleccion += formTanque.Tanques;
-                        //Agrego un nuevo personaje a la lista
-                        this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
-                        formTanque.Close();
+                        if (!EqualsLista(formTanque.Tanques))
+                        {
+                            this.coleccion += formTanque.Tanques;
+                            //Agrego un nuevo personaje a la lista
+                            this.listBoxPersonajes.Items.Add($"{formTanque.Tanques.Nombre} - {formTanque.Tanques.Estilo} - Nivel: {formTanque.Tanques.Nivel}");
+                            formTanque.Close();
+                        }
                     }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                else
+                {
+                    MessageBox.Show("Tu perfil no admite esta operacion", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                }
             }
         }
 
@@ -677,6 +696,22 @@ namespace Forms
             }
         }
 
+        //Metodo que uso para asociarlo a events
+        public bool VerificarCapacidad()
+        {
+            bool estado;
+            if (this.listBoxPersonajes.Items.Count >= 4)
+            {
+                estado = false;
+                MessageBox.Show("La lista de personajes esta llena", "No se puede agregar el personaje", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                estado = true;
+            }
+            return estado;
+        }
+
         #endregion
 
         #region Cerrar
@@ -693,3 +728,5 @@ namespace Forms
 
     }
 }
+
+

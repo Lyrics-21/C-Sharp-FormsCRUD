@@ -24,7 +24,14 @@ namespace Forms
             InitializeComponent();
             this.datosUsuario = datosUsuario;
         }
-
+        private void Usuarios_Load(object sender, EventArgs e)
+        {
+            //Muestra "Cargando usuarios" y despues inicio como subproceso la carga de Usuarios logueados
+            this.richTextBox1.Font = new Font(this.richTextBox1.Font, FontStyle.Bold);
+            this.richTextBox1.Text = "Cargando usuarios...";
+            //Inicio el hilo llamando a CambiarLabel
+            this.task = Task.Run(() => this.CambiarTexto());
+        }
         private void CambiarTexto()
         {
             try
@@ -51,14 +58,6 @@ namespace Forms
             {
             }
 
-        }
-        private void Usuarios_Load(object sender, EventArgs e)
-        {
-            //Muestra "Cargando usuarios" y despues inicio como subproceso la carga de Usuarios logueados
-            this.richTextBox1.Font = new Font(this.richTextBox1.Font, FontStyle.Bold);
-            this.richTextBox1.Text = "Cargando usuarios...";
-            //Inicio el hilo llamando a CambiarLabel
-            this.task = Task.Run(() => this.CambiarTexto());
         }
 
         private void Usuarios_FormClosing(object sender, FormClosingEventArgs e)
