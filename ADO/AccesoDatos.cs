@@ -19,6 +19,7 @@ namespace ADO
 
         static AccesoDatos()
         {
+            //Aca guarda la conexion para mi base de datos
             AccesoDatos.cadena_conexion = Properties.Resources.conexionPersonajes;
         }
 
