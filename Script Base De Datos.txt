@@ -1,6 +1,6 @@
 USE [DataBase_Personajes]
 GO
-/****** Object:  Table [dbo].[Tabla_Personajes]    Script Date: 2/7/2024 23:25:41 ******/
+/****** Object:  Table [dbo].[Tabla_Personajes]    Script Date: 3/7/2024 01:33:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -28,9 +28,9 @@ SET IDENTITY_INSERT [dbo].[Tabla_Personajes] ON
 GO
 INSERT [dbo].[Tabla_Personajes] ([id], [nombre], [vida], [nivel], [estilo], [daño], [tipoArco], [cantidadFlechas], [tipoMagia], [mana], [tipoArmadura], [fuerza]) VALUES (1, N'Darwin', 2000, 12, N'Arquero/a', 200, 2, 5, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[Tabla_Personajes] ([id], [nombre], [vida], [nivel], [estilo], [daño], [tipoArco], [cantidadFlechas], [tipoMagia], [mana], [tipoArmadura], [fuerza]) VALUES (2, N'Neiner', 2000, 21, N'Mago', 600, NULL, NULL, 3, 300, NULL, NULL)
+INSERT [dbo].[Tabla_Personajes] ([id], [nombre], [vida], [nivel], [estilo], [daño], [tipoArco], [cantidadFlechas], [tipoMagia], [mana], [tipoArmadura], [fuerza]) VALUES (2, N'Neiner', 3000, 21, N'Mago', 600, NULL, NULL, 3, 300, NULL, NULL)
 GO
-INSERT [dbo].[Tabla_Personajes] ([id], [nombre], [vida], [nivel], [estilo], [daño], [tipoArco], [cantidadFlechas], [tipoMagia], [mana], [tipoArmadura], [fuerza]) VALUES (3, N'Randalf', 6000, 80, N'Tanque', 1000, NULL, NULL, NULL, NULL, 5, 1000)
+INSERT [dbo].[Tabla_Personajes] ([id], [nombre], [vida], [nivel], [estilo], [daño], [tipoArco], [cantidadFlechas], [tipoMagia], [mana], [tipoArmadura], [fuerza]) VALUES (3, N'Randalf', 8000, 5000, N'Tanque', 2000, NULL, NULL, NULL, NULL, 5, 1000)
 GO
 SET IDENTITY_INSERT [dbo].[Tabla_Personajes] OFF
 GO
