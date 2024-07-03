@@ -670,29 +670,35 @@ namespace Forms
             using (StreamReader sr = new StreamReader(path))
             {
                 string archivoJson = sr.ReadToEnd();
+                
+                //Parseo el archivo leido string a tipp JsonDocument
                 JsonDocument doc = JsonDocument.Parse(archivoJson);
 
+                //Root element devuelve un array Json y uso EnumerateArray para poder recorrerlo
                 foreach (JsonElement element in doc.RootElement.EnumerateArray())
                 {
+                    //Extragio el estilo del personaje y lo guardo en tipo usando GetProperty que me devuelve el valor de la propiedad definida en este caso Estilo
                     string tipo = element.GetProperty("Estilo").GetString();
+                    //Depende que tipo sea lo deserealizo con su tipo adecuado (Arquero, Mago, Tanque)
                     switch (tipo)
                     {
                         case "Arquero/a":
-                            Arquero arquero = JsonSerializer.Deserialize<Arquero>(element.GetRawText());
+                            Arquero arquero = JsonSerializer.Deserialize<Arquero>(element);
                             this.coleccion += arquero;
                             break;
 
                         case "Mago":
-                            Mago mago = JsonSerializer.Deserialize<Mago>(element.GetRawText());
+                            Mago mago = JsonSerializer.Deserialize<Mago>(element);
                             this.coleccion += mago;
                             break;
 
                         case "Tanque":
-                            Tanque tanque = JsonSerializer.Deserialize<Tanque>(element.GetRawText());
+                            Tanque tanque = JsonSerializer.Deserialize<Tanque>(element);
                             this.coleccion += tanque;
                             break;
                     }
                 }
+                //Llamo al metodo para añadir los personajes deserealizados a la listbox
                 this.AñadirPersonajeALista(this.coleccion.listaColeccion);
             }
         }

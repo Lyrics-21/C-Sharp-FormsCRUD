@@ -25,4 +25,4 @@ Esta Aplicacion me permite interactuar con varios formularios, agregar un person
 ![Diagrama de Clases](./Imagenes/Diagrama%20Personajes.png)
 
 ## Script Base de datos
-
+[Scripts](Script%20SQL.txt)

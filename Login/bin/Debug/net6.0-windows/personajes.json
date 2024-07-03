@@ -1,0 +1,29 @@
+[
+  {
+    "TipoArco": 2,
+    "CantidadFlechas": 5,
+    "Vida": 2000,
+    "Nombre": "Darwin",
+    "Nivel": 12,
+    "Estilo": "Arquero/a",
+    "Da\u00F1o": 200
+  },
+  {
+    "TipoMagia": 3,
+    "Mana": 300,
+    "Vida": 2000,
+    "Nombre": "Neiner",
+    "Nivel": 21,
+    "Estilo": "Mago",
+    "Da\u00F1o": 600
+  },
+  {
+    "TipoArmadura": 5,
+    "Fuerza": 1000,
+    "Vida": 6000,
+    "Nombre": "Randalf",
+    "Nivel": 80,
+    "Estilo": "Tanque",
+    "Da\u00F1o": 1000
+  }
+]
